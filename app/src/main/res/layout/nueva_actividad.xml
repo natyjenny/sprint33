@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="#f0ebeb">
+
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="54dp"
+        android:text="@string/nuevaActividad"
+        android:id="@+id/textView"
+        android:gravity="center"
+        android:background="@color/RECREU"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        android:textSize="@dimen/abc_action_bar_icon_vertical_padding_material"
+        android:layout_marginTop="0dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+
+            android:background="#f0ebeb"
+            android:weightSum="0"
+            android:gravity="center"
+            android:baselineAligned="false"
+            android:clickable="false"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/IngreseelTitulo"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:layout_weight="0.16"
+                android:background="@color/RECREU"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:inputType="textPersonName"
+                android:hint="Titulo Actividad"
+                android:text=""
+                android:ems="10"
+                android:id="@+id/titulo"
+                android:layout_gravity="center_horizontal"
+                android:background="#d8d4d4"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/IngreseDescripción"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:layout_weight="0.16"
+                android:background="@color/RECREU"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="127dp"
+                android:inputType="textPersonName"
+                android:hint="Descripcion actividad"
+                android:ems="10"
+                android:text=""
+                android:id="@+id/descripcion"
+                android:background="#d8d4d4"
+                android:textAlignment="inherit"
+                android:singleLine="false"
+                android:textIsSelectable="false"
+                android:visibility="visible"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/IngreseRequisitos"
+                android:gravity="center"
+                android:layout_weight="0.16"
+                android:background="@color/RECREU"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:inputType="textPersonName"
+                android:hint="Requisitos Actividad"
+                android:ems="10"
+                android:text=""
+                android:id="@+id/requisitos"
+                android:background="#d8d4d4"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/Categoria"
+                android:gravity="center"
+                android:layout_weight="0.16"
+                android:background="@color/RECREU"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner"
+                android:entries="@array/categorias"
+                android:layout_weight="0.16"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:layout_marginLeft="0dp"
+                android:paddingLeft="150dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/IngreseFechayHora"
+                android:gravity="center"
+                android:layout_weight="0.16"
+                android:background="@color/RECREU"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="76dp"
+                android:inputType="textPersonName"
+                android:hint="00:00:00"
+                android:text=""
+                android:clickable="false"
+                android:ems="10"
+
+                android:background="#d8d4d4"
+                android:gravity="center"
+                android:id="@+id/fechainicio"
+                android:layout_gravity="left" />
+
+
+            <!--     <EditText
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:inputType="date"
+                     android:ems="10"
+                     android:id="@+id/fecha"
+                     android:layout_gravity="center_horizontal"
+                     android:layout_weight="0.16"
+                     android:onClick="obtenerFecha"
+                     android:clickable="true" />-->
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="76dp"
+                android:text="Modificar Fecha"
+                android:background="#57B257"
+                android:textColor="#ffffff"
+                android:id="@+id/botonFecha"
+                android:layout_gravity="right"/>
+
+            <!-- <TimePicker
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/horainicio"
+                      android:layout_gravity="center_horizontal" /> -->
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="76dp"
+                android:inputType="textPersonName"
+                android:hint="00:00"
+                android:ems="10"
+                android:clickable="false"
+                android:background="#d8d4d4"
+                android:text=""
+                android:gravity="center"
+                android:id="@+id/horainicio"
+                android:layout_gravity="left" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="76dp"
+                android:background="#57B257"
+                android:textColor="#ffffff"
+                android:text="Modificar Hora Inicio"
+                android:id="@+id/botonHoraInicio"
+                android:layout_gravity="right"/>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/IngreseDuración"
+                android:gravity="center"
+                android:layout_weight="0.16"
+                android:background="@color/RECREU"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:id="@+id/duracion"
+                android:hint="ej: 01:30"
+                android:inputType="number"
+                android:text=""
+                android:background="#d8d4d4"
+                android:gravity="center" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/Ingresemáximoparticipantes"
+                android:gravity="center"
+                android:layout_weight="0.16"
+                android:background="@color/RECREU"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:inputType="number"
+                android:text=""
+                android:ems="10"
+                android:id="@+id/cupo"
+                android:hint="Cupos Actividad"
+                android:background="#d8d4d4"
+                android:gravity="center" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/AgregarActividad"
+                android:id="@+id/botonAgregarActividad"
+                android:layout_gravity="center_horizontal"
+                android:longClickable="false"
+                android:onClick="onClick" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TimePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timePicker2"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>

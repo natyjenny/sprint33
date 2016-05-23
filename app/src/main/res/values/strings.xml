@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">RecreU</string>
+    <string name="start">Iniciar</string>
+    <string name="add">Añadir</string>
+    <string name="new_item">Nuevo Item</string>
+    <string name="item_detail">Detalles</string>
+    <string name="exit">Salir</string>
+    <string name="test">Test</string>
+
+    <!-- Strings de nueva actividad -->
+    <string name="crearActividad">Crear Actividad</string>
+    <string name="IngreseFechayHora">Ingrese Fecha y Hora</string>
+    <!--  <string name="DescripciónActividad">Descripción Actividad</string>-->
+    <string name="IngreseDescripción">Ingrese Descripción</string>
+    <string name="IngreseelTitulo">Ingrese el Titulo:</string>
+    <string name="IngreseRequisitos">Ingrese Requisitos actividad</string>
+    <string name="nuevaActividad">NUEVA ACTIVIDAD</string>
+    <!-- <string name="RequisitosActividad">Requisitos Actividad</string> -->
+    <string name="IngreseDuración">Ingrese duracion en Horas:Minutos</string>
+    <string name="Ingresemáximoparticipantes">Ingrese Máximo de Participantes</string>
+    <!-- <string name="cupos">Cupos Actividad</string> -->
+    <string name="AgregarActividad">Agregar Actividad</string>
+    <string name="Categoria">Ingrese Categoria Actividad</string>
+    <string name="Tipo">Ingrese Tipo</string>
+    <string-array name="categorias">
+        <item>Deporte</item>
+        <item>Arte</item>
+        <item>Cine</item>
+        <item>Musica</item>
+        <item>Teatro</item>
+        <item>Danza</item>
+    </string-array>
+    <!-- Fin strings nueva actividad -->
+
+    <string name="iniciarSesion">Iniciar Sesión</string>
+    <string name="crearUsuario">Crear Usuario</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

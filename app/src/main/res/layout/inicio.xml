@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:clickable="true"
+    android:rowOrderPreserved="false">
+
+    <TextView
+    android:layout_width="176dp"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:id="@+id/nombreUsuario"
+        android:layout_weight="0.11"
+        android:text="dsdsd"
+        android:paddingLeft="27dp"
+        android:background="#ff9800"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="false"
+        android:layout_above="@+id/botonExplorar" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Bienvenido "
+        android:id="@+id/bienvenida"
+        android:layout_gravity="left"
+        android:layout_toLeftOf="@+id/nombreUsuario"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingRight="25dp"
+        android:background="#ff9800"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+        android:id="@+id/linearLayout"
+        android:layout_toEndOf="@+id/bienvenida"
+        android:layout_toRightOf="@+id/bienvenida">
+
+
+    </LinearLayout>
+
+    <Button
+    android:layout_width="fill_parent"
+    android:layout_height="160dp"
+    android:text="EXPLORAR"
+    android:id="@+id/botonExplorar"
+        android:drawableLeft="@drawable/mundi"
+        android:drawablePadding="0dp"
+        android:background="#ffedd7"
+       android:textColor="@color/RECREU"
+        android:onClick="explorar"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/bienvenida"
+        android:translationZ="0dp"
+        android:textAlignment="center"
+        android:textSize="34dp"
+        android:scrollIndicators="none" />
+
+    <Button
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    android:text="ORGANIZAR ACTIVIDAD"
+    android:id="@+id/botonCrearActividad"
+        android:drawablePadding="0dp"
+        android:drawableRight="@drawable/icon_9477"
+        android:background="@color/RECREU"
+    android:textColor="#ffffff"
+        android:onClick="crearActividad"
+    android:singleLine="false"
+        android:layout_below="@+id/botonExplorar"
+        android:layout_alignLeft="@+id/botonExplorar"
+        android:layout_alignStart="@+id/botonExplorar"
+        android:elevation="200dp"
+        android:translationZ="400dp"
+        android:textSize="33dp"
+        android:textStyle="bold"
+        android:textAlignment="center" />
+
+    <Button
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    android:text="ELIMINAR USUARIO"
+    android:id="@+id/botonEliminarUsuario"
+        android:background="#393939"
+    android:textColor="#ffffff"
+        android:onClick="irAEliminar"
+        android:layout_below="@+id/botonCrearActividad"
+        android:layout_centerHorizontal="true"
+        android:textSize="27dp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
