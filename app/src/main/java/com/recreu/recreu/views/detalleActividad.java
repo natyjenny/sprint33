@@ -19,6 +19,7 @@ import com.recreu.recreu.Modelos.Usuario;
 import com.recreu.recreu.controllers.HttpDelete;
 import com.recreu.recreu.controllers.HttpGet;
 import com.recreu.recreu.controllers.HttpPost;
+import com.recreu.recreu.utilities.AccesoDirecto;
 import com.recreu.recreu.utilities.JsonHandler;
 import com.recreu.recreu.utilities.SystemUtilities;
 
@@ -34,12 +35,13 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
     private BroadcastReceiver br = null;
     private Button botonPC;
     private Usuario usuario;
-    private final String URL_PUT_ACTIVIDAD = "http://10.0.2.2:8080/javaee/";
     private Usuario[] listaUsuarios;
+    private String URL_PUT_ACTIVIDAD;
 
         public detalleActividad(Actividad act, Usuario usu) {
-        this.actividad=act;
-        this.usuario=usu;
+            this.actividad=act;
+            this.usuario=usu;
+            URL_PUT_ACTIVIDAD = (new AccesoDirecto()).getURL();
     }
 
 
@@ -70,6 +72,7 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
 
     @Override
     public void onResume() {
+
         String URL_USUARIOS_EN_ACTIVIDAD=URL_PUT_ACTIVIDAD+"actividades/"+actividad.getActividadId()+"/usuarios";
         IntentFilter intentFilter2 = new IntentFilter("httpData");
 

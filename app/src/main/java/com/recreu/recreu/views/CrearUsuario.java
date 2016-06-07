@@ -32,6 +32,7 @@ import cl.recreu.recreu.taller_android_bd.R;
 import com.recreu.recreu.MainActivity;
 import com.recreu.recreu.Modelos.Usuario;
 import com.recreu.recreu.controllers.HttpPost;
+import com.recreu.recreu.utilities.AccesoDirecto;
 import com.recreu.recreu.utilities.SystemUtilities;
 
 import org.json.JSONException;
@@ -50,8 +51,8 @@ public class CrearUsuario extends AppCompatActivity implements View.OnClickListe
     private Button botonOk, botonFecha;
     private int mYear, mMonth, mDay;
     private TextView fecha;
-    private String URL_GET = "http://10.0.2.2:8080/javaee/usuarios";
     private EditText password;
+    private String URL_GET;
 
 
     @Override
@@ -69,6 +70,7 @@ public class CrearUsuario extends AppCompatActivity implements View.OnClickListe
         fecha = (TextView)findViewById(R.id.fechaNacimiento);
         password=(EditText)findViewById(R.id.password);
         botonFecha.setOnClickListener(this);
+        URL_GET = (new AccesoDirecto()).getURL()+"usuarios";
 
     }
 
@@ -142,7 +144,6 @@ public class CrearUsuario extends AppCompatActivity implements View.OnClickListe
             System.out.println(usuStr);
             try {
                 SystemUtilities su = new SystemUtilities(this.getApplicationContext());
-
                 if (su.isNetworkAvailable()) {
                     try {
                         AsyncTask resp = new HttpPost(this.getApplicationContext()).execute(usuStr, URL_GET);

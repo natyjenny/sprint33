@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.recreu.recreu.Modelos.Usuario;
 import com.recreu.recreu.controllers.HttpPost;
+import com.recreu.recreu.utilities.AccesoDirecto;
 import com.recreu.recreu.utilities.SystemUtilities;
 
 import cl.recreu.recreu.taller_android_bd.R;
@@ -34,7 +35,7 @@ public class IniciarSesion extends AppCompatActivity {
     private EditText password;
     private View mLoginFormView;
     private View mProgressView;
-    private String URL_GET = "http://10.0.2.2:8080/javaee/usuarios/login";
+    private String URL_GET ;
     private Usuario usuario;
 
     @Override
@@ -45,6 +46,7 @@ public class IniciarSesion extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+        this.URL_GET=(new AccesoDirecto()).getURL()+"usuarios/login";
     }
 
     public void okIniciarSesion(View vista) {

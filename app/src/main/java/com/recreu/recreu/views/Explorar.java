@@ -17,6 +17,7 @@ import cl.recreu.recreu.taller_android_bd.R;
 import com.recreu.recreu.Modelos.Actividad;
 import com.recreu.recreu.Modelos.Usuario;
 import com.recreu.recreu.controllers.HttpGet;
+import com.recreu.recreu.utilities.AccesoDirecto;
 import com.recreu.recreu.utilities.JsonHandler;
 import com.recreu.recreu.utilities.SystemUtilities;
 
@@ -28,16 +29,18 @@ import java.util.List;
 public class Explorar extends ListFragment {
 
     private BroadcastReceiver br = null;
-    private final String URL_GET = " http://10.0.2.2:8080/javaee/actividades";
+    private String URL_GET;
     private Actividad[] actividadesLista;
     private Actividad actividad;
     private Usuario usuario;
 
     public Explorar() {
+        this.URL_GET=(new AccesoDirecto()).getURL()+"actividades";
     }
 
     public Explorar(Usuario usu) {                    //CONSTRUCTOR CON MODELO USUARIO
         this.usuario=usu;
+        this.URL_GET=(new AccesoDirecto()).getURL()+"actividades";
     }
 
 

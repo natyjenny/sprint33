@@ -23,6 +23,7 @@ import com.recreu.recreu.Modelos.Actividad;
 import com.recreu.recreu.Modelos.Usuario;
 import com.recreu.recreu.controllers.HttpDelete;
 import com.recreu.recreu.controllers.HttpGet;
+import com.recreu.recreu.utilities.AccesoDirecto;
 import com.recreu.recreu.utilities.JsonHandler;
 import com.recreu.recreu.utilities.SystemUtilities;
 
@@ -33,7 +34,7 @@ import cl.recreu.recreu.taller_android_bd.R;
 
 public class ListaEliminar extends ListFragment{
 
-    private String URL_GET="http://10.0.2.2:8080/javaee/usuarios/";
+    private String URL_GET=(new AccesoDirecto()).getURL()+"usuarios/";
 
 
 

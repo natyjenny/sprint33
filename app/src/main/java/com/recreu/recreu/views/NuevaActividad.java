@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.recreu.recreu.Modelos.Actividad;
 import com.recreu.recreu.Modelos.Usuario;
 import com.recreu.recreu.controllers.HttpPost;
+import com.recreu.recreu.utilities.AccesoDirecto;
 import com.recreu.recreu.utilities.SystemUtilities;
 
 import org.json.JSONException;
@@ -47,7 +48,7 @@ public class NuevaActividad extends Fragment implements View.OnClickListener {
     private String fechainicio;
     private float x, y;
     private Spinner spiner;
-    private final String URL_POST = "http://10.0.2.2:8080/javaee/actividades";
+    private final String URL_POST =(new AccesoDirecto()).getURL()+"actividades";
     private Context c;
     private Usuario usuario;
     private AsyncTask resp;

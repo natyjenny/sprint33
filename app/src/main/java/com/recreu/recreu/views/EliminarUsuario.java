@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.recreu.recreu.Modelos.Usuario;
 import com.recreu.recreu.controllers.HttpDelete;
+import com.recreu.recreu.utilities.AccesoDirecto;
 import com.recreu.recreu.utilities.SystemUtilities;
 
 import cl.recreu.recreu.taller_android_bd.R;
@@ -21,11 +22,12 @@ import cl.recreu.recreu.taller_android_bd.R;
 public class EliminarUsuario extends Fragment implements View.OnClickListener {
     private TextView tv;
     private Usuario usuario;
-    private String URL_GET="http://10.0.2.2:8080/javaee/usuarios/";
+    private String URL_GET;
 
     public EliminarUsuario(Usuario usu) {
         // Required empty public constructor
         this.usuario=usu;
+        this.URL_GET=(new AccesoDirecto()).getURL()+"usuarios/";
 
     }
 

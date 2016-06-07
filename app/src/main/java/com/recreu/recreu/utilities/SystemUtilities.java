@@ -14,6 +14,7 @@ public class SystemUtilities {
      */
     public SystemUtilities(Context context) {
         this.context = context;
+
     }// SystemUtilities(Context context)
 
     /**
