@@ -5,7 +5,7 @@ android {
         debug {
             keyAlias 'google'
             keyPassword 'gatito'
-            storeFile file('/home/alamatita/llaveprueba.keystore')
+            storeFile file('/home/ginebra/llaveprueba.keystore')
             storePassword 'gatito'
         }
     }
@@ -30,7 +30,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.google.android.gms:play-services:8.4.0'

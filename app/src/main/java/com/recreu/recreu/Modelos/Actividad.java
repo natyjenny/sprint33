@@ -5,6 +5,8 @@ import java.sql.Time;
 
 /**
 PROBANDO PROBANDO NATY NATY NATYYYYYYYYYYY cambiando email
+
+ LA  naty no ve los partidos de chile :C jajaajja
  */
 public class Actividad {
 
