@@ -1,6 +1,5 @@
 package com.recreu.recreu.views;
 
-import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.BroadcastReceiver;
@@ -9,7 +8,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import cl.recreu.recreu.taller_android_bd.R;
@@ -20,10 +18,6 @@ import com.recreu.recreu.controllers.HttpGet;
 import com.recreu.recreu.utilities.AccesoDirecto;
 import com.recreu.recreu.utilities.JsonHandler;
 import com.recreu.recreu.utilities.SystemUtilities;
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 
 public class Explorar extends ListFragment {
@@ -60,19 +54,20 @@ public class Explorar extends ListFragment {
                 actividadesLista = jh.getActividades(intent.getStringExtra("data"));
                 String[] titulosString = new String[actividadesLista.length];
                 String[] fechasString = new String[actividadesLista.length];
+                String[] tiposString = new String[actividadesLista.length];
 
 
                 for (int i=0;i<actividadesLista.length;i++){
                     titulosString[i]=" "+actividadesLista[i].getTitulo()+" ";
 
-                     fechasString[i]=" "+actividadesLista[i].getFechaInicio()+" "+ (actividadesLista[i].getTipo().getCategoria().getNombreCategoria());
-                    // fechasString[i]=" "+actividadesLista[i].getFechaInicio()+" ";
+                     fechasString[i]=" "+actividadesLista[i].getFechaInicio()+" "+ (actividadesLista[i].getTipo().getNombreTipo());
+                     tiposString[i]=""+actividadesLista[i].getTipo().getTipoId()+"";
                 }
 
 
-
-                MyAdapter myAdapter = new MyAdapter(getActivity(), titulosString, fechasString);
-                setListAdapter(myAdapter);
+                System.out.println(tiposString);
+                ExplorarAdaptador explorarAdaptador = new ExplorarAdaptador(getActivity(), titulosString, fechasString,tiposString );
+                setListAdapter(explorarAdaptador);
 
                 // se adapta el string al campo del fragment al estilo lista  simple /                     SE VA A BORRARRR
            //     ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1 ,actividadesString);
@@ -93,9 +88,9 @@ public class Explorar extends ListFragment {
     }
 
     @Override
-    public void onListItemClick(ListView l, View v, int position, long id) { // ACA VEO LO QUE SETEO A DETALLEACTIVIDAD
+    public void onListItemClick(ListView l, View v, int posicion, long id) {
 
-        actividad=actividadesLista[position];
+        actividad=actividadesLista[posicion];
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, new detalleActividad(actividad,usuario),"detalleActi");
         transaction.addToBackStack(null);

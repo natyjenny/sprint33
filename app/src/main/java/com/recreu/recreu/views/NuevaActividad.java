@@ -78,6 +78,9 @@ public class NuevaActividad extends Fragment implements View.OnClickListener {
         agregarActividad = (Button) vistaActividad.findViewById(R.id.botonAgregarActividad);
         agregarActividad.setOnClickListener(this);
         personitas = (EditText) vistaActividad.findViewById(R.id.cupo);
+
+        // llamar a lista de categoriaas
+        // llamar a lista de tipos
         return vistaActividad;
     }
 
@@ -85,7 +88,6 @@ public class NuevaActividad extends Fragment implements View.OnClickListener {
      @Override
      public void onViewStateRestored(Bundle savedInstanceState) {
          //vistaActividad = inflater.inflate(R.layout.nueva_actividad, container, false);
-
          super.onViewStateRestored(savedInstanceState);
      }
 
@@ -94,13 +96,17 @@ public class NuevaActividad extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.botonAgregarActividad:
-                x = 123;
+                x = 123;   // COORDENADAS SELECCIONADAS DE MAPA
                 y = 456;
 
                 String cupos = personitas.getText().toString();
                 maximoPersonas = Integer.parseInt(cupos);
                 strgDuracion =duracion.getText().toString() + ":00-03:00";
                 strgDuracion = "01:30:00";
+
+                // obtener categoria y setear Listade tipos
+                // obtener posicion de listaTipos y guarda en tipoId
+                // arreglar verificación, cambiar restricciones a vista
                 if (titulo.getText().toString().length() == 0) {
                     Toast.makeText(c, " Debe ingresar un titulo ", Toast.LENGTH_SHORT).show();
                 }

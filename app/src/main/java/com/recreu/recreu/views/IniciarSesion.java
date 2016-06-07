@@ -76,18 +76,9 @@ public class IniciarSesion extends AppCompatActivity {
             foco.requestFocus();
 
         } else {
-
-
-
-// Naty aqui esta el seteo automatico con mi nombre de usuario ;) . Por las restricciones de mino hay que escribir puras aaa y listo
-
-            String usuStr = "{\"correo\":\"jenny@usach.cl\",\"password\":\"pass  \"}";
-              System.out.println(usuStr);
-
-           // String usuStr = "{\"correo\":\""+correo.getText().toString()+
-          //          "\",\"password\":\""+password.getText().toString()+"\"}";
-          //  System.out.println(usuStr);
-
+            String usuStr = "{\"correo\":\""+correo.getText().toString()+
+                    "\",\"password\":\""+password.getText().toString()+"\"}";
+            System.out.println(usuStr);
 
 
             try {
