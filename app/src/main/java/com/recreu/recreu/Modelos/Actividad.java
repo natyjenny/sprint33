@@ -4,7 +4,7 @@ import java.util.Date;
 import java.sql.Time;
 
 /**
- * Created by ginebra on 14-05-16.
+PROBANDO PROBANDO NATY NATY NATYYYYYYYYYYY
  */
 public class Actividad {
 
