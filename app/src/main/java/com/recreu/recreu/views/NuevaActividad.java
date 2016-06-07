@@ -214,7 +214,7 @@ public class NuevaActividad extends Fragment implements View.OnClickListener {
                     try {
                         JSONObject aux = new JSONObject(response);
                         int ideActividad = Integer.parseInt(aux.getString("actividadId"));
-                        String URL_PARTICIPACION = "http://10.0.2.2:8080/javaee/usuarios/"+usuario.getUsuarioId()+"/actividades/"+ideActividad+"";
+                        String URL_PARTICIPACION = (new AccesoDirecto()).getURL()+"/usuarios/"+usuario.getUsuarioId()+"/actividades/"+ideActividad+"";
 
                         String nuevaParticipacion = "{\"usuarioId\":\"" + usuario.getUsuarioId() +
                                 ",\"actividadId\":"+ideActividad+ "}";
