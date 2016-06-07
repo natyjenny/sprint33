@@ -4,9 +4,7 @@ import java.util.Date;
 import java.sql.Time;
 
 /**
-PROBANDO PROBANDO NATY NATY NATYYYYYYYYYYY cambiando email
 
- LA  naty no ve los partidos de chile :C jajaajja
  */
 public class Actividad {
 
@@ -21,10 +19,9 @@ public class Actividad {
     private Boolean es_activo;
     private Integer tipo_id;
     private Integer maximoPersonas;
-    private Categoria categoria;
+    private Tipo tipo;
 
-
-    public Actividad(String tit, String cuer, String req, String fecha,String tiemp, Float x, Float y, Integer tipo, Integer ide, Integer max){
+    public Actividad(String tit, String cuer, String req, String fecha,String tiemp, Float x, Float y, Tipo tipo, Integer ide, Integer max){
         titulo=tit;
         cuerpo=cuer;
         requerimientos_actividad=req;
@@ -33,7 +30,8 @@ public class Actividad {
         es_activo=true;
         ubicacion_actividad_x=x;
         ubicacion_actividad_y=y;
-        tipo_id=tipo;
+        //tipo_id=tipo;
+        this.tipo=tipo;
         actividadId=ide;
         maximoPersonas=max;
     }
@@ -66,19 +64,21 @@ public class Actividad {
         return es_activo;
     }
 
-    public Integer getTipo() {
-        return tipo_id;
+    public Tipo getTipo() {
+        return tipo;
     }
 
     public Integer getMaximoPersonas() { return maximoPersonas; }
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
+   // public Categoria getCategoria() {
+   //     return categoria;
+   // }
 
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
     }
+    //public void setCategoria(Categoria categoria) {
+   //     this.categoria = categoria;
+    //}
 
 }

@@ -38,7 +38,7 @@ public class Explorar extends ListFragment {
         this.URL_GET=(new AccesoDirecto()).getURL()+"actividades";
     }
 
-    public Explorar(Usuario usu) {                    //CONSTRUCTOR CON MODELO USUARIO
+    public Explorar(Usuario usu) {
         this.usuario=usu;
         this.URL_GET=(new AccesoDirecto()).getURL()+"actividades";
     }
@@ -64,8 +64,9 @@ public class Explorar extends ListFragment {
 
                 for (int i=0;i<actividadesLista.length;i++){
                     titulosString[i]=" "+actividadesLista[i].getTitulo()+" ";
-                  //  fechasString[i]=" "+actividadesLista[i].getFechaInicio()+" "+ (actividadesLista[i].getCategoria().getNombreCategoria()).toUpperCase();   // AQUI PONER CATEGORIA :C
-                    fechasString[i]=" "+actividadesLista[i].getFechaInicio()+" ";
+
+                     fechasString[i]=" "+actividadesLista[i].getFechaInicio()+" "+ (actividadesLista[i].getTipo().getCategoria().getNombreCategoria());
+                    // fechasString[i]=" "+actividadesLista[i].getFechaInicio()+" ";
                 }
 
 
