@@ -3,8 +3,8 @@ package com.recreu.recreu.Modelos;
 import java.util.Date;
 import java.sql.Time;
 
-/**  
-PROBANDO PROBANDO NATY NATY NATYYYYYYYYYYY
+/**
+PROBANDO PROBANDO NATY NATY NATYYYYYYYYYYY cambiando email
  */
 public class Actividad {
 
