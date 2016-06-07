@@ -2,6 +2,9 @@ package com.recreu.recreu.Modelos;
 
 /**
  * Created by alamatita on 22-05-16.
+ *
+ *
+ * PROBANDOOO NATI DENueVOOO
  */
 public class Carrera {
     private int carreraId;
