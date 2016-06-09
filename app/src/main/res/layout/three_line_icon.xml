@@ -13,23 +13,31 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:orientation="vertical"
-        >
+        android:weightSum="1">
 
-        <TextView android:id="@+id/text1"
+        <TextView android:id="@+id/Textotitulo"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:text="Texto 1"
             android:textStyle="bold"
             android:textSize="30dp"
             android:paddingTop="12dp" />
 
-        <TextView android:id="@+id/text2"
+        <TextView android:id="@+id/TextoTipo"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="Descricao"
+            android:layout_height="wrap_content"
+            android:text="TIPO"
             android:textSize="19dp"
             android:paddingTop="0dp"
-            android:paddingBottom="6dp" />
+            android:paddingBottom="6dp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/TextoFecha"
+            android:layout_weight="0.48" />
 
     </LinearLayout>
 

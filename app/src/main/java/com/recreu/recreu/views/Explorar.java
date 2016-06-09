@@ -13,6 +13,7 @@ import android.widget.ListView;
 import cl.recreu.recreu.taller_android_bd.R;
 
 import com.recreu.recreu.Modelos.Actividad;
+import com.recreu.recreu.Modelos.Tipo;
 import com.recreu.recreu.Modelos.Usuario;
 import com.recreu.recreu.controllers.HttpGet;
 import com.recreu.recreu.utilities.AccesoDirecto;
@@ -54,19 +55,19 @@ public class Explorar extends ListFragment {
                 actividadesLista = jh.getActividades(intent.getStringExtra("data"));
                 String[] titulosString = new String[actividadesLista.length];
                 String[] fechasString = new String[actividadesLista.length];
-                String[] tiposString = new String[actividadesLista.length];
+                Tipo[] tiposArray=new Tipo[actividadesLista.length];
 
 
                 for (int i=0;i<actividadesLista.length;i++){
                     titulosString[i]=" "+actividadesLista[i].getTitulo()+" ";
-
-                     fechasString[i]=" "+actividadesLista[i].getFechaInicio()+" "+ (actividadesLista[i].getTipo().getNombreTipo());
-                     tiposString[i]=""+actividadesLista[i].getTipo().getTipoId()+"";
+//+ (actividadesLista[i].getTipo().getNombreTipo()
+                     fechasString[i]=" "+actividadesLista[i].getFechaInicio()+"";
+                     tiposArray[i]=actividadesLista[i].getTipo();
                 }
 
 
-                System.out.println(tiposString);
-                ExplorarAdaptador explorarAdaptador = new ExplorarAdaptador(getActivity(), titulosString, fechasString,tiposString );
+               // System.out.println(tiposArray);
+                ExplorarAdaptador explorarAdaptador = new ExplorarAdaptador(getActivity(), titulosString, fechasString,tiposArray );
                 setListAdapter(explorarAdaptador);
 
                 // se adapta el string al campo del fragment al estilo lista  simple /                     SE VA A BORRARRR
