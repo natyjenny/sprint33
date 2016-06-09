@@ -60,10 +60,14 @@ public class Explorar extends ListFragment {
                 for (int i=0;i<actividadesLista.length;i++){
                     titulosString[i]=" "+actividadesLista[i].getTitulo()+" ";
                     String fecha,hora,resto=" "+actividadesLista[i].getFechaInicio()+" ";
-                     fecha=resto.substring(0,11);
-                      hora=resto.substring(12,17);
-                     fechasString[i]=" Fecha: "+fecha+" Hora: "+hora;
-                     tiposArray[i]=actividadesLista[i].getTipo();
+                    fecha=resto.substring(0,11);
+                    String anio,mes,dia,resto2 = fecha;
+                    anio=resto2.substring(1,5);
+                    mes=resto2.substring(6,8);
+                    dia=resto2.substring(9,11);
+                    hora=resto.substring(12,17);
+                    fechasString[i]=" Fecha: "+dia+":"+mes+":"+anio+" Hora: "+hora;
+                    tiposArray[i]=actividadesLista[i].getTipo();
                 }
 
 
