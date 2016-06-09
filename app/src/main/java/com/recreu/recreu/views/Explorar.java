@@ -57,11 +57,12 @@ public class Explorar extends ListFragment {
                 String[] fechasString = new String[actividadesLista.length];
                 Tipo[] tiposArray=new Tipo[actividadesLista.length];
 
-
                 for (int i=0;i<actividadesLista.length;i++){
                     titulosString[i]=" "+actividadesLista[i].getTitulo()+" ";
-//+ (actividadesLista[i].getTipo().getNombreTipo()
-                     fechasString[i]=" "+actividadesLista[i].getFechaInicio()+"";
+                    String fecha,hora,resto=" "+actividadesLista[i].getFechaInicio()+" ";
+                     fecha=resto.substring(0,11);
+                      hora=resto.substring(12,17);
+                     fechasString[i]=" Fecha: "+fecha+" Hora: "+hora;
                      tiposArray[i]=actividadesLista[i].getTipo();
                 }
 
