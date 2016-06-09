@@ -56,7 +56,7 @@ public class ExplorarAdaptador extends BaseAdapter {
         switch(stringTipos[posicion]){
 
             case "1":
-                icon.setImageResource(R.drawable.brand);
+                icon.setImageResource(R.drawable.tipos.1);
             case "2":
                 icon.setImageResource(R.drawable.brand);
             case "3":
