@@ -107,6 +107,18 @@ public class Principal extends AppCompatActivity {
                 }
                 break;
 
+            case R.id.verPerfil:
+                if (getFragmentManager().findFragmentByTag("verPerfil") == null) {
+                    transaccion = getFragmentManager().beginTransaction();
+
+                    transaccion.replace(R.id.fragment_container, new PerfilUsuario(usuario), "verPerfil");
+                    new Principal();
+                    transaccion.addToBackStack(null);
+                    transaccion.commit();
+
+                }
+                break;
+
 
             case R.id.cerrarSesion:
                 finish();
