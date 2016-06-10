@@ -146,7 +146,7 @@
                 android:textColor="#ffffff"
                 android:textStyle="bold" />
 
-            <EditText
+            <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="76dp"
                 android:inputType="textPersonName"
@@ -187,13 +187,13 @@
                       android:id="@+id/horainicio"
                       android:layout_gravity="center_horizontal" /> -->
 
-            <EditText
+            <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="76dp"
                 android:inputType="textPersonName"
-                android:hint="00:00"
                 android:ems="10"
                 android:clickable="false"
+                android:hint="00:00"
                 android:background="#d8d4d4"
                 android:text=""
                 android:gravity="center"
