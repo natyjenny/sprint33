@@ -22,8 +22,12 @@
         android:textColor="#ffffff"
         android:textStyle="bold"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="false"
-        android:layout_above="@+id/botonExplorar" />
+        android:layout_alignParentEnd="true"
+        android:typeface="sans"
+        android:layout_alignBottom="@+id/bienvenida"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentLeft="true"
+        android:textAlignment="viewStart" />
 
     <TextView
         android:layout_width="match_parent"
@@ -39,7 +43,11 @@
         android:paddingRight="25dp"
         android:background="#ff9800"
         android:textColor="#ffffff"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:typeface="sans"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentRight="false"
+        android:textAlignment="center" />
 
     <LinearLayout
     android:layout_width="wrap_content"
@@ -60,16 +68,16 @@
     android:text="EXPLORAR"
     android:id="@+id/botonExplorar"
         android:drawableLeft="@drawable/mundi"
-        android:drawablePadding="0dp"
         android:background="#ffedd7"
        android:textColor="@color/RECREU"
-        android:onClick="explorar"
+        android:onClick="explorar2"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/bienvenida"
-        android:translationZ="0dp"
         android:textAlignment="center"
         android:textSize="34dp"
-        android:scrollIndicators="none" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:enabled="false" />
 
     <Button
     android:layout_width="match_parent"
@@ -89,19 +97,49 @@
         android:translationZ="400dp"
         android:textSize="33dp"
         android:textStyle="bold"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:layout_toEndOf="@+id/buscarActividad"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/buscarActividad"
+        android:layout_alignParentLeft="true" />
 
     <Button
-    android:layout_width="match_parent"
-    android:layout_height="170dp"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:text="BUSCAR ACTIVIDAD"
+        android:id="@+id/buscarActividad"
+        android:layout_below="@+id/botonCrearActividad"
+        android:drawableLeft="@drawable/lupa"
+        android:drawablePadding="-5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/botonEliminarUsuario"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/botonEliminarUsuario"
+        android:layout_above="@+id/botonEliminarUsuario"
+        android:background="#393939"
+        android:textColor="#ffffff"
+        android:textSize="27dp"
+        android:textStyle="bold"
+        android:drawableTintMode="add"
+        android:elegantTextHeight="false"
+        android:elevation="0dp" />
+
+    <Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
     android:text="ELIMINAR USUARIO"
     android:id="@+id/botonEliminarUsuario"
-        android:background="#393939"
+        android:background="#000000"
     android:textColor="#ffffff"
         android:onClick="irAEliminar"
-        android:layout_below="@+id/botonCrearActividad"
-        android:layout_centerHorizontal="true"
         android:textSize="27dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

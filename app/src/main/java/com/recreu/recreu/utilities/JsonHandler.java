@@ -38,7 +38,7 @@ public class JsonHandler {
 
 
                 JSONObject jsoncategoria = new JSONObject(jsonTipo.getString("categoria"));  // NOMBRE CATEGORIA E ID
-                System.out.println("JSONCATEGORIA  : "+jsoncategoria);
+              //  System.out.println("JSONCATEGORIA  : "+jsoncategoria);
                 String nombre=jsoncategoria.getString("nombreCategoria");
                 String ideCategoria =jsoncategoria.getString("categoriaId");
                 int idecategoria=Integer.parseInt(ideCategoria);
