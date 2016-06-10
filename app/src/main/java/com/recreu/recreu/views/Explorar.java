@@ -38,6 +38,11 @@ public class Explorar extends ListFragment {
         this.URL_GET=(new AccesoDirecto()).getURL()+"actividades";
     }
 
+    public Explorar(Usuario usu, int idUsuario, boolean organizador) {
+        this.usuario=usu;
+        if (organizador)this.URL_GET=(new AccesoDirecto()).getURL()+"usuarios/"+idUsuario+"/actividades/?organizador";
+        else this.URL_GET=(new AccesoDirecto()).getURL()+"usuarios/"+idUsuario+"/actividades";
+    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
