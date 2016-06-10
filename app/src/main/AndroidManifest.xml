@@ -37,7 +37,8 @@
         </activity>
         <activity android:name="com.recreu.recreu.views.CrearUsuario" />
         <activity android:name="com.recreu.recreu.views.IniciarSesion" />
-        <activity android:name="com.recreu.recreu.views.Principal"></activity>
+        <activity android:name="com.recreu.recreu.views.Principal" />
+        <activity android:name="com.recreu.recreu.NotificationView"></activity>
     </application>
 
 </manifest>

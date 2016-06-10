@@ -22,10 +22,7 @@
         android:layout_alignParentStart="false"
         android:layout_alignWithParentIfMissing="true">
 
-
-
-
-
     </FrameLayout>
+
 
 </RelativeLayout>
