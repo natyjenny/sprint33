@@ -198,7 +198,7 @@ public class Principal extends AppCompatActivity {
         }
 
     }
-
+/*
     protected void mostrarNotificacion(CharSequence tick, CharSequence titulo, CharSequence contenido) {
         Intent i = new Intent(this, NotificationView.class);
         i.putExtra("notificationID", notificacionID);
@@ -242,7 +242,7 @@ public class Principal extends AppCompatActivity {
                     hora = resto.substring(12, 17);
                     fechasString[i] = " Fecha: " + dia + ":" + mes + ":" + anio + " Hora: " + hora;
                     tiposArray[i] = actividadesLista[i].getTipo();
-                    mostrarNotificacion("Actividad de su interes en Recreu", actividadesLista[i].getTitulo(), actividadesLista[i].getCuerpo());
+                   // mostrarNotificacion("Actividad de su interes en Recreu", actividadesLista[i].getTitulo(), actividadesLista[i].getCuerpo());
                 }
 
 
@@ -269,5 +269,5 @@ public class Principal extends AppCompatActivity {
             this.unregisterReceiver(br);
         }
         super.onPause();
-    }
+    }*/
 }
