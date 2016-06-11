@@ -2,6 +2,7 @@ package com.recreu.recreu.views;
 
 import android.app.Fragment;
 //import android.app.FragmentTransaction;
+import android.app.ListFragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 //import android.widget.ArrayAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +27,8 @@ import com.recreu.recreu.controllers.HttpPost;
 import com.recreu.recreu.utilities.AccesoDirecto;
 import com.recreu.recreu.utilities.JsonHandler;
 import com.recreu.recreu.utilities.SystemUtilities;
+
+import java.util.ArrayList;
 
 import cl.recreu.recreu.taller_android_bd.R;
 
@@ -39,8 +44,7 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
     private Usuario usuario;
     private Usuario[] listaUsuarios;
     private String URL_PUT_ACTIVIDAD;
-    //private ArrayAdapter<String> adapter;
-//    private ListView listaParticipantes;
+    private ListView listaParticipantes;
 
 
     public detalleActividad(Actividad act, Usuario usu) {
@@ -63,13 +67,13 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
     @Override
     public void onViewStateRestored(Bundle savedInstanceState) {
 
-        cajaTitutlo = ((TextView) getView().findViewById(R.id.TextViewTitulo)); //  -> estoy seteando
+        cajaTitutlo = ((TextView) getView().findViewById(R.id.TextViewTitulo));
         cajaTitutlo.setText(actividad.getTitulo());
-        cajaCuerpo = ((TextView) getView().findViewById(R.id.TextViewCuerpo)); //  -> estoy seteando
+        cajaCuerpo = ((TextView) getView().findViewById(R.id.TextViewCuerpo));
         cajaCuerpo.setText(actividad.getCuerpo());
-        cajaRequisitos = ((TextView) getView().findViewById(R.id.TextViewRequisitos)); //  -> estoy seteando
+        cajaRequisitos = ((TextView) getView().findViewById(R.id.TextViewRequisitos));
         cajaRequisitos.setText(actividad.getRequerimientos());
-   //     listaParticipantes=(ListView)getView().findViewById(R.id.listaUsuarios);
+        listaParticipantes=(ListView)getView().findViewById(R.id.listaParticipantes);
         botonPC = ((Button) getView().findViewById(R.id.botonPC));
         botonPC.setOnClickListener(this);
 
@@ -90,11 +94,24 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
                 listaUsuarios = jh.getIdesUsuariosEnAct(intent.getStringExtra("data"));
                 participando = false;
                 if (listaUsuarios != null){
+
+              // se muestra la listaUsuarios en ListView
+                    String[] StringUsuarios = new String[listaUsuarios.length];
+                    for (int i=0;i<listaUsuarios.length;i++) {
+                             StringUsuarios[i] = ""+listaUsuarios[i].getPrimerNombre() + " " + listaUsuarios[i].getApellidoPaterno() +"";
+                    }
+                    System.out.println(" string de usuarios antes de adapter:"+StringUsuarios);
+                    ArrayAdapter<String> adapter=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,StringUsuarios);
+                    listaParticipantes.setAdapter(adapter);
+
+
+
                     participando = false;
                     for (int i = 0; i < listaUsuarios.length; i++) {
                         if (listaUsuarios[i].getUsuarioId() == usuario.getUsuarioId()){
                             participando = true;
-                            System.out.println(" iguales en id: "+listaUsuarios[i].getUsuarioId());
+                            listaParticipantes.addFooterView(getView(),listaUsuarios[i].getPrimerNombre(),true);
+                            adapter.notifyDataSetChanged();
                         }
                     }
                     if (participando == true) {
@@ -109,16 +126,6 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
                             botonPC.setClickable(false);
                         }
                     }
-
-                    // creo lista de usuarios en vista
-              //      String[] StringUsuarios = new String[listaUsuarios.length];
-
-             //       for (int i=0;i<listaUsuarios.length;i++) {
-              //          StringUsuarios[i] = ""+listaUsuarios[i].getPrimerNombre() + " " + listaUsuarios[i].getApellidoPaterno() +"";
-             //       }
-           //         System.out.println(StringUsuarios);
- //                   ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,StringUsuarios);
-//                    listaParticipantes.setAdapter(adapter);
 
                 }
             }
@@ -195,6 +202,7 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
   //      transaction.addToBackStack(null);
  //       transaction.commit();
 
+        // TODO: Agregar metodo OnItemListener para los usuarios y redirigir a perfil. Y ver donde esta la recursiva que hace que se cae a veces :'(
 
     }
 }

@@ -2,10 +2,7 @@ package com.recreu.recreu.views;
 
 import android.content.Context;
 import android.widget.BaseAdapter;
-import java.util.List;
 
-import android.app.Activity;
-import android.content.pm.PackageManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -49,7 +46,7 @@ public class adaptadorCheckbox extends BaseAdapter {
 
         @Override
         public View getView(final int posicion, View ConvertView, ViewGroup parent) {
-            View view = LayoutInflater.from(context).inflate(R.layout.buscarporcategoria, parent, false);
+                View view = LayoutInflater.from(context).inflate(R.layout.buscarportipoocategoria, parent, false);
 
             TextView datoCasilla = (TextView) view.findViewById(R.id.textView1);
             final CheckBox casillacheck = (CheckBox) view.findViewById(R.id.checkBox1);

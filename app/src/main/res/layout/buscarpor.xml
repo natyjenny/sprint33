@@ -6,7 +6,7 @@
 
     <Button
         android:layout_width="fill_parent"
-        android:layout_height="300dp"
+        android:layout_height="280dp"
         android:text="TIPO"
         android:id="@+id/botonTipo"
         android:background="@color/colorPrimaryDark"
@@ -16,11 +16,13 @@
         android:foregroundGravity="bottom"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_margin="0dp"
+        android:layout_marginBottom="11dp" />
 
     <Button
         android:layout_width="fill_parent"
-        android:layout_height="match_parent"
+        android:layout_height="350dp"
         android:text="CATEGORIA"
         android:id="@+id/botonCategoria"
         android:layout_weight="0.51"
@@ -31,6 +33,7 @@
         android:foregroundGravity="top"
         android:layout_below="@+id/botonTipo"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="11dp" />
 
 </RelativeLayout>

@@ -97,6 +97,7 @@ public class NuevaActividad extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.botonAgregarActividad:
+                // TODO: cambiar por coordenadas obtenidas desde mapa
                 x = 123;   // COORDENADAS SELECCIONADAS DE MAPA
                 y = 456;
 
@@ -105,9 +106,9 @@ public class NuevaActividad extends Fragment implements View.OnClickListener {
                 strgDuracion =duracion.getText().toString() + ":00-03:00";
                 strgDuracion = "01:30:00";
 
-                // obtener categoria y setear Listade tipos
-                // obtener posicion de listaTipos y guarda en tipoId
-                // arreglar verificación, cambiar restricciones a vista
+                // TODO: obtener categoria y setear Listade tipos
+                // TODO: obtener posicion de listaTipos y guarda en tipoId
+                // TODO: arreglar verificación, cambiar restricciones a vista
                 if (titulo.getText().toString().length() == 0) {
                     Toast.makeText(c, " Debe ingresar un titulo ", Toast.LENGTH_SHORT).show();
                 }
@@ -124,9 +125,7 @@ public class NuevaActividad extends Fragment implements View.OnClickListener {
                 String Fechafinal=""+fecha.getText().toString()+"T"+horainicio.getText().toString()+":00-03:00";
 
                 String nuevaActividad = "{\"cuerpoActividad\":\""+cuerpo.getText().toString() +
-                        //"\",\"duracionEstimada\":\""+strgDuracion+
                         "\",\"duracionEstimada\":\""+strgDuracion +"\" ,\"fechaInicio\":\"" + Fechafinal + "\"," +
-                        //  "\",\"fechaInicio\":\""+strgFecha+
                         "\"requerimientosActividad\":\""+requisitos.getText().toString() +
                         "\",\"tipo\":{ \"tipoId\":2}" +
                         ",\"tituloActividad\":\""+titulo.getText().toString() +

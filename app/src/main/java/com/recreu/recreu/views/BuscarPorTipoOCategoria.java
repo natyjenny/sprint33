@@ -1,14 +1,17 @@
 package com.recreu.recreu.views;
 
+import android.annotation.TargetApi;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +19,10 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.recreu.recreu.Modelos.Categoria;
+import com.recreu.recreu.Modelos.Tipo;
 import com.recreu.recreu.Modelos.Usuario;
 import com.recreu.recreu.controllers.HttpGet;
 import com.recreu.recreu.utilities.AccesoDirecto;
@@ -40,13 +45,14 @@ public class BuscarPorTipoOCategoria extends ListFragment implements View.OnClic
     private String URL_GET;
     private boolean tipoBusqueda;
     private Categoria[] CategoriasLista;
+    private Tipo[] TiposLista;
     private Button botonOK;
 
     public BuscarPorTipoOCategoria(Usuario usuSesion, boolean TipoOCategoria) {  // true Categoria
         this.usuario=usuSesion;
         this.tipoBusqueda=TipoOCategoria;
         if (TipoOCategoria)this.URL_GET=(new AccesoDirecto()).getURL()+"categorias";
-        else this.URL_GET=(new AccesoDirecto()).getURL()+"ver como cresta obtener todos los tipos";
+        else this.URL_GET=(new AccesoDirecto()).getURL()+"tipos";
     }
 
 
@@ -55,63 +61,23 @@ public class BuscarPorTipoOCategoria extends ListFragment implements View.OnClic
         super.onActivityCreated(savedInstanceState);
     }
 
-   // @Override
-  //  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //   super.onCreate(savedInstanceState);
-        //   setContentView(R.layout.buscarporcategoria);
-   //     return inflater.inflate(R.layout.buscarporcategoria, container, false);
+  //  @Override
+ //   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+  //  super.onCreate(savedInstanceState);
+  //     return inflater.inflate(R.layout.buscarportipoocategoria, container, false);
   //  }
-
-
- /*   @Override
-    public void onViewStateRestored(Bundle savedInstanceState) {
-
-        botonOK = (Button)getView().findViewById(R.id.botonOk);
-        ObjetoCheckbox = (ListView) getView().findViewById(R.id.listaBox);
-      //  packageManager = getActivity().getPackageManager();
-     //   final List <PackageInfo> packageList = packageManager
-     //           .getInstalledPackages(PackageManager.GET_META_DATA); // all apps in the phone
-     //   final List <PackageInfo> packageList1 = packageManager
-     //           .getInstalledPackages(0);
-
-
-
-        adaptadorCheckbox Adapter = new adaptadorCheckbox(listaDatosCheckbox);
-        ObjetoCheckbox.setAdapter(Adapter);
-        ObjetoCheckbox.setOnItemClickListener(this);
-        botonOK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(),"" + listaStringChecked,Toast.LENGTH_LONG).show();
-            }
-        });
-
-
-
-    super.onViewStateRestored(savedInstanceState);
-}*/
-
-
 
 
     @Override
     public void onListItemClick(ListView arg0, View v, int position, long arg3) {
-        CheckBox cb = (CheckBox) v.findViewById(R.id.checkBox1);    // estan en xml buscarporcategoria
+        CheckBox cb = (CheckBox) v.findViewById(R.id.checkBox1);
         TextView nombreCategoria = (TextView) v.findViewById(R.id.textView1);
         cb.performClick();
         if (cb.isChecked()) {
-
             listaSeleccionados.add(nombreCategoria.getText().toString());
         } else if (!cb.isChecked()) {
             listaSeleccionados.remove(nombreCategoria.getText().toString());
         }
-
-      //  FragmentTransaction transaction = getFragmentManager().beginTransaction();
-      //  transaction.replace(R.id.fragment_container, new detalleActividad(actividad,usuario),"detalleActi");
-        //  new Principal();
-     //   transaction.addToBackStack(null);
-      //  transaction.commit();
-
     }
 
 
@@ -133,6 +99,11 @@ public class BuscarPorTipoOCategoria extends ListFragment implements View.OnClic
                 adaptadorCheckbox checkBoxAdaptador = new adaptadorCheckbox(getActivity(), stringCategorias);
                 setListAdapter(checkBoxAdaptador);
 
+               // TODO: insertar boton independiente ( flotante - abajo) de ListFragment ( ya que sino se repite )
+             //   RelativeLayout espacioBoton = (RelativeLayout) getView().findViewById(R.id.buttonContainer);
+           //     Button boton=new Button(getContext());
+           //     espacioBoton.addView(boton);
+
 
             }
         };
@@ -147,8 +118,40 @@ public class BuscarPorTipoOCategoria extends ListFragment implements View.OnClic
             }
         }
 
-    }else {
+    }else { // BusquedaporTipo
+           IntentFilter intentFilter = new IntentFilter("httpData");
+           br = new BroadcastReceiver() {
+               @Override
+               public void onReceive(Context context, Intent intent) {
+                   JsonHandler jh = new JsonHandler();
+                  TiposLista = jh.getTipos(intent.getStringExtra("data"));
+                   String[] stringTipos = new String[TiposLista.length];
 
+                   for (int i = 0; i < TiposLista.length; i++) {
+                       stringTipos[i] = ""+TiposLista[i].getNombreTipo()+"";
+                   }
+                   System.out.println(stringTipos);
+                   adaptadorCheckbox checkBoxAdaptador = new adaptadorCheckbox(getActivity(), stringTipos);
+                   setListAdapter(checkBoxAdaptador);
+
+                   // creo boton luego de crear la list de checkbox :CC
+                   //   RelativeLayout espacioBoton = (RelativeLayout) getView().findViewById(R.id.buttonContainer);
+                   //     Button boton=new Button(getContext());
+                   //     espacioBoton.addView(boton);
+
+
+               }
+           };
+
+           getActivity().registerReceiver(br, intentFilter);
+           SystemUtilities su = new SystemUtilities(getActivity().getApplicationContext());
+           if (su.isNetworkAvailable()) {
+               try {
+                   new HttpGet(getActivity().getApplicationContext()).execute(URL_GET);
+               } catch (Exception e) {
+                   e.printStackTrace();
+               }
+           }
 
        }
         super.onResume();
@@ -168,8 +171,9 @@ public class BuscarPorTipoOCategoria extends ListFragment implements View.OnClic
     @Override
     public void onClick(View view) {
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        if(tipoBusqueda)
-        transaction.replace(R.id.fragment_container, new Explorar(usuario,listaSeleccionados,true),"detalleActi");
+        if(tipoBusqueda) transaction.replace(R.id.fragment_container, new Explorar(usuario,listaSeleccionados,true),"verPorCategoria");
+        if(!tipoBusqueda) transaction.replace(R.id.fragment_container, new Explorar(usuario,listaSeleccionados,true),"verPorTipo");
+
         new Principal();
         transaction.addToBackStack(null);
         transaction.commit();

@@ -25,13 +25,13 @@
       android:layout_width="match_parent"
       android:layout_height="fill_parent"
 
-      android:background="#f0ebeb"
+      android:background="@android:color/holo_orange_light"
       android:weightSum="1"
       android:baselineAligned="false"
       android:clickable="false"
       android:orientation="vertical">
    <TextView
-       android:layout_width="354dp"
+       android:layout_width="match_parent"
        android:layout_height="53dp"
        android:id="@+id/TextViewTitulo"
        android:layout_marginTop="37dp"
@@ -39,7 +39,7 @@
        android:layout_marginRight="15dp"
        android:layout_alignLeft="@+id/TextViewCuerpo"
        android:layout_alignStart="@+id/TextViewCuerpo"
-       android:background="#FFFFFFFF"
+       android:background="@color/colorAccent"
        android:layout_marginLeft="15dp"
        android:inputType="text"
        android:textSize="33dp"
@@ -48,26 +48,36 @@
        android:contextClickable="false"
        android:typeface="sans"
        android:paddingLeft="15dp"
-       android:textColor="#3160a7"
+       android:textColor="#ffffff"
        android:translationZ="7dp"
        android:gravity="center|left"
        android:layout_gravity="center_vertical" />
 
 
    <TextView
-       android:layout_width="354dp"
+       android:layout_width="fill_parent"
+       android:layout_height="match_parent"
+       android:text="Descripción:"
+       android:id="@+id/textView13"
+       android:textStyle="bold"
+       android:textSize="22dp"
+       android:paddingLeft="22dp"
+       android:textColor="#ffffff"
+       android:layout_marginTop="10dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
        android:layout_height="130dp"
        android:id="@+id/TextViewCuerpo"
-       android:layout_marginTop="23dp"
+       android:layout_marginTop="0dp"
        android:layout_below="@+id/TextViewTitulo"
-       android:background="#FFFFFF"
+       android:background="@color/colorAccent"
        android:layout_alignParentLeft="true"
        android:layout_alignParentStart="true"
        android:layout_marginLeft="15dp"
-       android:layout_gravity="center_vertical"
        android:text="cuerpo"
        android:paddingLeft="20dp"
-       android:textColor="#142b4d"
+       android:textColor="#ffffff"
        android:typeface="sans"
        android:textSize="20dp"
        android:translationZ="7dp"
@@ -75,25 +85,57 @@
        android:gravity="center|fill|left" />
 
    <TextView
-       android:layout_width="354dp"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:text="Requerimientos:"
+       android:id="@+id/textView11"
+       android:textStyle="bold"
+       android:textSize="22dp"
+       android:paddingLeft="22dp"
+       android:textColor="#ffffff"
+       android:layout_marginTop="10dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
        android:layout_height="130dp"
        android:id="@+id/TextViewRequisitos"
-       android:layout_marginTop="15dp"
+       android:layout_marginTop="0dp"
        android:layout_below="@+id/TextViewCuerpo"
-       android:background="#FFFFFF"
+       android:background="@color/colorAccent"
        android:layout_toRightOf="@+id/TextViewCuerpo"
        android:layout_toEndOf="@+id/TextViewCuerpo"
        android:layout_marginLeft="15dp"
        android:layout_marginRight="15dp"
        android:text="requerimientos"
        android:paddingLeft="20dp"
-       android:textColor="#142b4d"
+       android:textColor="#ffffff"
        android:layout_marginBottom="20dp"
        android:typeface="sans"
        android:textSize="20dp"
        android:translationZ="7dp"
        android:gravity="center|left"
        android:layout_gravity="center_vertical" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="30dp"
+       android:text="Participantes:"
+       android:id="@+id/textView9"
+       android:textStyle="bold"
+       android:textSize="22dp"
+       android:paddingLeft="22dp"
+       android:textColor="#ffffff"
+       android:layout_marginTop="10dp"
+       android:layout_weight="1.08" />
+
+   <ListView
+       android:layout_width="wrap_content"
+       android:layout_height="400dp"
+       android:id="@+id/listaParticipantes"
+       android:layout_marginLeft="15dp"
+       android:layout_marginRight="15dp"
+       android:background="@color/colorAccent"
+       android:layout_weight="1.08" />
 
   </LinearLayout>
  </ScrollView>
@@ -111,12 +153,12 @@
      android:textStyle="bold"
      android:textSize="35dp"
      android:textColor="#ffffff"
-     android:background="#03a649"
+     android:background="@color/RECREU"
      android:allowUndo="false"
      android:textAlignment="center"
      android:typeface="sans"
      android:visibility="visible"
-     android:text="CANCELAR PARTICIPACIOn"
+     android:text="CANCELAR PARTICIPACION"
      android:singleLine="false"
      android:paddingTop="15dp"
      android:outlineProvider="paddedBounds"
