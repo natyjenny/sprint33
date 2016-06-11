@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:weightSum="1">
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        android:text="TIPO"
+        android:id="@+id/botonTipo"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:textSize="33dp"
+        android:foregroundGravity="bottom"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:text="CATEGORIA"
+        android:id="@+id/botonCategoria"
+        android:layout_weight="0.51"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="33dp"
+        android:background="@color/colorPrimaryDark"
+        android:foregroundGravity="top"
+        android:layout_below="@+id/botonTipo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

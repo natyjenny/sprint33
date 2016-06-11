@@ -1,7 +1,7 @@
 package com.recreu.recreu.views;
 
 import android.app.Fragment;
-import android.app.FragmentTransaction;
+//import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -11,9 +11,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+//import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +39,7 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
     private Usuario usuario;
     private Usuario[] listaUsuarios;
     private String URL_PUT_ACTIVIDAD;
-    private ArrayAdapter<String> adapter;
+    //private ArrayAdapter<String> adapter;
 //    private ListView listaParticipantes;
 
 
@@ -108,12 +107,12 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
                     }
 
                     // creo lista de usuarios en vista
-                    String[] StringUsuarios = new String[listaUsuarios.length];
+              //      String[] StringUsuarios = new String[listaUsuarios.length];
 
-                    for (int i=0;i<listaUsuarios.length;i++) {
-                        StringUsuarios[i] = ""+listaUsuarios[i].getPrimerNombre() + " " + listaUsuarios[i].getApellidoPaterno() +"";
-                    }
-                    System.out.println(StringUsuarios);
+             //       for (int i=0;i<listaUsuarios.length;i++) {
+              //          StringUsuarios[i] = ""+listaUsuarios[i].getPrimerNombre() + " " + listaUsuarios[i].getApellidoPaterno() +"";
+             //       }
+           //         System.out.println(StringUsuarios);
  //                   ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,StringUsuarios);
 //                    listaParticipantes.setAdapter(adapter);
 

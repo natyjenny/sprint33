@@ -58,7 +58,7 @@ public class ExplorarAdaptador extends BaseAdapter {
         text2.setText(arrayTipos[posicion].getNombreTipo());
 
        // desde aca se selecciona la imagen asociada al tipo
-        switch(arrayTipos[posicion].getTipoId()){
+  /*      switch(arrayTipos[posicion].getTipoId()){
             case 1:
                 icon.setImageResource(R.drawable.t1);
                 break;
@@ -191,7 +191,8 @@ public class ExplorarAdaptador extends BaseAdapter {
             case 46:
                 icon.setImageResource(R.drawable.t46);
                 break;
-        }
+        }*/                 icon.setImageResource(R.drawable.t1);
+
         return rowView;
     }
 

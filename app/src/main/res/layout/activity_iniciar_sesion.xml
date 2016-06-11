@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Correo Institucional"
                     android:inputType="textEmailAddress"
-                    android:text="admin"
+                    android:text="jenny"
                     android:maxLines="1"
                     android:singleLine="true" />
 
@@ -57,7 +57,7 @@
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:layout_below="@+id/correo"
-                    android:text="admin123"
+                    android:text="pass  "
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>

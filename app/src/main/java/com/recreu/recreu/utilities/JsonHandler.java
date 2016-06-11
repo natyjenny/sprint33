@@ -91,6 +91,10 @@ public class JsonHandler {
         }
         return null;
     }
+
+
+
+
     public Usuario[] getUsuarios(String actividades) {
         try {
             JSONArray ja = new JSONArray(actividades);
@@ -113,5 +117,36 @@ public class JsonHandler {
         }
         return null;
     }
+
+
+    public Categoria[] getCategorias(String StringCategorias) {
+        try {
+            JSONArray ja = new JSONArray(StringCategorias);
+            Categoria[] arrayCategorias = new Categoria[ja.length()];
+            Categoria categoriaAux;
+
+
+            for (int i = 0; i < ja.length(); i++) {
+                JSONObject jsonCategoria = ja.getJSONObject(i);
+
+                String nombre=jsonCategoria.getString("nombreCategoria");
+                String ideCategoria =jsonCategoria.getString("categoriaId");
+                int idecategoria=Integer.parseInt(ideCategoria);
+
+                categoriaAux = new Categoria(nombre,idecategoria);
+                arrayCategorias[i] = categoriaAux;
+            }
+            return arrayCategorias;
+
+
+        } catch (JSONException e) {
+            Log.e("ERROR", this.getClass().toString() + " " + e.toString());
+            //   } catch (ParseException e) {
+            //     e.printStackTrace();
+        }
+        return null;
+    }
+
+
 
 }

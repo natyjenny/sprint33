@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="188dp"
+        android:layout_height="1125dp"
+        android:id="@+id/scrollView2"
+        android:layout_gravity="center_horizontal" >
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:dividerPadding="2dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Atletismo"
+                    android:id="@+id/t1"
+                    android:checked="false"
+                    android:clickable="false"
+                    android:longClickable="true"
+                    android:textSize="22dp"
+                    android:singleLine="false" />
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <CheckBox
+                    android:text="Basquetbol"
+                    android:id="@+id/t2"
+                    android:layout_column="0"
+                    android:textSize="22dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <CheckBox
+                    android:text="Balonmano"
+                    android:id="@+id/t3"
+                    android:layout_column="0"
+                    android:textSize="22dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <CheckBox
+                    android:text="Futbol"
+                    android:id="@+id/t4"
+                    android:layout_column="0"
+                    android:textSize="22dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:text="Futsal"
+                    android:id="@+id/t5"
+                    android:layout_column="0"
+                    android:textSize="22dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:text="Natación"
+                    android:id="@+id/t6"
+                    android:layout_column="0"
+                    android:textSize="22dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:text="Pilates"
+                    android:id="@+id/t7"
+                    android:layout_column="0"
+                    android:textSize="22dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Judo"
+                    android:id="@+id/t8"
+                    android:layout_column="0"
+                    android:textSize="22dp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Karate deportivo"
+                    android:id="@+id/t9"
+                    android:layout_column="0"
+                    android:textSize="22dp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Running"
+                    android:id="@+id/t10"
+                    android:layout_column="0"
+                    android:textSize="22dp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tenis"
+                    android:id="@+id/t11"
+                    android:layout_column="0"
+                    android:textSize="22dp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Voleibol"
+                    android:id="@+id/t12"
+                    android:layout_column="0"
+                    android:textSize="22dp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tenis de mesa"
+                    android:id="@+id/t13"
+                    android:layout_column="0"
+                    android:textSize="22dp" />
+
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Escalada Boulder"
+                    android:id="@+id/t14"
+                    android:layout_column="0"
+                    android:textSize="22dp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Escalada deportiva"
+                    android:id="@+id/t15"
+                    android:layout_column="0"
+                    android:textSize="22dp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pintura"
+                    android:id="@+id/t16"
+                    android:layout_column="0"
+                    android:textSize="22dp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grabado"
+                    android:id="@+id/t17"
+                    android:layout_column="0"
+                    android:textSize="22dp" />
+            </TableRow>
+
+            <!--
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                            <CheckBox
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Guitarra funcional"
+                                android:id="@+id/t18"
+                                android:layout_column="1"
+                                android:textSize="22dp"
+                                android:layout_span="0"
+                                android:checked="false" />
+
+                        </TableRow>
+
+
+                            <TableRow
+                                 android:layout_width="match_parent"
+                                 android:layout_height="match_parent">
+
+                             <CheckBox
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:text="Escultura"
+                                 android:id="@+id/t19"
+                                 android:layout_column="1" />
+                             </TableRow>
+
+
+
+                             <TableRow
+                                 android:layout_width="match_parent"
+                                 android:layout_height="match_parent">
+                             <CheckBox
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:text="Guitarra clásica"
+                                 android:id="@+id/t20"
+                                 android:layout_column="1" />
+                             </TableRow>
+
+
+
+                             <TableRow
+                                 android:layout_width="match_parent"
+                                 android:layout_height="match_parent">
+                             <CheckBox
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:text="Teatro"
+                                 android:id="@+id/t21"
+                                 android:layout_column="1" />
+                             </TableRow>
+
+                            <TableRow
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent">
+                           <CheckBox
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="Cerámica"
+                               android:id="@+id/t22"
+                               android:layout_column="1" />
+                           </TableRow>
+
+                           <TableRow
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent">
+                           <CheckBox
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="Expresión corporal"
+                               android:id="@+id/t23"
+                               android:layout_column="1" />
+                           </TableRow>
+
+                           <TableRow
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent">
+                           <CheckBox
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="Impostacion voz cantada"
+                               android:id="@+id/t24"
+                               android:layout_column="1" />
+                           </TableRow>
+
+                           <TableRow
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent">
+                           <CheckBox
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="Dibujo básico"
+                               android:id="@+id/t26"
+                               android:layout_column="1" />
+                       </TableRow>
+
+
+                           <TableRow
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent">
+                           <CheckBox
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="Iniciación canto coral"
+                               android:id="@+id/t25"
+                               android:layout_column="1" />
+                       </TableRow>
+
+
+                           <TableRow
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent">
+                           <CheckBox
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="Redacción"
+                               android:id="@+id/t27"
+                               android:layout_column="1" />
+                       </TableRow>
+
+                           <TableRow
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent">
+                           <CheckBox
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="Cine siempre cine"
+                               android:id="@+id/t28"
+                               android:layout_column="1" />
+                       </TableRow>
+
+                           <TableRow
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent">
+                           <CheckBox
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="Bailes populares"
+                               android:id="@+id/t29"
+                               android:layout_column="1" />
+                       </TableRow>
+
+                             <CheckBox
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="Danza flamenca"
+                                   android:id="@+id/t34"
+                                   android:layout_column="1" />
+                              <CheckBox
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="Batik"
+                                   android:id="@+id/t30"
+                                   android:layout_column="1" />
+
+                               <CheckBox
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="Música andina"
+                                   android:id="@+id/t31"
+                                   android:layout_column="1" />
+
+                               <CheckBox
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="Fotografía alternativa"
+                                   android:id="@+id/t32"
+                                   android:layout_column="1" />
+
+                               <CheckBox
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="Ballroom"
+                                   android:id="@+id/t33"
+                                   android:layout_column="1" />-->
+
+
+
+          
+        </TableLayout>
+    </ScrollView>
+</TableLayout>

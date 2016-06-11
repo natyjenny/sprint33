@@ -104,6 +104,7 @@ public class Explorar extends ListFragment {
         actividad=actividadesLista[posicion];
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, new detalleActividad(actividad,usuario),"detalleActi");
+        new Principal();
         transaction.addToBackStack(null);
         transaction.commit();
     }
