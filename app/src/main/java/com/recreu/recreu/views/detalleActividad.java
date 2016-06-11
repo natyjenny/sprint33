@@ -79,6 +79,7 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
 
+        System.out.println("act: "+actividad.getActividadId()+". usuario: "+usuario.getUsuarioId());
         String URL_USUARIOS_EN_ACTIVIDAD=URL_PUT_ACTIVIDAD+"actividades/"+actividad.getActividadId()+"/usuarios";
         IntentFilter intentFilter2 = new IntentFilter("httpData");
 
@@ -87,11 +88,14 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
             public void onReceive(Context context, Intent intent) {
                 JsonHandler jh = new JsonHandler();
                 listaUsuarios = jh.getIdesUsuariosEnAct(intent.getStringExtra("data"));
+                participando = false;
                 if (listaUsuarios != null){
                     participando = false;
                     for (int i = 0; i < listaUsuarios.length; i++) {
-                        if (listaUsuarios[i].getUsuarioId() == usuario.getUsuarioId())
+                        if (listaUsuarios[i].getUsuarioId() == usuario.getUsuarioId()){
                             participando = true;
+                            System.out.println(" iguales en id: "+listaUsuarios[i].getUsuarioId());
+                        }
                     }
                     if (participando == true) {
                         botonPC.setText("CANCELAR PARTICIPACIÓN");                      // HU: CANCELAR PARTICIPACION

@@ -33,7 +33,7 @@ public class PerfilUsuario extends Fragment implements View.OnClickListener {
 
 
     public PerfilUsuario(Usuario usuSesion, Usuario usuPerfil) {
-        this.usuarioPerfil=usuSesion;
+        this.usuarioSesion=usuSesion;
         this.usuarioPerfil = usuPerfil;
     }
 
