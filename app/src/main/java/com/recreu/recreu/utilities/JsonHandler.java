@@ -10,15 +10,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 
 public class JsonHandler {
 
 
     // Recibo un JSONArray en forma de String y devuelve un array Actividades
-    public Actividad[] getActividades(String actividades) {
+    public ArrayList<Actividad> getActividades(String actividades) {
         try {
             JSONArray ja = new JSONArray(actividades);
-            Actividad[] arrayActividades = new Actividad[ja.length()];
+            ArrayList<Actividad> arrayActividades=new ArrayList<Actividad>() ;
             Actividad actividad;
 
 
@@ -53,7 +55,8 @@ public class JsonHandler {
 
                 actividad = new Actividad(jsonActividad.getString("tituloActividad"),jsonActividad.getString("cuerpoActividad"),jsonActividad.getString("requerimientosActividad"),jsonActividad.getString("fechaInicio"),jsonActividad.getString("duracionEstimada"),x,y,tipo,ide_actividad,666);
                 //actividad = new Actividad(row.getString("tituloActividad"),row.getString("cuerpoActividad"),row.getString("requerimientosActividad"),null,null,x,y,null,ide_actividad,cupos);
-                arrayActividades[i] = actividad;
+                arrayActividades.add(actividad);
+                System.out.println(" Como arraylist: "+arrayActividades);
 
             }
             return arrayActividades;
@@ -130,12 +133,17 @@ public class JsonHandler {
                 JSONObject jsonCategoria = ja.getJSONObject(i);
 
                 String nombre=jsonCategoria.getString("nombreCategoria");
+                System.out.println("Nombre: "+nombre);
                 String ideCategoria =jsonCategoria.getString("categoriaId");
                 int idecategoria=Integer.parseInt(ideCategoria);
 
                 categoriaAux = new Categoria(nombre,idecategoria);
                 arrayCategorias[i] = categoriaAux;
+                System.out.println("Categoria :"+arrayCategorias[i].getNombreCategoria());
+
             }
+
+            System.out.println("Categorias son :"+arrayCategorias[0]);
             return arrayCategorias;
 
 

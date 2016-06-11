@@ -246,7 +246,7 @@ public class Principal extends AppCompatActivity {
         notificacionID=notificacionID+1;
     }
 
-    @Override
+   /* @Override
     public void onResume() {
         IntentFilter intentFilter = new IntentFilter("httpData");
         br = new BroadcastReceiver() {
@@ -296,5 +296,5 @@ public class Principal extends AppCompatActivity {
             this.unregisterReceiver(br);
         }
         super.onPause();
-    }
+    }*/
 }

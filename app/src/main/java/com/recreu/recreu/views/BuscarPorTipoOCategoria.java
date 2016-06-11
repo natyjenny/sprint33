@@ -1,5 +1,6 @@
 package com.recreu.recreu.views;
 
+import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -28,14 +29,13 @@ import cl.recreu.recreu.taller_android_bd.R;
 /**
  * Created by ginebra on 10-06-16.
  */
-public class BuscarPorTipoOCategoria extends ListFragment  {
+public class BuscarPorTipoOCategoria extends ListFragment implements View.OnClickListener {
 
 
     private ListView ObjetoCheckbox;
     private BroadcastReceiver br = null;
-    private PackageManager packageManager;
-    private ArrayList <String> listaStringChecked;
-    private Usuario usuarioPerfil;
+    private ArrayList <String> listaSeleccionados;
+    private Usuario usuario;
     private List<String> listaDatosCheckbox;
     private String URL_GET;
     private boolean tipoBusqueda;
@@ -43,7 +43,7 @@ public class BuscarPorTipoOCategoria extends ListFragment  {
     private Button botonOK;
 
     public BuscarPorTipoOCategoria(Usuario usuSesion, boolean TipoOCategoria) {  // true Categoria
-        this.usuarioPerfil=usuSesion;
+        this.usuario=usuSesion;
         this.tipoBusqueda=TipoOCategoria;
         if (TipoOCategoria)this.URL_GET=(new AccesoDirecto()).getURL()+"categorias";
         else this.URL_GET=(new AccesoDirecto()).getURL()+"ver como cresta obtener todos los tipos";
@@ -55,12 +55,12 @@ public class BuscarPorTipoOCategoria extends ListFragment  {
         super.onActivityCreated(savedInstanceState);
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+   // @Override
+  //  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //   super.onCreate(savedInstanceState);
         //   setContentView(R.layout.buscarporcategoria);
-        return inflater.inflate(R.layout.buscarporcategoria, container, false);
-    }
+   //     return inflater.inflate(R.layout.buscarporcategoria, container, false);
+  //  }
 
 
  /*   @Override
@@ -97,13 +97,13 @@ public class BuscarPorTipoOCategoria extends ListFragment  {
     @Override
     public void onListItemClick(ListView arg0, View v, int position, long arg3) {
         CheckBox cb = (CheckBox) v.findViewById(R.id.checkBox1);    // estan en xml buscarporcategoria
-        TextView tv = (TextView) v.findViewById(R.id.textView1);
+        TextView nombreCategoria = (TextView) v.findViewById(R.id.textView1);
         cb.performClick();
         if (cb.isChecked()) {
 
-            listaStringChecked.add(tv.getText().toString());
+            listaSeleccionados.add(nombreCategoria.getText().toString());
         } else if (!cb.isChecked()) {
-            listaStringChecked.remove(tv.getText().toString());
+            listaSeleccionados.remove(nombreCategoria.getText().toString());
         }
 
       //  FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -165,4 +165,13 @@ public class BuscarPorTipoOCategoria extends ListFragment  {
     }
 
 
+    @Override
+    public void onClick(View view) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        if(tipoBusqueda)
+        transaction.replace(R.id.fragment_container, new Explorar(usuario,listaSeleccionados,true),"detalleActi");
+        new Principal();
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 }

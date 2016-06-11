@@ -33,10 +33,7 @@ public class adaptadorCheckbox extends BaseAdapter {
             itemChecked = new boolean[datosLista.length];
         }
 
-        private class ViewHolder {
-            TextView datoCasilla;
-            CheckBox casillacheck;
-        }
+
 
         public int getCount() {
             return datosLista.length;
@@ -51,29 +48,34 @@ public class adaptadorCheckbox extends BaseAdapter {
         }
 
         @Override
-        public View getView(final int position, View ConvertView, ViewGroup parent) {
+        public View getView(final int posicion, View ConvertView, ViewGroup parent) {
             View view = LayoutInflater.from(context).inflate(R.layout.buscarporcategoria, parent, false);
 
             TextView datoCasilla = (TextView) view.findViewById(R.id.textView1);
             final CheckBox casillacheck = (CheckBox) view.findViewById(R.id.checkBox1);
 
+            datoCasilla.setText(datosLista[posicion]);
 
-            if (itemChecked[position])
+
+            if (itemChecked[posicion])
                 casillacheck.setChecked(true);
             else
                 casillacheck.setChecked(false);
 
-            casillacheck.setOnClickListener(new OnClickListener() {
+               casillacheck.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (casillacheck.isChecked())
-                        itemChecked[position] = true;
+                        itemChecked[posicion] = true;
                     else
-                        itemChecked[position] = false;
+                        itemChecked[posicion] = false;
                 }
             });
 
             return view;
 
         }
+
+
+
 }

@@ -20,14 +20,19 @@ import com.recreu.recreu.utilities.AccesoDirecto;
 import com.recreu.recreu.utilities.JsonHandler;
 import com.recreu.recreu.utilities.SystemUtilities;
 
+import java.util.ArrayList;
+
 
 public class Explorar extends ListFragment {
 
     private BroadcastReceiver br = null;
     private String URL_GET;
-    private Actividad[] actividadesLista;
+    private ArrayList <Actividad> actividadesLista;
+    private ArrayList <String> listaFiltro=null;
     private Actividad actividad;
     private Usuario usuario;
+    boolean tipodeFiltro;
+    boolean ConOSinFiltro=false;
 
     public Explorar() {
         this.URL_GET=(new AccesoDirecto()).getURL()+"actividades";
@@ -44,6 +49,13 @@ public class Explorar extends ListFragment {
         else this.URL_GET=(new AccesoDirecto()).getURL()+"usuarios/"+idUsuario+"/actividades";
     }
 
+    public Explorar(Usuario usu, ArrayList<String> listaFiltro, boolean filtro) { // filtro por categorias es verdadero
+        this.usuario=usu;
+        this.listaFiltro=listaFiltro;
+        this.tipodeFiltro=filtro;
+        this.ConOSinFiltro=true;
+    }
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -58,31 +70,56 @@ public class Explorar extends ListFragment {
             public void onReceive(Context context, Intent intent) {
                 JsonHandler jh = new JsonHandler();
                 actividadesLista = jh.getActividades(intent.getStringExtra("data"));
-                String[] titulosString = new String[actividadesLista.length];
-                String[] fechasString = new String[actividadesLista.length];
-                Tipo[] tiposArray=new Tipo[actividadesLista.length];
+                boolean pasaONoFiltro;
 
-                for (int i=0;i<actividadesLista.length;i++){
-                    titulosString[i]=" "+actividadesLista[i].getTitulo()+" ";
-                    String fecha,hora,resto=" "+actividadesLista[i].getFechaInicio()+" ";
-                    fecha=resto.substring(0,11);
-                    String anio,mes,dia,resto2 = fecha;
-                    anio=resto2.substring(1,5);
-                    mes=resto2.substring(6,8);
-                    dia=resto2.substring(9,11);
-                    hora=resto.substring(12,17);
-                    fechasString[i]=" Fecha: "+dia+":"+mes+":"+anio+" Hora: "+hora;
-                    tiposArray[i]=actividadesLista[i].getTipo();
-                }
+             if(ConOSinFiltro) { // caso en que si hay filtros asociados
+                 System.out.println("caso de filtro por categoria");
+                       if(tipodeFiltro) { // caso en que se filtra por categoría
+                           for ( Actividad actividad : actividadesLista) {
+                               pasaONoFiltro=false;
+                               for (String nombreCategoria : listaFiltro) {
+                                   if (nombreCategoria == actividad.getTipo().getCategoria().getNombreCategoria()) {
+                                       pasaONoFiltro=true;
+                                   }
+                               }
+                               if(!pasaONoFiltro)
+                                   actividadesLista.remove(actividad);
+                           }
+                       }else{ // caso en que se filtra por tipo
+                           System.out.println("caso de filtro por tipo");
+                           for ( Actividad actividad : actividadesLista) {
+                               pasaONoFiltro=false;
+                               for (String nombreTipo : listaFiltro) {
+                                   if (nombreTipo == actividad.getTipo().getNombreTipo()) {
+                                       pasaONoFiltro=true;
+                                   }
+                               }
+                               if(!pasaONoFiltro)
+                                   actividadesLista.remove(actividad);
+                           }
+                       }
+
+             }
+                 String[] titulosString = new String[actividadesLista.size()];
+                 String[] fechasString = new String[actividadesLista.size()];
+                 Tipo[] tiposArray = new Tipo[actividadesLista.size()];
+
+                 for (int i = 0; i < actividadesLista.size(); i++) {
+                     titulosString[i] = " " + actividadesLista.get(i).getTitulo() + " ";
+                     String fecha, hora, resto = " " + actividadesLista.get(i).getFechaInicio() + " ";
+                     fecha = resto.substring(0, 11);
+                     String anio, mes, dia, resto2 = fecha;
+                     anio = resto2.substring(1, 5);
+                     mes = resto2.substring(6, 8);
+                     dia = resto2.substring(9, 11);
+                     hora = resto.substring(12, 17);
+                     fechasString[i] = " Fecha: " + dia + ":" + mes + ":" + anio + " Hora: " + hora;
+                     tiposArray[i] = actividadesLista.get(i).getTipo();
+                 }
 
 
-               // System.out.println(tiposArray);
-                ExplorarAdaptador explorarAdaptador = new ExplorarAdaptador(getActivity(), titulosString, fechasString,tiposArray );
+                ExplorarAdaptador explorarAdaptador = new ExplorarAdaptador(getActivity(), titulosString, fechasString, tiposArray);
                 setListAdapter(explorarAdaptador);
-
-                // se adapta el string al campo del fragment al estilo lista  simple /                     SE VA A BORRARRR
-           //     ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1 ,actividadesString);
-             //   setListAdapter(adapter);
             }
         };
 
@@ -91,17 +128,18 @@ public class Explorar extends ListFragment {
         if (su.isNetworkAvailable()) {
             try {
                 new HttpGet(getActivity().getApplicationContext()).execute(URL_GET);
-            } catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
         super.onResume();
     }
 
     @Override
     public void onListItemClick(ListView l, View v, int posicion, long id) {
 
-        actividad=actividadesLista[posicion];
+        actividad=actividadesLista.get(posicion);
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, new detalleActividad(actividad,usuario),"detalleActi");
         new Principal();
