@@ -121,7 +121,7 @@ public class Principal extends AppCompatActivity {
                 if (getFragmentManager().findFragmentByTag("explorar") == null) {
                     transaccion = getFragmentManager().beginTransaction();
 
-                    transaccion.replace(R.id.fragment_container, new Explorar(), "explorar");
+                    transaccion.replace(R.id.fragment_container, new Explorar(usuario), "explorar");
                     new Principal();
                     transaccion.addToBackStack(null);
                     transaccion.commit();
@@ -159,8 +159,7 @@ public class Principal extends AppCompatActivity {
     }
 
     public void explorar(View view) {
-
-        if (getFragmentManager().findFragmentByTag("explorar") == null) {
+            System.out.println("ESTOY EN EXPLORAR");
             transaccion = getFragmentManager().beginTransaction();
 
             transaccion.replace(R.id.fragment_container, new Explorar(usuario), "explorar");
@@ -168,7 +167,8 @@ public class Principal extends AppCompatActivity {
             transaccion.addToBackStack(null);
             transaccion.commit();
 
-        }
+
+
 
     }
 
@@ -198,7 +198,7 @@ public class Principal extends AppCompatActivity {
         }
 
     }
-/*
+
     protected void mostrarNotificacion(CharSequence tick, CharSequence titulo, CharSequence contenido) {
         Intent i = new Intent(this, NotificationView.class);
         i.putExtra("notificationID", notificacionID);
@@ -226,24 +226,25 @@ public class Principal extends AppCompatActivity {
             @Override
             public void onReceive(Context context, Intent intent) {
                 JsonHandler jh = new JsonHandler();
-                Actividad[] actividadesLista = jh.getActividades(intent.getStringExtra("data"));
-                String[] titulosString = new String[actividadesLista.length];
-                String[] fechasString = new String[actividadesLista.length];
-                Tipo[] tiposArray = new Tipo[actividadesLista.length];
+                if (jh.getActividades(intent.getStringExtra("data"))!=null){
+                    Actividad[] actividadesLista = jh.getActividades(intent.getStringExtra("data"));
+                    String[] titulosString = new String[actividadesLista.length];
+                    String[] fechasString = new String[actividadesLista.length];
+                    Tipo[] tiposArray = new Tipo[actividadesLista.length];
 
-                for (int i = 0; i < actividadesLista.length; i++) {
-                    titulosString[i] = " " + actividadesLista[i].getTitulo() + " ";
-                    String fecha, hora, resto = " " + actividadesLista[i].getFechaInicio() + " ";
-                    fecha = resto.substring(0, 11);
-                    String anio, mes, dia, resto2 = fecha;
-                    anio = resto2.substring(1, 5);
-                    mes = resto2.substring(6, 8);
-                    dia = resto2.substring(9, 11);
-                    hora = resto.substring(12, 17);
-                    fechasString[i] = " Fecha: " + dia + ":" + mes + ":" + anio + " Hora: " + hora;
-                    tiposArray[i] = actividadesLista[i].getTipo();
-                   // mostrarNotificacion("Actividad de su interes en Recreu", actividadesLista[i].getTitulo(), actividadesLista[i].getCuerpo());
-                }
+                    for (int i = 0; i < actividadesLista.length; i++) {
+                        titulosString[i] = " " + actividadesLista[i].getTitulo() + " ";
+                        String fecha, hora, resto = " " + actividadesLista[i].getFechaInicio() + " ";
+                        fecha = resto.substring(0, 11);
+                        String anio, mes, dia, resto2 = fecha;
+                        anio = resto2.substring(1, 5);
+                        mes = resto2.substring(6, 8);
+                        dia = resto2.substring(9, 11);
+                        hora = resto.substring(12, 17);
+                        fechasString[i] = " Fecha: " + dia + ":" + mes + ":" + anio + " Hora: " + hora;
+                        tiposArray[i] = actividadesLista[i].getTipo();
+                        mostrarNotificacion("Actividad de su interes en Recreu", actividadesLista[i].getTitulo(), actividadesLista[i].getCuerpo());
+                    }}
 
 
             }
@@ -269,5 +270,5 @@ public class Principal extends AppCompatActivity {
             this.unregisterReceiver(br);
         }
         super.onPause();
-    }*/
+    }
 }

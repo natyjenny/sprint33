@@ -27,7 +27,8 @@
         android:layout_alignBottom="@+id/bienvenida"
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="true"
-        android:textAlignment="viewStart" />
+
+        />
 
     <TextView
         android:layout_width="match_parent"
@@ -70,14 +71,14 @@
         android:drawableLeft="@drawable/mundi"
         android:background="#ffedd7"
        android:textColor="@color/RECREU"
-        android:onClick="explorar2"
+        android:onClick="explorar"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/bienvenida"
         android:textAlignment="center"
         android:textSize="34dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:enabled="false" />
+        />
 
     <Button
     android:layout_width="match_parent"
