@@ -17,7 +17,8 @@
  <ScrollView
      android:layout_width="fill_parent"
      android:layout_height="wrap_content"
-     android:id="@+id/scrollView">
+     android:id="@+id/scrollView"
+     android:layout_weight="1.08">
 
 
   <LinearLayout
@@ -26,11 +27,10 @@
 
       android:background="#f0ebeb"
       android:weightSum="1"
-      android:gravity="center"
       android:baselineAligned="false"
       android:clickable="false"
       android:orientation="vertical">
-   <EditText
+   <TextView
        android:layout_width="354dp"
        android:layout_height="53dp"
        android:id="@+id/TextViewTitulo"
@@ -46,7 +46,6 @@
        android:text="Titulo Actividad"
        android:textStyle="bold"
        android:contextClickable="false"
-       android:autoText="false"
        android:typeface="sans"
        android:paddingLeft="15dp"
        android:textColor="#3160a7"
@@ -54,7 +53,8 @@
        android:gravity="center|left"
        android:layout_gravity="center_vertical" />
 
-   <EditText
+
+   <TextView
        android:layout_width="354dp"
        android:layout_height="130dp"
        android:id="@+id/TextViewCuerpo"
@@ -68,14 +68,13 @@
        android:text="cuerpo"
        android:paddingLeft="20dp"
        android:textColor="#142b4d"
-       android:editable="false"
        android:typeface="sans"
        android:textSize="20dp"
        android:translationZ="7dp"
        android:layout_marginRight="15dp"
        android:gravity="center|fill|left" />
 
-   <EditText
+   <TextView
        android:layout_width="354dp"
        android:layout_height="130dp"
        android:id="@+id/TextViewRequisitos"
@@ -95,6 +94,12 @@
        android:translationZ="7dp"
        android:gravity="center|left"
        android:layout_gravity="center_vertical" />
+
+   <ListView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/listaUsuarios"
+       android:layout_gravity="center_horizontal" />
 
   </LinearLayout>
  </ScrollView>

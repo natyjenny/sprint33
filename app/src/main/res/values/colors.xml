@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#ff9800</color>
     <color name="colorPrimaryDark">#f95909</color>
-    <color name="colorAccent">#dd2c00</color>
-    <color name="RECREU">#ffbb58</color>
+    <color name="colorAccent">#f69100</color>
+    <color name="RECREU">#ffa626</color>
 
 </resources>

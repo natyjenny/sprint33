@@ -1,6 +1,7 @@
 package com.recreu.recreu.views;
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +11,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,8 +40,11 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
     private Usuario usuario;
     private Usuario[] listaUsuarios;
     private String URL_PUT_ACTIVIDAD;
+    private ArrayAdapter<String> adapter;
+//    private ListView listaParticipantes;
 
-        public detalleActividad(Actividad act, Usuario usu) {
+
+    public detalleActividad(Actividad act, Usuario usu) {
             this.actividad=act;
             this.usuario=usu;
             URL_PUT_ACTIVIDAD = (new AccesoDirecto()).getURL();
@@ -64,6 +70,7 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
         cajaCuerpo.setText(actividad.getCuerpo());
         cajaRequisitos = ((TextView) getView().findViewById(R.id.TextViewRequisitos)); //  -> estoy seteando
         cajaRequisitos.setText(actividad.getRequerimientos());
+   //     listaParticipantes=(ListView)getView().findViewById(R.id.listaUsuarios);
         botonPC = ((Button) getView().findViewById(R.id.botonPC));
         botonPC.setOnClickListener(this);
 
@@ -103,9 +110,22 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
                             botonPC.setClickable(false);
                         }
                     }
+
+                    // creo lista de usuarios en vista
+                    String[] StringUsuarios = new String[listaUsuarios.length];
+
+                    for (int i=0;i<listaUsuarios.length;i++) {
+                        StringUsuarios[i] = ""+listaUsuarios[i].getPrimerNombre() + " " + listaUsuarios[i].getApellidoPaterno() +"";
+                    }
+                    System.out.println(StringUsuarios);
+ //                   ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,StringUsuarios);
+//                    listaParticipantes.setAdapter(adapter);
+
                 }
             }
         };
+
+
         getActivity().registerReceiver(br, intentFilter2);
         SystemUtilities su2 = new SystemUtilities(getActivity().getApplicationContext());
         if (su2.isNetworkAvailable()) {
@@ -147,10 +167,9 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
                     }
                 }
             } catch (Exception e) {
+
             }
 
-
-            // POST : AGREGAR FILA A USUARIO_ACTIVIDAD
         }else{
             String nuevaParticipacion = "{\"usuarioId\":\""+usuario.getUsuarioId()+
                     ",\"actividadId\":"+actividad.getActividadId()+"}";
@@ -169,5 +188,14 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
             }
 
         }
+
+
+  //      FragmentTransaction transaction = getActivity().getFragmentManager().beginTransaction();
+  //      transaction.replace(R.id.fragment_container, new confirmacion(usuario),"confirmacion");
+ //       new detalleActividad(actividad,usuario);
+  //      transaction.addToBackStack(null);
+ //       transaction.commit();
+
+
     }
 }
