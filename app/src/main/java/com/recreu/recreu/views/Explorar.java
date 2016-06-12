@@ -36,12 +36,12 @@ public class Explorar extends ListFragment {
     boolean ConOSinFiltro=false;
 
     public Explorar() {
-        this.URL_GET=(new AccesoDirecto()).getURL()+"actividades";
+        this.URL_GET=(new AccesoDirecto()).getURL()+"actividades/?var=1&nofinalizadas&dato=2";
     }
 
     public Explorar(Usuario usu) {
         this.usuario=usu;
-        this.URL_GET=(new AccesoDirecto()).getURL()+"actividades";
+        this.URL_GET=(new AccesoDirecto()).getURL()+"actividades/?var=1&nofinalizadas&dato=2";
     }
 
     public Explorar(Usuario usu, int idUsuario, boolean organizador) {
@@ -55,7 +55,7 @@ public class Explorar extends ListFragment {
         this.listaFiltro=listaFiltro;
         this.tipodeFiltro=filtro;
         this.ConOSinFiltro=true;
-        this.URL_GET=(new AccesoDirecto()).getURL()+"actividades";
+        this.URL_GET=(new AccesoDirecto()).getURL()+"actividades/?var=1&nofinalizadas&dato=2";
     }
 
     @Override

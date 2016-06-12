@@ -2,6 +2,7 @@ package com.recreu.recreu.views;
 
 import android.app.Fragment;
 //import android.app.FragmentTransaction;
+import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -9,10 +10,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 //import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -101,15 +104,29 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
                              StringUsuarios[i] = ""+listaUsuarios[i].getPrimerNombre() + " " + listaUsuarios[i].getApellidoPaterno() +"";
                     }
                     System.out.println(" string de usuarios antes de adapter:"+StringUsuarios);
-                    ArrayAdapter<String> adapter=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,StringUsuarios);
+                    ArrayAdapter<String> adapter=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_personas,StringUsuarios);
                     listaParticipantes.setAdapter(adapter);
+                    listaParticipantes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                        @Override
+                        public void onItemClick(AdapterView<?> arg0, View arg1, int position,long arg3) {
+                           // System.out.println("aprete en "+ listaUsuarios[position].getPrimerNombre());
+                            FragmentTransaction transaccion;
+                            transaccion = getFragmentManager().beginTransaction();
+                            transaccion.replace(R.id.fragment_container, new PerfilUsuario(usuario, listaUsuarios[position]), "verPerfil");
+                            //new Principal();
+                            transaccion.addToBackStack(null);
+                            transaccion.commit();
+
+                        }
+
+                    });
+
 
                     participando = false;
                     for (int i = 0; i < listaUsuarios.length; i++) {
                         if (listaUsuarios[i].getUsuarioId() == usuario.getUsuarioId()){
                             participando = true;
-                            listaParticipantes.addFooterView(getView(),listaUsuarios[i].getPrimerNombre(),true);
-                            adapter.notifyDataSetChanged();
                         }
                     }
                     if (participando == true) {
@@ -124,7 +141,6 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
                             botonPC.setClickable(false);
                         }
                     }
-
                 }
             }
         };
@@ -149,7 +165,6 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
         }
         super.onPause();
     }
-
 
     @Override
     public void onClick(View view) {
@@ -188,15 +203,5 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
             } catch (Exception e) {
             }
         }
-
-
-  //      FragmentTransaction transaction = getActivity().getFragmentManager().beginTransaction();
-  //      transaction.replace(R.id.fragment_container, new confirmacion(usuario),"confirmacion");
- //       new detalleActividad(actividad,usuario);
-  //      transaction.addToBackStack(null);
- //       transaction.commit();
-
-        // TODO: Agregar metodo OnItemListener para los usuarios y redirigir a perfil. Y ver donde esta la recursiva que hace que se cae a veces :'(
-
     }
 }

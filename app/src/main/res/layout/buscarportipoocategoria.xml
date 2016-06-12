@@ -27,8 +27,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_marginLeft="20dp"
             android:textStyle="bold"
-            android:textSize="18dp"
-            android:onClick="onListItemClick2" />
+            android:textSize="18dp" />
 
         <CheckBox
             android:id="@+id/checkBox1"

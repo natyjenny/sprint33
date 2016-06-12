@@ -192,7 +192,8 @@ public class ExplorarAdaptador extends BaseAdapter {
                 icon.setImageResource(R.drawable.t46);
                 break;
         }
-        */                 icon.setImageResource(R.drawable.t1);
+        */
+                      icon.setImageResource(R.drawable.t1);
 
         return rowView;
     }

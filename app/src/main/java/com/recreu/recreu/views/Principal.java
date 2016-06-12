@@ -43,7 +43,7 @@ import cl.recreu.recreu.taller_android_bd.R;
 
 public class Principal extends AppCompatActivity {
     private BroadcastReceiver br = null;
-    FragmentTransaction transaccion;
+    private FragmentTransaction transaccion;
     private Usuario usuario;
     private TextView nombre;
     private Button boton1;
@@ -185,14 +185,11 @@ public class Principal extends AppCompatActivity {
     public void irAEliminar(View view) {
         if (getFragmentManager().findFragmentByTag("eliminar") == null) {
             transaccion = getFragmentManager().beginTransaction();
-
             transaccion.replace(R.id.fragment_container, new ListaEliminar(), "eliminar");
             new Principal();
             transaccion.addToBackStack(null);
             transaccion.commit();
-
         }
-
     }
 
     public void buscarActividad(View view){
@@ -203,19 +200,12 @@ public class Principal extends AppCompatActivity {
             new Principal();
             transaccion.addToBackStack(null);
             transaccion.commit();
-
-
         }
-
     }
-
-
-
 
     public void crearActividad(View view) {
         if (getFragmentManager().findFragmentByTag("nuevaActividad") == null) {
             transaccion = getFragmentManager().beginTransaction();
-
             transaccion.replace(R.id.fragment_container, new NuevaActividad(usuario), "nuevaActividad");
             new Principal();
             transaccion.addToBackStack(null);

@@ -43,14 +43,12 @@ public class ListaEliminar extends ListFragment{
     private Usuario usuBorrar;
 
     public ListaEliminar() {
-        // Required empty public constructor
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
-
 
 /*
     @Override
@@ -68,29 +66,21 @@ public class ListaEliminar extends ListFragment{
             public void onReceive(Context context, Intent intent) {
                 JsonHandler jh = new JsonHandler();
                 String datoJson= intent.getStringExtra("data");
-                System.out.println("DATO JSON "+datoJson);
                 usuariosLista = jh.getUsuarios(datoJson);
                 String[] usuariosString = new String[usuariosLista.length]; //  se va a BORRAR
-                // List<String> values=new ArrayList<String>();
-
 
                 for (int i=0;i<usuariosLista.length;i++){
                     usuariosString[i]=" "+usuariosLista[i].getPrimerNombre()+" "+ usuariosLista[i].getApellidoPaterno();
-                    //       values.add(actividadesLista[i].getTitulo());
-
                 }
-
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1 ,usuariosString);
                 setListAdapter(adapter);
             }
         };
-
         getActivity().registerReceiver(br, intentFilter);
         SystemUtilities su = new SystemUtilities(getActivity().getApplicationContext());
         if (su.isNetworkAvailable()) {
             try {
                 new HttpGet(getActivity().getApplicationContext()).execute(URL_GET);
-                System.out.println("ya pedí los usuarios");
             } catch (Exception e){
                 e.printStackTrace();
             }
@@ -110,9 +100,6 @@ public class ListaEliminar extends ListFragment{
         System.out.println("Estoy en onclickk, con usuario id " + usuBorrar.getUsuarioId());
     }
 
-
-
-
     @Override
     public void onPause() {
         if (br != null) {
@@ -120,8 +107,6 @@ public class ListaEliminar extends ListFragment{
         }
         super.onPause();
     }
-
-
 
 }
 
