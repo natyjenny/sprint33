@@ -104,8 +104,6 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
                     ArrayAdapter<String> adapter=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,StringUsuarios);
                     listaParticipantes.setAdapter(adapter);
 
-
-
                     participando = false;
                     for (int i = 0; i < listaUsuarios.length; i++) {
                         if (listaUsuarios[i].getUsuarioId() == usuario.getUsuarioId()){
@@ -155,8 +153,6 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-
-        //    int ideUsuario = Usuario.getId();
         String URL_PARTICIPACION = URL_PUT_ACTIVIDAD+"usuarios/"+usuario.getUsuarioId()+"/actividades/"+actividad.getActividadId()+"";
 
         // DELETE: borro fila usuario y actividad ( SI ES ORGANIZADOR HAY QUE "NOTIFICAR AL RESTO" y pedirle a otro que sea organizador
@@ -173,7 +169,6 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
                     }
                 }
             } catch (Exception e) {
-
             }
 
         }else{
@@ -192,7 +187,6 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
                 }
             } catch (Exception e) {
             }
-
         }
 
 

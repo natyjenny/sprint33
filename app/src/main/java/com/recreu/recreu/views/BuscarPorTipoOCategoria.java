@@ -3,11 +3,13 @@ package com.recreu.recreu.views;
 import android.annotation.TargetApi;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
+import android.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,19 +36,21 @@ import cl.recreu.recreu.taller_android_bd.R;
 /**
  * Created by ginebra on 10-06-16.
  */
-public class BuscarPorTipoOCategoria extends ListFragment implements View.OnClickListener {
+public class BuscarPorTipoOCategoria extends Fragment implements View.OnClickListener {
 
 
     private ListView ObjetoCheckbox;
     private BroadcastReceiver br = null;
-    private ArrayList <String> listaSeleccionados;
+    private ArrayList <String> listaSeleccionados = new ArrayList<String>();
+    private String[] datosLista;
     private Usuario usuario;
     private List<String> listaDatosCheckbox;
     private String URL_GET;
     private boolean tipoBusqueda;
     private Categoria[] CategoriasLista;
     private Tipo[] TiposLista;
-    private Button botonOK;
+    private Button botonSiguiente;
+    private ListView listaBox;
 
     public BuscarPorTipoOCategoria(Usuario usuSesion, boolean TipoOCategoria) {  // true Categoria
         this.usuario=usuSesion;
@@ -61,17 +65,18 @@ public class BuscarPorTipoOCategoria extends ListFragment implements View.OnClic
         super.onActivityCreated(savedInstanceState);
     }
 
-  //  @Override
- //   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-  //  super.onCreate(savedInstanceState);
-  //     return inflater.inflate(R.layout.buscarportipoocategoria, container, false);
-  //  }
-
-
     @Override
-    public void onListItemClick(ListView arg0, View v, int position, long arg3) {
+   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+      return inflater.inflate(R.layout.probando, container, false);
+    }
+
+
+    public void onListItemClick2(ListView arg0, View v, int position, long arg3) {
+
         CheckBox cb = (CheckBox) v.findViewById(R.id.checkBox1);
         TextView nombreCategoria = (TextView) v.findViewById(R.id.textView1);
+        System.out.println("APRETEE :"+nombreCategoria.getText().toString());
         cb.performClick();
         if (cb.isChecked()) {
             listaSeleccionados.add(nombreCategoria.getText().toString());
@@ -83,6 +88,10 @@ public class BuscarPorTipoOCategoria extends ListFragment implements View.OnClic
 
     @Override
     public void onResume() {
+        listaBox = (ListView)getView().findViewById(R.id.listita);
+        botonSiguiente=(Button)getView().findViewById(R.id.botonSiguiente);
+        botonSiguiente.setOnClickListener(this);
+
        if (tipoBusqueda) {       // si es tipo categoria
         IntentFilter intentFilter = new IntentFilter("httpData");
         br = new BroadcastReceiver() {
@@ -95,19 +104,14 @@ public class BuscarPorTipoOCategoria extends ListFragment implements View.OnClic
                 for (int i = 0; i < CategoriasLista.length; i++) {
                     stringCategorias[i] = ""+CategoriasLista[i].getNombreCategoria()+"";
                 }
-                System.out.println(stringCategorias);
+             //   System.out.println(stringCategorias);
+                datosLista=stringCategorias;
+
                 adaptadorCheckbox checkBoxAdaptador = new adaptadorCheckbox(getActivity(), stringCategorias);
-                setListAdapter(checkBoxAdaptador);
-
-               // TODO: insertar boton independiente ( flotante - abajo) de ListFragment ( ya que sino se repite )
-             //   RelativeLayout espacioBoton = (RelativeLayout) getView().findViewById(R.id.buttonContainer);
-           //     Button boton=new Button(getContext());
-           //     espacioBoton.addView(boton);
-
+                listaBox.setAdapter(checkBoxAdaptador);
 
             }
         };
-
         getActivity().registerReceiver(br, intentFilter);
         SystemUtilities su = new SystemUtilities(getActivity().getApplicationContext());
         if (su.isNetworkAvailable()) {
@@ -126,23 +130,17 @@ public class BuscarPorTipoOCategoria extends ListFragment implements View.OnClic
                    JsonHandler jh = new JsonHandler();
                   TiposLista = jh.getTipos(intent.getStringExtra("data"));
                    String[] stringTipos = new String[TiposLista.length];
-
                    for (int i = 0; i < TiposLista.length; i++) {
                        stringTipos[i] = ""+TiposLista[i].getNombreTipo()+"";
                    }
-                   System.out.println(stringTipos);
+                  // System.out.println(stringTipos);
+                   datosLista=stringTipos;
+
                    adaptadorCheckbox checkBoxAdaptador = new adaptadorCheckbox(getActivity(), stringTipos);
-                   setListAdapter(checkBoxAdaptador);
-
-                   // creo boton luego de crear la list de checkbox :CC
-                   //   RelativeLayout espacioBoton = (RelativeLayout) getView().findViewById(R.id.buttonContainer);
-                   //     Button boton=new Button(getContext());
-                   //     espacioBoton.addView(boton);
-
+                   listaBox.setAdapter(checkBoxAdaptador);
 
                }
            };
-
            getActivity().registerReceiver(br, intentFilter);
            SystemUtilities su = new SystemUtilities(getActivity().getApplicationContext());
            if (su.isNetworkAvailable()) {
@@ -152,7 +150,6 @@ public class BuscarPorTipoOCategoria extends ListFragment implements View.OnClic
                    e.printStackTrace();
                }
            }
-
        }
         super.onResume();
     }
@@ -170,9 +167,22 @@ public class BuscarPorTipoOCategoria extends ListFragment implements View.OnClic
 
     @Override
     public void onClick(View view) {
+
+        System.out.println(" entre al listener de SIGUIENTE");
+
+        for (int i = 0; i < listaBox.getAdapter().getCount(); i++) {
+            if (listaBox.getAdapter().getItem(i) == true) {
+                System.out.println(" DATOSLISTA en i: "+datosLista[i]);
+
+                if(listaSeleccionados != null)
+                listaSeleccionados.add(""+datosLista[i]+"");
+            }
+        }
+        System.out.println(" que llevo seleccionado:"+listaSeleccionados);
+
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         if(tipoBusqueda) transaction.replace(R.id.fragment_container, new Explorar(usuario,listaSeleccionados,true),"verPorCategoria");
-        if(!tipoBusqueda) transaction.replace(R.id.fragment_container, new Explorar(usuario,listaSeleccionados,true),"verPorTipo");
+        if(!tipoBusqueda) transaction.replace(R.id.fragment_container, new Explorar(usuario,listaSeleccionados,false),"verPorTipo");
 
         new Principal();
         transaction.addToBackStack(null);

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="55dp"
+            android:text="SIGUIENTE"
+            android:id="@+id/botonSiguiente"
+            android:background="@color/RECREU"
+            android:textColor="#ffffff"
+            android:textSize="27dp"
+            android:textStyle="bold"
+            android:layout_alignParentBottom="true" />
+
+        <ListView
+            android:id="@+id/listita"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_above="@id/botonSiguiente" />
+
+
+    </RelativeLayout>

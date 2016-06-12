@@ -21,13 +21,14 @@ import com.recreu.recreu.utilities.JsonHandler;
 import com.recreu.recreu.utilities.SystemUtilities;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
 public class Explorar extends ListFragment {
 
     private BroadcastReceiver br = null;
     private String URL_GET;
-    private ArrayList <Actividad> actividadesLista;
+    private ArrayList <Actividad> actividadesLista = new ArrayList<Actividad>();
     private ArrayList <String> listaFiltro=null;
     private Actividad actividad;
     private Usuario usuario;
@@ -54,13 +55,13 @@ public class Explorar extends ListFragment {
         this.listaFiltro=listaFiltro;
         this.tipodeFiltro=filtro;
         this.ConOSinFiltro=true;
+        this.URL_GET=(new AccesoDirecto()).getURL()+"actividades";
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
-
 
     @Override
     public void onResume() {
@@ -72,33 +73,43 @@ public class Explorar extends ListFragment {
                 actividadesLista = jh.getActividades(intent.getStringExtra("data"));
                 boolean pasaONoFiltro;
 
-             if(ConOSinFiltro) { // caso en que si hay filtros asociados
-                 System.out.println("caso de filtro por categoria");
-                       if(tipodeFiltro) { // caso en que se filtra por categoría
-                           for ( Actividad actividad : actividadesLista) {
-                               pasaONoFiltro=false;
-                               for (String nombreCategoria : listaFiltro) {
-                                   if (nombreCategoria == actividad.getTipo().getCategoria().getNombreCategoria()) {
-                                       pasaONoFiltro=true;
-                                   }
-                               }
-                               if(!pasaONoFiltro)
-                                   actividadesLista.remove(actividad);
-                           }
-                       }else{ // caso en que se filtra por tipo
-                           System.out.println("caso de filtro por tipo");
-                           for ( Actividad actividad : actividadesLista) {
-                               pasaONoFiltro=false;
-                               for (String nombreTipo : listaFiltro) {
-                                   if (nombreTipo == actividad.getTipo().getNombreTipo()) {
-                                       pasaONoFiltro=true;
-                                   }
-                               }
-                               if(!pasaONoFiltro)
-                                   actividadesLista.remove(actividad);
-                           }
-                       }
+             if(ConOSinFiltro) {        // caso en que si hay filtros asociados
+                 ArrayList<Actividad> auxi = new ArrayList<Actividad>();
+                 if(tipodeFiltro) { // caso en que se filtra por categoría
+                     Iterator<Actividad> iterator = actividadesLista.iterator();
 
+                     while (iterator.hasNext()) {
+                         Actividad acti = iterator.next();
+                         Iterator<String> iterator2 = listaFiltro.iterator();
+                         pasaONoFiltro = false;
+
+                         while (iterator2.hasNext()) {
+                             String nombreCategoria = iterator2.next();
+                             if ((nombreCategoria.toString()).equals(acti.getTipo().getCategoria().getNombreCategoria())) {
+                                 pasaONoFiltro = true;
+                                 }
+                             }
+                         if(pasaONoFiltro)
+                             auxi.add(acti);
+                     }
+                       }else { // caso en que se filtra por tipo
+                     Iterator<Actividad> iterator = actividadesLista.iterator();
+                     while (iterator.hasNext()) {
+                         Actividad acti = iterator.next();
+                         Iterator<String> iterator2 = listaFiltro.iterator();
+                         pasaONoFiltro = false;
+
+                         while (iterator2.hasNext()) {
+                             String nombreTipo = iterator2.next();
+                             if ((nombreTipo.toString()).equals(acti.getTipo().getNombreTipo())) {
+                                 pasaONoFiltro = true;
+                                }
+                             }
+                         if(pasaONoFiltro)
+                             auxi.add(acti);
+                         }
+                     }
+                   actividadesLista=auxi;
              }
                  String[] titulosString = new String[actividadesLista.size()];
                  String[] fechasString = new String[actividadesLista.size()];
@@ -116,8 +127,6 @@ public class Explorar extends ListFragment {
                      fechasString[i] = " Fecha: " + dia + ":" + mes + ":" + anio + " Hora: " + hora;
                      tiposArray[i] = actividadesLista.get(i).getTipo();
                  }
-
-
                 ExplorarAdaptador explorarAdaptador = new ExplorarAdaptador(getActivity(), titulosString, fechasString, tiposArray);
                 setListAdapter(explorarAdaptador);
             }
@@ -132,13 +141,11 @@ public class Explorar extends ListFragment {
                 e.printStackTrace();
             }
         }
-
         super.onResume();
     }
 
     @Override
     public void onListItemClick(ListView l, View v, int posicion, long id) {
-
         actividad=actividadesLista.get(posicion);
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, new detalleActividad(actividad,usuario),"detalleActi");
@@ -154,9 +161,5 @@ public class Explorar extends ListFragment {
         }
         super.onPause();
     }
-
-
-
-
 }
 

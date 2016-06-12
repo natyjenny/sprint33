@@ -23,6 +23,7 @@ public class adaptadorCheckbox extends BaseAdapter {
         private Context context;
 
 
+
     public adaptadorCheckbox(Context context, String[] datosLista) {
             super();
             this.context = context;
@@ -31,17 +32,22 @@ public class adaptadorCheckbox extends BaseAdapter {
         }
 
 
+        public String getNombre(int position) {
+                return datosLista[position];
+
+         }
+
 
         public int getCount() {
             return datosLista.length;
         }
 
         public Object getItem(int position) {
-            return datosLista[position];
+            return itemChecked[position];
         }
 
         public long getItemId(int position) {
-            return 0;
+            return position;
         }
 
         @Override
