@@ -40,6 +40,7 @@ public class BuscarPor extends Fragment implements View.OnClickListener {
         Portipo.setOnClickListener(this);
         PorCategoria=(Button)((Button)vistaBuscarpor.findViewById(R.id.botonCategoria));
         PorCategoria.setOnClickListener(this);
+        vistaBuscarpor.findViewById(R.id.botonFecha).setOnClickListener(this);
         return vistaBuscarpor;
 
     }
@@ -86,6 +87,16 @@ public class BuscarPor extends Fragment implements View.OnClickListener {
                 transaccion.commit();
 
                 break;
+            case R.id.botonFecha:
+                System.out.println("Aprete boton fecha");
+                transaccion = getFragmentManager().beginTransaction();
+
+                transaccion.replace(R.id.fragment_container, new PorFecha(usuario), "BuscarFecha");
+                new Principal();
+                transaccion.addToBackStack(null);
+                transaccion.commit();
+                break;
+
         }
     }
 

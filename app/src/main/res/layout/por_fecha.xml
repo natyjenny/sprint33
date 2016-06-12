@@ -1,0 +1,163 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.recreu.recreu.views.PorFecha">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal|top"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Buscar por fecha"
+            android:id="@+id/textView21"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.10" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Desde:"
+            android:id="@+id/textView18" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Fecha:           "
+                android:id="@+id/textView19"
+                android:layout_row="0"
+                android:layout_column="0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="2015-02-04 "
+                android:id="@+id/fechaInicio"
+                android:layout_row="0"
+                android:layout_column="1" />
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/modificarFechaInicio"
+                android:layout_row="0"
+                android:layout_column="2"
+                android:background="@android:drawable/ic_menu_edit" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="54dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Hora: "
+                android:id="@+id/textView20"
+                android:layout_row="1"
+                android:layout_column="0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="00:00:00 "
+                android:id="@+id/horaInicio"
+                android:layout_row="1"
+                android:layout_column="1" />
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/ic_menu_edit"
+                android:id="@+id/modificarHoraInicio"
+                android:layout_row="1"
+                android:layout_column="2" />
+        </GridLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Hasta:"
+            android:id="@+id/textView22" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Fecha:           "
+                android:id="@+id/textView23"
+                android:layout_row="0"
+                android:layout_column="0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="2015-02-04 "
+                android:id="@+id/fechaFin"
+                android:layout_row="0"
+                android:layout_column="1" />
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/ic_menu_edit"
+                android:id="@+id/modificarFechaFin"
+                android:layout_row="0"
+                android:layout_column="2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Hora: "
+                android:id="@+id/textView24"
+                android:layout_row="1"
+                android:layout_column="0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="00:00:00 "
+                android:id="@+id/horaFin"
+                android:layout_row="1"
+                android:layout_column="1" />
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/ic_menu_edit"
+                android:id="@+id/modificarHoraFin"
+                android:layout_row="1"
+                android:layout_column="2" />
+        </GridLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buscar"
+            android:id="@+id/button"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.10" />
+
+
+    </LinearLayout>
+</FrameLayout>

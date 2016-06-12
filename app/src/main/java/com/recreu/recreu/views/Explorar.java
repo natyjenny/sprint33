@@ -41,7 +41,7 @@ public class Explorar extends ListFragment {
 
     public Explorar(Usuario usu) {
         this.usuario=usu;
-        this.URL_GET=(new AccesoDirecto()).getURL()+"actividades/?var=1&nofinalizadas&dato=2";
+        this.URL_GET=(new AccesoDirecto()).getURL()+"actividades?var=1&nofinalizadas&dato=2";
     }
 
     public Explorar(Usuario usu, int idUsuario, boolean organizador) {

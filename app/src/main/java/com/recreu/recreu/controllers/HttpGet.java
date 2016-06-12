@@ -15,12 +15,16 @@ import java.util.Scanner;
 public class HttpGet extends AsyncTask<String, Void, String> {
 
     private Context context;
-
+    private boolean notificacion=false;
     /**
      * Constructor
      */
     public HttpGet(Context context) {
         this.context = context;
+    }
+    public HttpGet(Context context, boolean notificacion) {
+        this.context = context;
+        this.notificacion= notificacion;
     }// HttpGet(Context context)
 
     /*** Método que realiza la petición al servidor */
@@ -50,7 +54,9 @@ public class HttpGet extends AsyncTask<String, Void, String> {
      */
     @Override
     protected void onPostExecute(String result) {
-        Intent intent = new Intent("httpData").putExtra("data", result);
+        Intent intent;
+        if (notificacion) intent=new Intent("httpNotificacion").putExtra("data", result);
+        else intent=new Intent("httpData").putExtra("data", result);
         context.sendBroadcast(intent);
     }// onPostExecute(String result)
 

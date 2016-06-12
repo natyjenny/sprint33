@@ -26,8 +26,7 @@
         android:typeface="sans"
         android:layout_alignBottom="@+id/bienvenida"
         android:layout_alignParentStart="false"
-        android:layout_alignParentLeft="true"
-        android:textAlignment="viewStart" />
+        android:layout_alignParentLeft="true" />
 
     <TextView
         android:layout_width="match_parent"

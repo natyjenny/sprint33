@@ -164,13 +164,13 @@ public class NuevaActividad extends Fragment implements View.OnClickListener {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         String mes;
-                        if (monthOfYear < 9) mes = "0" + (monthOfYear + 1);
-                        else mes = "" + (monthOfYear + 1);
+                        if (monthOfYear<9) mes="0"+(monthOfYear+1);
+                        else mes= ""+(monthOfYear+1);
                         String dia;
-                        if (dayOfMonth < 9) dia = "0" + (dayOfMonth + 1);
-                        else dia = "" + (dayOfMonth + 1);
+                        if (dayOfMonth<10) dia="0"+(dayOfMonth);
+                        else dia= ""+(dayOfMonth);
 
-                        fecha.setText(year + "-" + mes + "-" + dia);
+                        fecha.setText( year + "-" + mes + "-" + dia);
 
                     }
                 }, mYear, mMonth, mDay);

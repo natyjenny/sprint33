@@ -171,7 +171,7 @@ public class BuscarPorTipoOCategoria extends Fragment implements View.OnClickLis
         System.out.println(" entre al listener de SIGUIENTE");
 
         for (int i = 0; i < listaBox.getAdapter().getCount(); i++) {
-            if (listaBox.getAdapter().getItem(i) == true) {
+            if (listaBox.getAdapter().getItem(i) !=null) {
                 System.out.println(" DATOSLISTA en i: "+datosLista[i]);
 
                 if(listaSeleccionados != null)

@@ -39,6 +39,8 @@ import com.recreu.recreu.utilities.SystemUtilities;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import cl.recreu.recreu.taller_android_bd.R;
 
 public class Principal extends AppCompatActivity {
@@ -53,6 +55,7 @@ public class Principal extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
         usuario = (Usuario) getIntent().getExtras().getSerializable("usuario");
@@ -121,7 +124,7 @@ public class Principal extends AppCompatActivity {
                 if (getFragmentManager().findFragmentByTag("explorar") == null) {
                     transaccion = getFragmentManager().beginTransaction();
 
-                    transaccion.replace(R.id.fragment_container, new Explorar(), "explorar");
+                    transaccion.replace(R.id.fragment_container, new Explorar(usuario), "explorar");
                     new Principal();
                     transaccion.addToBackStack(null);
                     transaccion.commit();
@@ -218,53 +221,56 @@ public class Principal extends AppCompatActivity {
     // TODO : FALTA HISTORIA DE USUARIO SETEAR DURACIÖN DE ACTIVIDAD
     //TODO: FALTA TERMINAR NOTIFICACIONES
 
-    protected void mostrarNotificacion(CharSequence tick, CharSequence titulo, CharSequence contenido) {
+    protected void mostrarNotificacion(CharSequence tick, Actividad act) {
         Intent i = new Intent(this, NotificationView.class);
         i.putExtra("notificationID", notificacionID);
-
+        i.putExtra("numero",12);
+        i.putExtra("actividadN",act.getTitulo());
+        i.putExtra("usuarioN",usuario);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i, 0);
         NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
         Notification noti = new NotificationCompat.Builder(this)
                 .setContentIntent(pendingIntent)
                 .setTicker(tick)
-                .setContentTitle(titulo)
-                .setContentText(contenido)
-                .setSmallIcon(R.drawable.brand)
-                .addAction(R.drawable.brand, tick, pendingIntent)
+                .setContentTitle(act.getTitulo())
+                .setContentText(act.getCuerpo())
+                .setSmallIcon(R.drawable.smile)
+                .addAction(R.drawable.smile, tick, pendingIntent)
                 .setVibrate(new long[]{100, 250, 100, 500})
                 .build();
         nm.notify(notificacionID, noti);
         notificacionID=notificacionID+1;
     }
 
-   /* @Override
+    @Override
     public void onResume() {
-        IntentFilter intentFilter = new IntentFilter("httpData");
+        IntentFilter intentFilter = new IntentFilter("httpNotificacion");
         br = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 JsonHandler jh = new JsonHandler();
-                Actividad[] actividadesLista = jh.getActividades(intent.getStringExtra("data"));
-                String[] titulosString = new String[actividadesLista.length];
-                String[] fechasString = new String[actividadesLista.length];
-                Tipo[] tiposArray = new Tipo[actividadesLista.length];
+                if (jh.getActividades(intent.getStringExtra("data"))!=null) {
+                    ArrayList<Actividad> actividadesLista = jh.getActividades(intent.getStringExtra("data"));
+                    String[] titulosString = new String[actividadesLista.size()];
+                    String[] fechasString = new String[actividadesLista.size()];
+                    Tipo[] tiposArray = new Tipo[actividadesLista.size()];
 
-                for (int i = 0; i < actividadesLista.length; i++) {
-                    titulosString[i] = " " + actividadesLista[i].getTitulo() + " ";
-                    String fecha, hora, resto = " " + actividadesLista[i].getFechaInicio() + " ";
-                    fecha = resto.substring(0, 11);
-                    String anio, mes, dia, resto2 = fecha;
-                    anio = resto2.substring(1, 5);
-                    mes = resto2.substring(6, 8);
-                    dia = resto2.substring(9, 11);
-                    hora = resto.substring(12, 17);
-                    fechasString[i] = " Fecha: " + dia + ":" + mes + ":" + anio + " Hora: " + hora;
-                    tiposArray[i] = actividadesLista[i].getTipo();
-                    mostrarNotificacion("Actividad de su interes en Recreu", actividadesLista[i].getTitulo(), actividadesLista[i].getCuerpo());
+                    for (int i = 0; i < actividadesLista.size(); i++) {
+                        titulosString[i] = " " + actividadesLista.get(i).getTitulo() + " ";
+                        String fecha, hora, resto = " " + actividadesLista.get(i).getFechaInicio() + " ";
+                        fecha = resto.substring(0, 11);
+                        String anio, mes, dia, resto2 = fecha;
+                        anio = resto2.substring(1, 5);
+                        mes = resto2.substring(6, 8);
+                        dia = resto2.substring(9, 11);
+                        hora = resto.substring(12, 17);
+                        fechasString[i] = " Fecha: " + dia + ":" + mes + ":" + anio + " Hora: " + hora;
+                        tiposArray[i] = actividadesLista.get(i).getTipo();
+                        mostrarNotificacion("Actividad de su interes en Recreu", actividadesLista.get(i));
+                    }
+
                 }
-
-
             }
         };
 
@@ -272,7 +278,7 @@ public class Principal extends AppCompatActivity {
         SystemUtilities su = new SystemUtilities(this.getApplicationContext());
         if (su.isNetworkAvailable()) {
             try {
-                new HttpGet(this.getApplicationContext()).execute((new AccesoDirecto()).getURL() + "actividades/?latitud=7&longitud=550&ladocuadrado=60");
+                new HttpGet(this.getApplicationContext(), true).execute((new AccesoDirecto()).getURL() + "actividades/?latitud=7&longitud=550&ladocuadrado=60&minutos=35&usuario_no_participa="+usuario.getUsuarioId());
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -288,5 +294,5 @@ public class Principal extends AppCompatActivity {
             this.unregisterReceiver(br);
         }
         super.onPause();
-    }*/
+    }
 }

@@ -1,12 +1,13 @@
 package com.recreu.recreu.Modelos;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.sql.Time;
 
 /**
 
  */
-public class Actividad {
+public class Actividad implements Serializable {
 
     private String titulo;
     private String cuerpo;

@@ -9,4 +9,39 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.recreu.recreu.NotificationView">
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Notificación"
+        android:id="@+id/textView17"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="\nUsted se encuentra cerca de la actividad:"
+        android:id="@+id/textView15"
+        android:layout_below="@+id/textView17" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Nombre de actividad"
+        android:id="@+id/nombreActividad"
+        android:layout_below="@+id/textView15"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver detalles"
+        android:id="@+id/verDetalles"
+        android:layout_below="@+id/nombreActividad"
+        android:layout_alignLeft="@+id/textView17"
+        android:layout_alignStart="@+id/textView17" />
 </RelativeLayout>
