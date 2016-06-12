@@ -1,6 +1,7 @@
 package com.recreu.recreu.views;
 
 import android.app.DatePickerDialog;
+import android.app.FragmentTransaction;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.net.Uri;
@@ -39,6 +40,7 @@ public class PorFecha extends Fragment implements View.OnClickListener{
         vista.findViewById(R.id.modificarFechaFin).setOnClickListener(this);
         vista.findViewById(R.id.modificarHoraInicio).setOnClickListener(this);
         vista.findViewById(R.id.modificarHoraFin).setOnClickListener(this);
+        vista.findViewById(R.id.buscarPorFecha).setOnClickListener(this);
         return vista;
     }
 
@@ -127,28 +129,37 @@ public class PorFecha extends Fragment implements View.OnClickListener{
 
 
         case R.id.modificarHoraFin:
-        Calendar mcurrentTime2 = Calendar.getInstance();
-        int hour2 = mcurrentTime2.get(Calendar.HOUR_OF_DAY);
-        int minute2 = mcurrentTime2.get(Calendar.MINUTE);
-        TimePickerDialog mTimePicker2;
-        mTimePicker2 = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+            Calendar mcurrentTime2 = Calendar.getInstance();
+            int hour2 = mcurrentTime2.get(Calendar.HOUR_OF_DAY);
+            int minute2 = mcurrentTime2.get(Calendar.MINUTE);
+            TimePickerDialog mTimePicker2;
+            mTimePicker2 = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
 
-                String hora, minutos;
-                hora = selectedHour + "";
-                minutos = selectedMinute + "";
-                if (selectedHour < 9)
-                    hora = "0" + selectedHour;
-                if (selectedMinute < 9)
-                    minutos = "0" + selectedMinute;
+                    String hora, minutos;
+                    hora = selectedHour + "";
+                    minutos = selectedMinute + "";
+                    if (selectedHour < 9)
+                        hora = "0" + selectedHour;
+                    if (selectedMinute < 9)
+                        minutos = "0" + selectedMinute;
 
-                fechaFin.setText("" + hora + ":" + minutos + "");
-            }
-        }, hour2, minute2, true);
-        mTimePicker2.setTitle("Selecciona hora Inicio");
-        mTimePicker2.show();
-        break;
+                    fechaFin.setText("" + hora + ":" + minutos + "");
+                }
+            }, hour2, minute2, true);
+            mTimePicker2.setTitle("Selecciona hora Inicio");
+            mTimePicker2.show();
+            break;
+        case R.id.buscarPorFecha:
+            String str="actividades?var=1&nofinalizadas&dato=2";
+            FragmentTransaction transaccion = getFragmentManager().beginTransaction();
+            transaccion.replace(R.id.fragment_container, new Explorar(usuario,str), "explorar");
+            new Principal();
+            transaccion.addToBackStack(null);
+            transaccion.commit();
+            break;
+
     }
 
     }

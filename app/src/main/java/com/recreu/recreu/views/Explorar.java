@@ -43,6 +43,11 @@ public class Explorar extends ListFragment {
         this.usuario=usu;
         this.URL_GET=(new AccesoDirecto()).getURL()+"actividades?var=1&nofinalizadas&dato=2";
     }
+    //Función para explorar desde un rango de fechas.
+    public Explorar(Usuario usu, String url){
+        this.usuario=usu;
+        this.URL_GET=(new AccesoDirecto()).getURL()+url;
+    }
 
     public Explorar(Usuario usu, int idUsuario, boolean organizador) {
         this.usuario=usu;
