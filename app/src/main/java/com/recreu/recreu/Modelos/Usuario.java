@@ -73,10 +73,11 @@ public class Usuario implements Serializable {
         this.sexo=sexo;
         this.esAdministrador=isAd;
     }
-    public Usuario(int ide, String nomb, String apelli){
+    public Usuario(int ide, String nomb, String apelli,String apelli2){
         this.usuarioId=ide;
         this.primerNombre=nomb;
         this.apellidoPaterno=apelli;
+        this.apellidoMaterno=apelli2;
     }
 
 

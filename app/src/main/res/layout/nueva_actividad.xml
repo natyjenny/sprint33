@@ -20,7 +20,8 @@
         android:background="@color/RECREU"
         android:textColor="#ffffff"
         android:textColorHint="#ffffff"
-        android:textSize="@dimen/abc_action_bar_icon_vertical_padding_material"
+        android:textSize="25dp"
+        android:textStyle="bold"
         android:layout_marginTop="0dp" />
 
     <ScrollView
@@ -46,6 +47,7 @@
                 android:text="@string/IngreseelTitulo"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
+                android:textSize="20dp"
                 android:layout_weight="0.16"
                 android:background="@color/RECREU"
                 android:textColor="#ffffff"
@@ -70,6 +72,7 @@
                 android:text="@string/IngreseDescripción"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
+                android:textSize="20dp"
                 android:layout_weight="0.16"
                 android:background="@color/RECREU"
                 android:textColor="#ffffff"
@@ -96,6 +99,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/IngreseRequisitos"
                 android:gravity="center"
+                android:textSize="20dp"
                 android:layout_weight="0.16"
                 android:background="@color/RECREU"
                 android:textColor="#ffffff"
@@ -119,6 +123,7 @@
                 android:text="@string/Categoria"
                 android:gravity="center"
                 android:layout_weight="0.16"
+                android:textSize="20dp"
                 android:background="@color/RECREU"
                 android:textColor="#ffffff"
                 android:textStyle="bold" />
@@ -142,6 +147,7 @@
                 android:text="@string/IngreseFechayHora"
                 android:gravity="center"
                 android:layout_weight="0.16"
+                android:textSize="20dp"
                 android:background="@color/RECREU"
                 android:textColor="#ffffff"
                 android:textStyle="bold" />
@@ -154,6 +160,7 @@
                 android:text=""
                 android:clickable="false"
                 android:ems="10"
+                android:textSize="20dp"
 
                 android:background="#d8d4d4"
                 android:gravity="center"
@@ -256,13 +263,33 @@
                 android:gravity="center" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="@string/AgregarActividad"
                 android:id="@+id/botonAgregarActividad"
                 android:layout_gravity="center_horizontal"
                 android:longClickable="false"
-                android:onClick="onClick" />
+                android:onClick="onClick"
+                android:layout_width="fill_parent"
+                android:layout_height="80dp"
+                android:layout_row="7"
+                android:layout_column="0"
+                android:gravity="bottom"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginBottom="0dp"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:textColor="#ffffff"
+                android:background="@color/RECREU"
+                android:allowUndo="false"
+                android:textAlignment="center"
+                android:typeface="sans"
+                android:visibility="visible"
+                android:singleLine="false"
+                android:paddingTop="15dp"
+                android:outlineProvider="paddedBounds"
+                android:paddingBottom="15dp"
+                android:translationZ="50dp"
+                android:clickable="true"/>
 
         </LinearLayout>
     </ScrollView>

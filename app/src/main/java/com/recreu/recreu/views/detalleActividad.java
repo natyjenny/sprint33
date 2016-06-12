@@ -42,11 +42,12 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
     private Actividad actividad;
     private boolean participando;
     private int resultadoConsulta;
-    private BroadcastReceiver br = null;
+    private BroadcastReceiver br = null,br2 =null;
     private Button botonPC;
     private Usuario usuario;
+    private ArrayList <Actividad> actividadesDondeParticipa = new ArrayList<Actividad>();
     private Usuario[] listaUsuarios;
-    private String URL_PUT_ACTIVIDAD;
+    private String URL_PUT_ACTIVIDAD,URL_GET;
     private ListView listaParticipantes;
 
 
@@ -101,19 +102,44 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
               // se muestra la listaUsuarios en ListView
                     String[] StringUsuarios = new String[listaUsuarios.length];
                     for (int i=0;i<listaUsuarios.length;i++) {
-                             StringUsuarios[i] = ""+listaUsuarios[i].getPrimerNombre() + " " + listaUsuarios[i].getApellidoPaterno() +"";
+                             StringUsuarios[i] = ""+listaUsuarios[i].getPrimerNombre().toUpperCase() + " " + listaUsuarios[i].getApellidoPaterno().toUpperCase() +" " + listaUsuarios[i].getApellidoMaterno().toUpperCase() +"  ";
                     }
-                    System.out.println(" string de usuarios antes de adapter:"+StringUsuarios);
-                    ArrayAdapter<String> adapter=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_personas,StringUsuarios);
+                    ArrayAdapter<String> adapter=new ArrayAdapter<String>(getActivity(),R.layout.simple_list_personas,StringUsuarios);
                     listaParticipantes.setAdapter(adapter);
                     listaParticipantes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                         @Override
                         public void onItemClick(AdapterView<?> arg0, View arg1, int position,long arg3) {
-                           // System.out.println("aprete en "+ listaUsuarios[position].getPrimerNombre());
                             FragmentTransaction transaccion;
                             transaccion = getFragmentManager().beginTransaction();
-                            transaccion.replace(R.id.fragment_container, new PerfilUsuario(usuario, listaUsuarios[position]), "verPerfil");
+ // TODO: FALTA ARREGLAR AQUI PARA TERMINAR ELIMINAR USUARIO DE ACTIVIDAD
+// TODO : falta ver aquí por que no encuentra como organizador al usuarioPerfil, en actividades que si ha organizado segun tu boton ...
+                            // vemos si es organizador de esta actividad ----------------------------------------------
+                                URL_GET=(new AccesoDirecto()).getURL()+"usuarios/"+usuario.getId()+"/actividades/?organizador";
+                                IntentFilter intentFilter = new IntentFilter("httpData");
+                                br2 = new BroadcastReceiver() {
+                                    @Override
+                                    public void onReceive(Context context, Intent intent) {
+                                        JsonHandler jh = new JsonHandler();
+                                        actividadesDondeParticipa = jh.getActividades(intent.getStringExtra("data"));
+                                    }
+                                };
+                                getActivity().registerReceiver(br2, intentFilter);
+                                SystemUtilities su = new SystemUtilities(getActivity().getApplicationContext());
+                                if (su.isNetworkAvailable()) {
+                                    try {
+                                        new HttpGet(getActivity().getApplicationContext()).execute(URL_GET);
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                          boolean organizando=false;
+                            for (int i = 0; i < actividadesDondeParticipa.size(); i++) {
+                                if (actividadesDondeParticipa.get(i).getActividadId() == actividad.getActividadId()) {
+                                    organizando = true;
+                                }
+                            }
+                            transaccion.replace(R.id.fragment_container, new PerfilUsuario(usuario, listaUsuarios[position],organizando,actividad), "verPerfil");// si es organizador
                             //new Principal();
                             transaccion.addToBackStack(null);
                             transaccion.commit();
@@ -154,7 +180,8 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }           super.onResume();
+        }
+        super.onResume();
     }
 
 
@@ -162,6 +189,9 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
     public void onPause() {
         if (br != null) {
             getActivity().unregisterReceiver(br);
+        }
+        if (br2 != null) {
+            getActivity().unregisterReceiver(br2);
         }
         super.onPause();
     }

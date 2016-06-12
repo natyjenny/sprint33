@@ -105,7 +105,7 @@ public class NuevaActividad extends Fragment implements View.OnClickListener {
                 maximoPersonas = Integer.parseInt(cupos);
                 strgDuracion =duracion.getText().toString() + ":00-03:00";
                 strgDuracion = "01:30:00";
-
+                 // TODO: estos son del sprint pasado asi que no son esenciales ahora creo
                 // TODO: obtener categoria y setear Listade tipos
                 // TODO: obtener posicion de listaTipos y guarda en tipoId
                 // TODO: arreglar verificación, cambiar restricciones a vista
@@ -127,6 +127,7 @@ public class NuevaActividad extends Fragment implements View.OnClickListener {
                 String nuevaActividad = "{\"cuerpoActividad\":\""+cuerpo.getText().toString() +
                         "\",\"duracionEstimada\":\""+strgDuracion +"\" ,\"fechaInicio\":\"" + Fechafinal + "\"," +
                         "\"requerimientosActividad\":\""+requisitos.getText().toString() +
+                        // TODO: enviar tipo que corresponde ( sacado de todos de arriba )
                         "\",\"tipo\":{ \"tipoId\":2}" +
                         ",\"tituloActividad\":\""+titulo.getText().toString() +
                         "\",\"organizador\":{ \"usuarioId\":"+usuario.getUsuarioId()+"}" +

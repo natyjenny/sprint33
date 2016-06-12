@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ffbb4e</color>
+    <color name="colorPrimary">#ffa626</color>
     <color name="colorPrimaryDark">#353535</color>
-    <color name="colorAccent">#f69100</color>
+    <color name="colorAccent">#ffbb4e</color>
     <color name="RECREU">#ffa626</color>
 
 </resources>
