@@ -25,7 +25,7 @@ import com.recreu.recreu.utilities.JsonHandler;
 import com.recreu.recreu.utilities.SystemUtilities;
 
 import cl.recreu.recreu.taller_android_bd.R;
-
+// TODO: agregar mensaje de confirmación despues de participar en acti, crear acti
 /**
  * Created by ginebra on 09-06-16.
  */

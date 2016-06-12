@@ -167,7 +167,6 @@ public class IniciarSesion extends AppCompatActivity {
         public void onReceive(Context context, Intent intent)
         {
 
-            System.out.println("Antes de intentar xd");
             String response = intent.getStringExtra("jsonRespuesta");
 
                 try {

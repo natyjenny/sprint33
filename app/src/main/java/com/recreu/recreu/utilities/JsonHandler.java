@@ -10,15 +10,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 
 public class JsonHandler {
 
 
     // Recibo un JSONArray en forma de String y devuelve un array Actividades
-    public Actividad[] getActividades(String actividades) {
+    public ArrayList<Actividad> getActividades(String actividades) {
         try {
             JSONArray ja = new JSONArray(actividades);
-            Actividad[] arrayActividades = new Actividad[ja.length()];
+            ArrayList<Actividad> arrayActividades=new ArrayList<Actividad>() ;
             Actividad actividad;
 
 
@@ -53,8 +55,7 @@ public class JsonHandler {
 
                 actividad = new Actividad(jsonActividad.getString("tituloActividad"),jsonActividad.getString("cuerpoActividad"),jsonActividad.getString("requerimientosActividad"),jsonActividad.getString("fechaInicio"),jsonActividad.getString("duracionEstimada"),x,y,tipo,ide_actividad,666);
                 //actividad = new Actividad(row.getString("tituloActividad"),row.getString("cuerpoActividad"),row.getString("requerimientosActividad"),null,null,x,y,null,ide_actividad,cupos);
-                arrayActividades[i] = actividad;
-
+                arrayActividades.add(actividad);
             }
             return arrayActividades;
 
@@ -79,39 +80,80 @@ public class JsonHandler {
                 String dato= jsonUsuario.getString("usuarioId");
                 int ide_usuario=Integer.parseInt(dato);
                 jsonUsuario.getString("primerNombre");
-                usuario = new Usuario(ide_usuario, jsonUsuario.getString("primerNombre"),jsonUsuario.getString("apellidoPaterno"));
+                usuario = new Usuario(ide_usuario, jsonUsuario.getString("primerNombre"),jsonUsuario.getString("apellidoPaterno"),jsonUsuario.getString("apellidoMaterno"));
                 arrayIdes[i] = usuario;
             }
             return arrayIdes;
 
         } catch (JSONException e) {
             Log.e("ERROR", this.getClass().toString() + " " + e.toString());
-            //   } catch (ParseException e) {
-            //     e.printStackTrace();
         }
         return null;
     }
+
+
+
+
     public Usuario[] getUsuarios(String actividades) {
         try {
             JSONArray ja = new JSONArray(actividades);
             Usuario[] arrayUsuario = new Usuario[ja.length()];
             Usuario usuario;
-
-
             for (int i = 0; i < ja.length(); i++) {
                 JSONObject jsonUsuario = ja.getJSONObject(i);
-                usuario = new Usuario(jsonUsuario.getInt("usuarioId"),jsonUsuario.getString("primerNombre"),jsonUsuario.getString("apellidoPaterno"));
+                usuario = new Usuario(jsonUsuario.getInt("usuarioId"),jsonUsuario.getString("primerNombre"),jsonUsuario.getString("apellidoPaterno"),jsonUsuario.getString("apellidoPaterno"));
                 arrayUsuario[i] = usuario;
-
             }
-            System.out.println("Creadala lista de usuarios");
             return arrayUsuario;
-
-
         } catch (JSONException e) {
             Log.e("ERROR", this.getClass().toString() + " " + e.toString());
         }
         return null;
     }
+
+
+    public Categoria[] getCategorias(String StringCategorias) {
+        try {
+            JSONArray ja = new JSONArray(StringCategorias);
+            Categoria[] arrayCategorias = new Categoria[ja.length()];
+            Categoria categoriaAux;
+            for (int i = 0; i < ja.length(); i++) {
+                JSONObject jsonCategoria = ja.getJSONObject(i);
+                String nombre=jsonCategoria.getString("nombreCategoria");
+                System.out.println("Nombre: "+nombre);
+                String ideCategoria =jsonCategoria.getString("categoriaId");
+                int idecategoria=Integer.parseInt(ideCategoria);
+
+                categoriaAux = new Categoria(nombre,idecategoria);
+                arrayCategorias[i] = categoriaAux;
+            }
+            return arrayCategorias;
+        } catch (JSONException e) {
+            Log.e("ERROR", this.getClass().toString() + " " + e.toString());
+        }
+        return null;
+    }
+
+    public Tipo[] getTipos(String tipos) {
+        try {
+            JSONArray ja = new JSONArray(tipos);
+            Tipo[] arrayTipos= new Tipo[ja.length()] ;
+            Tipo tipo;
+
+            for (int i = 0; i < ja.length(); i++) {
+                JSONObject jsonTipo = ja.getJSONObject(i);
+                String dato= jsonTipo.getString("tipoId");
+                int id_tipo=Integer.parseInt(dato);
+                String nombre_tipo=jsonTipo.getString("tipo");
+                 tipo = new Tipo(nombre_tipo,id_tipo);
+                arrayTipos[i] = tipo;
+            }
+            return arrayTipos;
+        } catch (JSONException e) {
+            Log.e("ERROR", this.getClass().toString() + " " + e.toString());
+        }
+        return null;
+    }
+
 
 }

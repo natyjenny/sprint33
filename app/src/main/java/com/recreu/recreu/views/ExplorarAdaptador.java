@@ -44,8 +44,7 @@ public class ExplorarAdaptador extends BaseAdapter {
 
     @Override
     public View getView(int posicion, View convertView, ViewGroup parent) {
-        View rowView = LayoutInflater.from(context).
-                inflate(R.layout.three_line_icon, parent, false);
+        View rowView = LayoutInflater.from(context).inflate(R.layout.three_line_icon, parent, false);
 
         TextView text1 = (TextView) rowView.findViewById(R.id.Textotitulo);
         TextView text2 = (TextView) rowView.findViewById(R.id.TextoTipo);
@@ -58,6 +57,7 @@ public class ExplorarAdaptador extends BaseAdapter {
         text2.setText(arrayTipos[posicion].getNombreTipo());
 
        // desde aca se selecciona la imagen asociada al tipo
+  /*
         switch(arrayTipos[posicion].getTipoId()){
             case 1:
                 icon.setImageResource(R.drawable.t1);
@@ -192,6 +192,9 @@ public class ExplorarAdaptador extends BaseAdapter {
                 icon.setImageResource(R.drawable.t46);
                 break;
         }
+        */
+                      icon.setImageResource(R.drawable.t1);
+
         return rowView;
     }
 

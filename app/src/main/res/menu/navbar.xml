@@ -20,6 +20,10 @@
         android:title="@string/crearActividad"/>
 
     <item
+        android:id="@+id/buscar"
+        android:title="Buscar Actividad" />
+
+    <item
         android:id="@+id/cerrarSesion"
         android:title="Cerrar Sesión"/>
 

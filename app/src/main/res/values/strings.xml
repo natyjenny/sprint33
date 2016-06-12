@@ -10,15 +10,12 @@
     <!-- Strings de nueva actividad -->
     <string name="crearActividad">Crear Actividad</string>
     <string name="IngreseFechayHora">Ingrese Fecha y Hora</string>
-    <!--  <string name="DescripciónActividad">Descripción Actividad</string>-->
     <string name="IngreseDescripción">Ingrese Descripción</string>
     <string name="IngreseelTitulo">Ingrese el Titulo:</string>
     <string name="IngreseRequisitos">Ingrese Requisitos actividad</string>
-    <string name="nuevaActividad">NUEVA ACTIVIDAD</string>
-    <!-- <string name="RequisitosActividad">Requisitos Actividad</string> -->
+    <string name="nuevaActividad">-------- NUEVA ACTIVIDAD -------- </string>
     <string name="IngreseDuración">Ingrese duracion en Horas:Minutos</string>
     <string name="Ingresemáximoparticipantes">Ingrese Máximo de Participantes</string>
-    <!-- <string name="cupos">Cupos Actividad</string> -->
     <string name="AgregarActividad">Agregar Actividad</string>
     <string name="Categoria">Ingrese Categoria Actividad</string>
     <string name="Tipo">Ingrese Tipo</string>

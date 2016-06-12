@@ -1,16 +1,21 @@
 package com.recreu.recreu.views;
 
 import android.app.Fragment;
+//import android.app.FragmentTransaction;
 import android.app.FragmentTransaction;
+import android.app.ListFragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+//import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -26,6 +31,8 @@ import com.recreu.recreu.utilities.AccesoDirecto;
 import com.recreu.recreu.utilities.JsonHandler;
 import com.recreu.recreu.utilities.SystemUtilities;
 
+import java.util.ArrayList;
+
 import cl.recreu.recreu.taller_android_bd.R;
 
 public class detalleActividad extends Fragment implements View.OnClickListener {
@@ -35,13 +42,13 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
     private Actividad actividad;
     private boolean participando;
     private int resultadoConsulta;
-    private BroadcastReceiver br = null;
+    private BroadcastReceiver br = null,br2 =null;
     private Button botonPC;
     private Usuario usuario;
+    private ArrayList <Actividad> actividadesDondeParticipa = new ArrayList<Actividad>();
     private Usuario[] listaUsuarios;
-    private String URL_PUT_ACTIVIDAD;
-    private ArrayAdapter<String> adapter;
-//    private ListView listaParticipantes;
+    private String URL_PUT_ACTIVIDAD,URL_GET;
+    private ListView listaParticipantes;
 
 
     public detalleActividad(Actividad act, Usuario usu) {
@@ -64,13 +71,13 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
     @Override
     public void onViewStateRestored(Bundle savedInstanceState) {
 
-        cajaTitutlo = ((TextView) getView().findViewById(R.id.TextViewTitulo)); //  -> estoy seteando
+        cajaTitutlo = ((TextView) getView().findViewById(R.id.TextViewTitulo));
         cajaTitutlo.setText(actividad.getTitulo());
-        cajaCuerpo = ((TextView) getView().findViewById(R.id.TextViewCuerpo)); //  -> estoy seteando
+        cajaCuerpo = ((TextView) getView().findViewById(R.id.TextViewCuerpo));
         cajaCuerpo.setText(actividad.getCuerpo());
-        cajaRequisitos = ((TextView) getView().findViewById(R.id.TextViewRequisitos)); //  -> estoy seteando
+        cajaRequisitos = ((TextView) getView().findViewById(R.id.TextViewRequisitos));
         cajaRequisitos.setText(actividad.getRequerimientos());
-   //     listaParticipantes=(ListView)getView().findViewById(R.id.listaUsuarios);
+        listaParticipantes=(ListView)getView().findViewById(R.id.listaParticipantes);
         botonPC = ((Button) getView().findViewById(R.id.botonPC));
         botonPC.setOnClickListener(this);
 
@@ -91,11 +98,61 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
                 listaUsuarios = jh.getIdesUsuariosEnAct(intent.getStringExtra("data"));
                 participando = false;
                 if (listaUsuarios != null){
+
+              // se muestra la listaUsuarios en ListView
+                    String[] StringUsuarios = new String[listaUsuarios.length];
+                    for (int i=0;i<listaUsuarios.length;i++) {
+                             StringUsuarios[i] = ""+listaUsuarios[i].getPrimerNombre().toUpperCase() + " " + listaUsuarios[i].getApellidoPaterno().toUpperCase() +" " + listaUsuarios[i].getApellidoMaterno().toUpperCase() +"  ";
+                    }
+                    ArrayAdapter<String> adapter=new ArrayAdapter<String>(getActivity(),R.layout.simple_list_personas,StringUsuarios);
+                    listaParticipantes.setAdapter(adapter);
+                    listaParticipantes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                        @Override
+                        public void onItemClick(AdapterView<?> arg0, View arg1, int position,long arg3) {
+                            FragmentTransaction transaccion;
+                            transaccion = getFragmentManager().beginTransaction();
+ // TODO: FALTA ARREGLAR AQUI PARA TERMINAR ELIMINAR USUARIO DE ACTIVIDAD
+// TODO : falta ver aquí por que no encuentra como organizador al usuarioPerfil, en actividades que si ha organizado segun tu boton ...
+                            // vemos si es organizador de esta actividad ----------------------------------------------
+                                URL_GET=(new AccesoDirecto()).getURL()+"usuarios/"+usuario.getId()+"/actividades/?organizador";
+                                IntentFilter intentFilter = new IntentFilter("httpData");
+                                br2 = new BroadcastReceiver() {
+                                    @Override
+                                    public void onReceive(Context context, Intent intent) {
+                                        JsonHandler jh = new JsonHandler();
+                                        actividadesDondeParticipa = jh.getActividades(intent.getStringExtra("data"));
+                                    }
+                                };
+                                getActivity().registerReceiver(br2, intentFilter);
+                                SystemUtilities su = new SystemUtilities(getActivity().getApplicationContext());
+                                if (su.isNetworkAvailable()) {
+                                    try {
+                                        new HttpGet(getActivity().getApplicationContext()).execute(URL_GET);
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                          boolean organizando=false;
+                            for (int i = 0; i < actividadesDondeParticipa.size(); i++) {
+                                if (actividadesDondeParticipa.get(i).getActividadId() == actividad.getActividadId()) {
+                                    organizando = true;
+                                }
+                            }
+                            transaccion.replace(R.id.fragment_container, new PerfilUsuario(usuario, listaUsuarios[position],organizando,actividad), "verPerfil");// si es organizador
+                            //new Principal();
+                            transaccion.addToBackStack(null);
+                            transaccion.commit();
+
+                        }
+
+                    });
+
+
                     participando = false;
                     for (int i = 0; i < listaUsuarios.length; i++) {
                         if (listaUsuarios[i].getUsuarioId() == usuario.getUsuarioId()){
                             participando = true;
-                            System.out.println(" iguales en id: "+listaUsuarios[i].getUsuarioId());
                         }
                     }
                     if (participando == true) {
@@ -110,17 +167,6 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
                             botonPC.setClickable(false);
                         }
                     }
-
-                    // creo lista de usuarios en vista
-                    String[] StringUsuarios = new String[listaUsuarios.length];
-
-                    for (int i=0;i<listaUsuarios.length;i++) {
-                        StringUsuarios[i] = ""+listaUsuarios[i].getPrimerNombre() + " " + listaUsuarios[i].getApellidoPaterno() +"";
-                    }
-                    System.out.println(StringUsuarios);
- //                   ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,StringUsuarios);
-//                    listaParticipantes.setAdapter(adapter);
-
                 }
             }
         };
@@ -134,7 +180,8 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }           super.onResume();
+        }
+        super.onResume();
     }
 
 
@@ -143,14 +190,14 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
         if (br != null) {
             getActivity().unregisterReceiver(br);
         }
+        if (br2 != null) {
+            getActivity().unregisterReceiver(br2);
+        }
         super.onPause();
     }
 
-
     @Override
     public void onClick(View view) {
-
-        //    int ideUsuario = Usuario.getId();
         String URL_PARTICIPACION = URL_PUT_ACTIVIDAD+"usuarios/"+usuario.getUsuarioId()+"/actividades/"+actividad.getActividadId()+"";
 
         // DELETE: borro fila usuario y actividad ( SI ES ORGANIZADOR HAY QUE "NOTIFICAR AL RESTO" y pedirle a otro que sea organizador
@@ -167,7 +214,6 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
                     }
                 }
             } catch (Exception e) {
-
             }
 
         }else{
@@ -186,16 +232,6 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
                 }
             } catch (Exception e) {
             }
-
         }
-
-
-  //      FragmentTransaction transaction = getActivity().getFragmentManager().beginTransaction();
-  //      transaction.replace(R.id.fragment_container, new confirmacion(usuario),"confirmacion");
- //       new detalleActividad(actividad,usuario);
-  //      transaction.addToBackStack(null);
- //       transaction.commit();
-
-
     }
 }

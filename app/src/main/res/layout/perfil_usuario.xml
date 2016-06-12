@@ -1,215 +1,272 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.recreu.recreu.views.PerfilUsuario">
 
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="left|top"
-        android:weightSum="1">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Perfil de usuario"
-            android:id="@+id/textView3"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.04" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Datos personales:"
-            android:id="@+id/textView4"
-            android:textColor="@color/RECREU" />
-
-        <TableLayout
-            android:layout_width="355dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Nombre:"
-                    android:id="@+id/textView6"
-                    android:layout_column="0" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Natalia Pérez"
-                    android:id="@+id/nombrePerfil"
-                    android:layout_column="1" />
-
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Correo:"
-                    android:id="@+id/textView8"
-                    android:layout_column="0" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="nperezg@usach.cl"
-                    android:id="@+id/correoPerfil"
-                    android:layout_column="1" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Carrera:"
-                    android:id="@+id/textView7"
-                    android:layout_column="0" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Ingeniería bla"
-                    android:id="@+id/carreraPerfil"
-                    android:layout_column="1" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Cumpleaños: "
-                    android:id="@+id/textView10"
-                    android:layout_column="0" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="20 agosto"
-                    android:id="@+id/cumpleanosPerfil"
-                    android:layout_column="1" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Telefono:"
-                    android:id="@+id/textView12"
-                    android:layout_column="0" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="955229821"
-                    android:id="@+id/telefonoPerfil"
-                    android:layout_column="1" />
-            </TableRow>
-        </TableLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Intereses:"
-            android:id="@+id/textView14"
-            android:layout_weight="0.04"
-            android:textColor="@color/RECREU" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Música, leer, bla bla"
-            android:id="@+id/interesesPerfil"
-            android:layout_weight="0.04"
-            android:layout_gravity="center_horizontal" />
+    <ScrollView
+        android:layout_width="419dp"
+        android:layout_height="619dp"
+        android:id="@+id/scrollView2"
+        android:layout_below="@+id/textView3">
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.04">
+            android:layout_height="match_parent"
+            android:layout_gravity="left|top"
+            android:weightSum="1">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Calificación de otros usuarios:  "
-                android:id="@+id/textView16"
-                android:textColor="@color/RECREU" />
+                android:text="Datos personales:"
+                android:id="@+id/textView4"
+                android:textColor="@color/RECREU"
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold" />
+
+            <TableLayout
+                android:layout_width="355dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Nombre:"
+                        android:id="@+id/textView6"
+                        android:layout_column="0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Natalia Pérez"
+                        android:id="@+id/nombrePerfil"
+                        android:layout_column="1" />
+
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Correo:"
+                        android:id="@+id/textView8"
+                        android:layout_column="0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="nperezg@usach.cl"
+                        android:id="@+id/correoPerfil"
+                        android:layout_column="1" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Carrera:"
+                        android:id="@+id/textView7"
+                        android:layout_column="0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Ingeniería bla"
+                        android:id="@+id/carreraPerfil"
+                        android:layout_column="1" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Cumpleaños: "
+                        android:id="@+id/textView10"
+                        android:layout_column="0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="20 agosto"
+                        android:id="@+id/cumpleanosPerfil"
+                        android:layout_column="1" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Telefono:"
+                        android:id="@+id/textView12"
+                        android:layout_column="0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="955229821"
+                        android:id="@+id/telefonoPerfil"
+                        android:layout_column="1" />
+                </TableRow>
+            </TableLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="7"
-                android:id="@+id/calificacionPerfil" />
+                android:text="Intereses:"
+                android:id="@+id/textView14"
+                android:layout_weight="0.04"
+                android:textColor="@color/RECREU"
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Música, leer, bla bla"
+                android:id="@+id/interesesPerfil"
+                android:layout_weight="0.04"
+                android:layout_gravity="center_horizontal"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.04">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Calificación de otros usuarios:  "
+                    android:id="@+id/textView16"
+                    android:textColor="@color/RECREU"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="7"
+                    android:id="@+id/calificacionPerfil" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="312dp"
+                android:layout_height="60dp"
+                android:text="Actividades que ha organizado"
+                android:id="@+id/actividadesOrganizador"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.04"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginTop="20dp"
+                android:background="@color/RECREU"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="#ffffff"
+                android:layout_marginBottom="3dp" />
+
+            <Button
+                android:layout_width="312dp"
+                android:layout_height="60dp"
+                android:text="Actividades en que ha participado"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/actividadesParticipante"
+
+                android:layout_weight="0.04"
+                android:background="@color/RECREU"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="3dp" />
+
+            <Button
+                android:layout_width="312dp"
+                android:layout_height="60dp"
+                android:text="Calificar usuario"
+                android:id="@+id/button4"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.04"
+                android:background="@color/RECREU"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:layout_marginBottom="3dp" />
+
+            <Button
+                android:layout_width="312dp"
+                android:layout_height="60dp"
+                android:text="Reportar usuario"
+                android:id="@+id/button3"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.04"
+                android:background="@color/RECREU"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginBottom="3dp" />
+
+
         </LinearLayout>
+    </ScrollView>
 
-        <Button
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:text="Actividades que ha organizado"
-            android:id="@+id/actividadesOrganizador"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.04"
-            android:nestedScrollingEnabled="false" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="PERFIL DE USUARIO"
+        android:id="@+id/textView3"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.89"
+        android:textStyle="bold"
+        android:background="@color/RECREU"
+        android:layout_alignParentTop="true"
+        android:textAlignment="center"
+        android:textColor="#ffffff" />
 
-        <Button
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:text="Actividades en que ha participado"
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/actividadesParticipante"
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:text="ELIMINAR DE ACTIVIDAD"
+        android:id="@+id/eliminarDeActividad"
+        android:visibility="invisible"
+        android:background="@android:color/holo_red_dark"
+        android:textColor="#ffffff"
+        android:textSize="27dp"
+        android:typeface="sans"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-            android:layout_weight="0.04" />
-
-        <Button
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:text="Calificar usuario"
-            android:id="@+id/button4"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.04" />
-
-        <Button
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:text="Reportar usuario"
-            android:id="@+id/button3"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.04" />
-
-
-    </LinearLayout>
-</FrameLayout>
+</RelativeLayout>
