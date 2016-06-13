@@ -227,8 +227,6 @@ public class Principal extends AppCompatActivity {
         }
 
     }
-    // TODO : FALTA HISTORIA DE USUARIO SETEAR DURACIÖN DE ACTIVIDAD
-    //TODO: FALTA TERMINAR NOTIFICACIONES
 
     protected void mostrarNotificacion(CharSequence tick, Actividad act) {
         Intent i = new Intent(this, NotificationView.class);

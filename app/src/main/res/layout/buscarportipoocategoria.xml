@@ -26,6 +26,7 @@
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_marginLeft="20dp"
+            android:onClick="onListItemClick2"
             android:textStyle="bold"
             android:textSize="18dp" />
 

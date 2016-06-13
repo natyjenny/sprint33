@@ -70,7 +70,6 @@ public class BuscarPor extends Fragment implements View.OnClickListener {
             case R.id.botonTipo:
                     System.out.println("Aprete boton tipo");
                 transaccion = getFragmentManager().beginTransaction();
-
                 transaccion.replace(R.id.fragment_container, new BuscarPorTipoOCategoria(usuario,false), "BuscarPorTipo");
                 new Principal();
                 transaccion.addToBackStack(null);
@@ -80,7 +79,6 @@ public class BuscarPor extends Fragment implements View.OnClickListener {
             case R.id.botonCategoria:
                 System.out.println("Aprete boton Categoria");
                 transaccion = getFragmentManager().beginTransaction();
-
                 transaccion.replace(R.id.fragment_container, new BuscarPorTipoOCategoria(usuario,true), "BuscarCategoria");
                 new Principal();
                 transaccion.addToBackStack(null);
@@ -90,7 +88,6 @@ public class BuscarPor extends Fragment implements View.OnClickListener {
             case R.id.botonFecha:
                 System.out.println("Aprete boton fecha");
                 transaccion = getFragmentManager().beginTransaction();
-
                 transaccion.replace(R.id.fragment_container, new PorFecha(usuario), "BuscarFecha");
                 new Principal();
                 transaccion.addToBackStack(null);

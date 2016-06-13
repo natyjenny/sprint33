@@ -40,7 +40,7 @@ public class BuscarPorTipoOCategoria extends Fragment implements View.OnClickLis
 
 
     private ListView ObjetoCheckbox;
-    private BroadcastReceiver br = null;
+    private BroadcastReceiver br4 = null;
     private ArrayList <String> listaSeleccionados = new ArrayList<String>();
     private String[] datosLista;
     private Usuario usuario;
@@ -94,7 +94,7 @@ public class BuscarPorTipoOCategoria extends Fragment implements View.OnClickLis
 
        if (tipoBusqueda) {       // si es tipo categoria
         IntentFilter intentFilter = new IntentFilter("httpData");
-        br = new BroadcastReceiver() {
+        br4 = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 JsonHandler jh = new JsonHandler();
@@ -112,7 +112,7 @@ public class BuscarPorTipoOCategoria extends Fragment implements View.OnClickLis
 
             }
         };
-        getActivity().registerReceiver(br, intentFilter);
+        getActivity().registerReceiver(br4, intentFilter);
         SystemUtilities su = new SystemUtilities(getActivity().getApplicationContext());
         if (su.isNetworkAvailable()) {
             try {
@@ -124,7 +124,7 @@ public class BuscarPorTipoOCategoria extends Fragment implements View.OnClickLis
 
     }else { // BusquedaporTipo
            IntentFilter intentFilter = new IntentFilter("httpData");
-           br = new BroadcastReceiver() {
+           br4 = new BroadcastReceiver() {
                @Override
                public void onReceive(Context context, Intent intent) {
                    JsonHandler jh = new JsonHandler();
@@ -141,7 +141,7 @@ public class BuscarPorTipoOCategoria extends Fragment implements View.OnClickLis
 
                }
            };
-           getActivity().registerReceiver(br, intentFilter);
+           getActivity().registerReceiver(br4, intentFilter);
            SystemUtilities su = new SystemUtilities(getActivity().getApplicationContext());
            if (su.isNetworkAvailable()) {
                try {
@@ -158,8 +158,8 @@ public class BuscarPorTipoOCategoria extends Fragment implements View.OnClickLis
 
     @Override
     public void onPause() {
-        if (br != null) {
-            getActivity().unregisterReceiver(br);
+        if (br4 != null) {
+            getActivity().unregisterReceiver(br4);
         }
         super.onPause();
     }
@@ -168,14 +168,18 @@ public class BuscarPorTipoOCategoria extends Fragment implements View.OnClickLis
     @Override
     public void onClick(View view) {
 
-        System.out.println(" entre al listener de SIGUIENTE");
+        //System.out.println(" entre al listener de SIGUIENTE");
 
         for (int i = 0; i < listaBox.getAdapter().getCount(); i++) {
             if (listaBox.getAdapter().getItem(i) !=null) {
-                System.out.println(" DATOSLISTA en i: "+datosLista[i]);
+               //System.out.println(" DATOSLISTA en i: "+datosLista[i]);
+                String truet ="true";
+                if(truet.equals(listaBox.getAdapter().getItem(i).toString())) {
+                //    System.out.println(" Si true == "+listaBox.getAdapter().getItem(i).toString());
 
-                if(listaSeleccionados != null)
-                listaSeleccionados.add(""+datosLista[i]+"");
+                    if (listaSeleccionados != null)
+                        listaSeleccionados.add("" + datosLista[i] + "");
+                }
             }
         }
         System.out.println(" que llevo seleccionado:"+listaSeleccionados);

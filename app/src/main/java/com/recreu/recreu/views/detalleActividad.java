@@ -140,7 +140,7 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
                                 }
                             }
                             transaccion.replace(R.id.fragment_container, new PerfilUsuario(usuario, listaUsuarios[position],organizando,actividad), "verPerfil");// si es organizador
-                            //new Principal();
+                            new Principal();
                             transaccion.addToBackStack(null);
                             transaccion.commit();
 

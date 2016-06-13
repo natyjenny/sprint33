@@ -26,7 +26,7 @@ import java.util.Iterator;
 
 public class Explorar extends ListFragment {
 
-    private BroadcastReceiver br = null;
+    private BroadcastReceiver br3 = null;
     private String URL_GET;
     private ArrayList <Actividad> actividadesLista = new ArrayList<Actividad>();
     private ArrayList <String> listaFiltro=null;
@@ -71,7 +71,7 @@ public class Explorar extends ListFragment {
     @Override
     public void onResume() {
         IntentFilter intentFilter = new IntentFilter("httpData");
-        br = new BroadcastReceiver() {
+        br3 = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 JsonHandler jh = new JsonHandler();
@@ -137,7 +137,7 @@ public class Explorar extends ListFragment {
             }
         };
 
-        getActivity().registerReceiver(br, intentFilter);
+        getActivity().registerReceiver(br3, intentFilter);
         SystemUtilities su = new SystemUtilities(getActivity().getApplicationContext());
         if (su.isNetworkAvailable()) {
             try {
@@ -161,8 +161,8 @@ public class Explorar extends ListFragment {
 
     @Override
     public void onPause() {
-        if (br != null) {
-            getActivity().unregisterReceiver(br);
+        if (br3 != null) {
+            getActivity().unregisterReceiver(br3);
         }
         super.onPause();
     }

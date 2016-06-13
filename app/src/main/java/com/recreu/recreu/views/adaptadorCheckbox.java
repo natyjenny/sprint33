@@ -52,7 +52,8 @@ public class adaptadorCheckbox extends BaseAdapter {
 
         @Override
         public View getView(final int posicion, View ConvertView, ViewGroup parent) {
-                View view = LayoutInflater.from(context).inflate(R.layout.buscarportipoocategoria, parent, false);
+                View view;
+            view = LayoutInflater.from(context).inflate(R.layout.buscarportipoocategoria, parent, false);
 
             TextView datoCasilla = (TextView) view.findViewById(R.id.textView1);
             final CheckBox casillacheck = (CheckBox) view.findViewById(R.id.checkBox1);
