@@ -83,7 +83,7 @@ public class JsonHandler {
 
                 JSONObject jsonCarrera = new JSONObject(jsonUsuario.getString("carrera"));
              System.out.println("NUMERO DE TELEFONO :"+jsonUsuario.getString("numeroTelefono"));
-                usuario = new Usuario(ide_usuario, jsonUsuario.getString("primerNombre"),jsonUsuario.getString("apellidoPaterno"),jsonUsuario.getString("apellidoMaterno"),jsonUsuario.getString("correo"),jsonUsuario.getString("fechaNacimiento"),jsonUsuario.getString("numeroTelefono"),jsonUsuario.getString("intereses"),jsonCarrera.getString("nombreCarrera"));
+                usuario = new Usuario(ide_usuario, jsonUsuario.getString("primerNombre"),jsonUsuario.getString("apellidoPaterno"),jsonUsuario.getString("apellidoMaterno"),jsonUsuario.getString("correo"),jsonUsuario.getString("fechaNacimiento"),jsonUsuario.getString("numeroTelefono"),jsonUsuario.getString("intereses"));
                 arrayIdes[i] = usuario;
             }
             return arrayIdes;
@@ -107,7 +107,7 @@ public class JsonHandler {
                 JSONObject jsonCarrera = new JSONObject(jsonUsuario.getString("carrera"));
                 System.out.println("NUMERO DE TELEFONO :"+jsonUsuario.getString("numeroTelefono"));
 
-                usuario = new Usuario(jsonUsuario.getInt("usuarioID"),jsonUsuario.getString("primerNombre"),jsonUsuario.getString("apellidoPaterno"),jsonUsuario.getString("apellidoMaterno"),jsonUsuario.getString("correo"),jsonUsuario.getString("fechaNacimiento"),jsonUsuario.getString("numeroTelefono"),jsonUsuario.getString("intereses"),jsonCarrera.getString("nombreCarrera"));
+                usuario = new Usuario(jsonUsuario.getInt("usuarioID"),jsonUsuario.getString("primerNombre"),jsonUsuario.getString("apellidoPaterno"),jsonUsuario.getString("apellidoMaterno"),jsonUsuario.getString("correo"),jsonUsuario.getString("fechaNacimiento"),jsonUsuario.getString("numeroTelefono"),jsonUsuario.getString("intereses"));//,jsonCarrera.getString("nombreCarrera"));
                 arrayUsuario[i] = usuario;
             }
             return arrayUsuario;

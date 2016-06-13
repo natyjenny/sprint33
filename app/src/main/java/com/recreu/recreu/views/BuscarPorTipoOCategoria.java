@@ -188,6 +188,7 @@ public class BuscarPorTipoOCategoria extends Fragment implements View.OnClickLis
         if(tipoBusqueda) transaction.replace(R.id.fragment_container, new Explorar(usuario,listaSeleccionados,true),"verPorCategoria");
         if(!tipoBusqueda) transaction.replace(R.id.fragment_container, new Explorar(usuario,listaSeleccionados,false),"verPorTipo");
 
+
         new Principal();
         transaction.addToBackStack(null);
         transaction.commit();

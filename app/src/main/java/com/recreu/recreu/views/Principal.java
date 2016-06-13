@@ -243,7 +243,7 @@ public class Principal extends AppCompatActivity {
 
         i.putExtra("actividadID",act.getActividadId().toString());
                                System.out.println("que hay en  actividadID : "+act.getActividadId());
-       // i.putExtra("actividadCompleta",acti);
+        //i.putExtra("actividadCompleta",act);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i, 0);
         NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -289,7 +289,7 @@ public class Principal extends AppCompatActivity {
                         mes = resto2.substring(6, 8);
                         dia = resto2.substring(9, 11);
                         hora = resto.substring(12, 17);
-                        fechasString[i] = " Fecha: " + dia + ":" + mes + ":" + anio + " Hora: " + hora;
+                        fechasString[i] = " Fecha: " + dia + "/" + mes + "/" + anio + " Hora: " + hora;
                         tiposArray[i] = actividadesLista.get(i).getTipo();
                         mostrarNotificacion("Actividad de su interes en Recreu", actividadesLista.get(i));
                     }

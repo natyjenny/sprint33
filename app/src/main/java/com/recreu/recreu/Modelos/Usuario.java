@@ -36,7 +36,6 @@ public class Usuario implements Serializable {
     private boolean esAdministrador;
     private Carrera carrera;
 
-    private String nombreCarrera;
     private String createdAt;
     private boolean disponibilidad;
     private boolean esActivo;
@@ -64,7 +63,7 @@ public class Usuario implements Serializable {
 
     }
 
-    public Usuario(String apellidoMaterno, String apellidoPaterno, String primerNombre, String segundoNombre, String correo, String password, String fechaNacimiento,boolean sexo, boolean isAd, String carrera){
+    public Usuario(String apellidoMaterno, String apellidoPaterno, String primerNombre, String segundoNombre, String correo, String password, String fechaNacimiento,boolean sexo, boolean isAd){
         this.apellidoMaterno=apellidoMaterno;
         this.apellidoPaterno=apellidoPaterno;
         this.primerNombre=primerNombre;
@@ -74,9 +73,8 @@ public class Usuario implements Serializable {
         this.fechaNacimiento=fechaNacimiento;
         this.sexo=sexo;
         this.esAdministrador=isAd;
-        this.nombreCarrera=carrera;
     }
-    public Usuario(int ide, String nomb, String apelli,String apelli2, String correo, String Nacimiento, String telefono, String intereses, String carrerita){
+    public Usuario(int ide, String nomb, String apelli,String apelli2, String correo, String Nacimiento, String telefono, String intereses){
         this.usuarioId=ide;
         this.primerNombre=nomb;
         this.apellidoPaterno=apelli;
@@ -85,12 +83,8 @@ public class Usuario implements Serializable {
         this.correo=correo;
         this.fechaNacimiento=Nacimiento;
         this.apellidoMaterno=apelli2;
-        this.nombreCarrera=carrerita;
     }
 
-    public String getNombreCarrera() {
-        return nombreCarrera;
-    }
 
     public String getApellidoMaterno() {
         return apellidoMaterno;
@@ -103,6 +97,8 @@ public class Usuario implements Serializable {
     public Carrera getCarrera() {
         return carrera;
     }
+
+
 
     public String getCorreo() {
         return correo;

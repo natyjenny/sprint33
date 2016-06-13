@@ -19,6 +19,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.recreu.recreu.Modelos.Carrera;
 import com.recreu.recreu.Modelos.Usuario;
 import com.recreu.recreu.controllers.HttpPost;
 import com.recreu.recreu.utilities.AccesoDirecto;
@@ -175,14 +176,17 @@ public class IniciarSesion extends AppCompatActivity {
 
                     System.out.println("Respuesta json = "+response);
                     JSONObject aux =new JSONObject(response);
-                    JSONObject aux2 =new JSONObject(aux.getString("carrera"));
-
-                    usuario = new Usuario(aux.getString("apellidoMaterno"),aux.getString("apellidoPaterno"),aux.getString("primerNombre"),aux.getString("segundoNombre"),aux.getString("correo"),aux.getString("password"),aux.getString("fechaNacimiento"), aux.getBoolean("sexo"), aux.getBoolean("esAdministrador"),aux2.getString("nombreCarrera"));
+                    usuario = new Usuario(aux.getString("apellidoMaterno"),aux.getString("apellidoPaterno"),aux.getString("primerNombre"),aux.getString("segundoNombre"),aux.getString("correo"),aux.getString("password"),aux.getString("fechaNacimiento"), aux.getBoolean("sexo"), aux.getBoolean("esAdministrador"));
                     usuario.agregarDatos(aux.getString("lastUpdate"), aux.getInt("usuarioId"),aux.getString("createdAt"),aux.getBoolean("disponibilidad"),aux.getBoolean("esActivo"));
                     try {usuario.setIntereses(aux.getString("intereses"));} catch(Exception e){
                     usuario.setIntereses("aún no ha especificado");}
                     try{ usuario.setNumeroTelefono(aux.getString("telefono"));} catch(Exception e){
                     usuario.setNumeroTelefono("no tiene");}
+                    try{
+                        JSONObject aux2 =new JSONObject(aux.getString("carrera"));
+                        Carrera car = new Carrera(aux2.getString("nombreCarrera"), aux2.getInt("carreraId"));
+                        usuario.setCarrera(car);
+                    }catch(Exception e) {usuario.setCarrera(new Carrera("No especifica",0));}
                     showProgress(false);
                     termino();
                 } catch (Exception e) {
@@ -196,6 +200,7 @@ public class IniciarSesion extends AppCompatActivity {
         System.out.println("BASJOASJO");
         Intent i = new Intent(this,Principal.class);
         i.putExtra("usuario",usuario);
+
         startActivity(i);
         finish();
     }
