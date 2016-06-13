@@ -91,36 +91,47 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
         String URL_USUARIOS_EN_ACTIVIDAD=URL_PUT_ACTIVIDAD+"actividades/"+actividad.getActividadId()+"/usuarios";
         IntentFilter intentFilter2 = new IntentFilter("httpData");
 
+        // <--TODO: este BR esta atento al resultado de COnsulta:Usuarios en actividad
         br = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 JsonHandler jh = new JsonHandler();
+                // <--TODO: obtengo los usuarios de la actividad
                 listaUsuarios = jh.getIdesUsuariosEnAct(intent.getStringExtra("data"));
                 participando = false;
                 if (listaUsuarios != null){
 
-              // se muestra la listaUsuarios en ListView
+                    // <--TODO: muestro los usuarios como ListView
                     String[] StringUsuarios = new String[listaUsuarios.length];
                     for (int i=0;i<listaUsuarios.length;i++) {
                              StringUsuarios[i] = ""+listaUsuarios[i].getPrimerNombre().toUpperCase() + " " + listaUsuarios[i].getApellidoPaterno().toUpperCase() +" " + listaUsuarios[i].getApellidoMaterno().toUpperCase() +"  ";
                     }
                     ArrayAdapter<String> adapter=new ArrayAdapter<String>(getActivity(),R.layout.simple_list_personas,StringUsuarios);
                     listaParticipantes.setAdapter(adapter);
+                    // <--TODO: le agrego Listener de Click a los participantes
                     listaParticipantes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                         @Override
                         public void onItemClick(AdapterView<?> arg0, View arg1, int position,long arg3) {
                             FragmentTransaction transaccion;
                             transaccion = getFragmentManager().beginTransaction();
- // TODO: FALTA ARREGLAR AQUI PARA TERMINAR ELIMINAR USUARIO DE ACTIVIDAD
-// TODO : falta ver aquí por que no encuentra como organizador al usuarioPerfil, en actividades que si ha organizado segun tu boton ...
-                            // vemos si es organizador de esta actividad ----------------------------------------------
-                                URL_GET=(new AccesoDirecto()).getURL()+"usuarios/"+usuario.getId()+"/actividades/?organizador";
+
+  // <--TODO: Empieza tema de eliminar de actividad -->
+// TODO : falta ver aquí por que no encuentra como organizador al usuarioPerfil, en actividades que si ha organizado segun tu boton ... ESTE ES EL VIEJO
+
+
+                            // <--TODO: aca queremos ver si el usuario Logueado es administrador de la actividad que esta mirando con boolean "organizando"
+                            // <--TODO: con esta URL queremos obtener todas las actividades donde el logueado es admin para comparar ides con la actual
+
+                            URL_GET=(new AccesoDirecto()).getURL()+"usuarios/"+usuario.getId()+"/actividades/?organizador";
                                 IntentFilter intentFilter = new IntentFilter("httpData");
-                                br2 = new BroadcastReceiver() {
+
+                            // <--TODO: aqui esta el segundo BR que espera la consulta de actis donde el logueado es organizador
+                            br2 = new BroadcastReceiver() {
                                     @Override
                                     public void onReceive(Context context, Intent intent) {
                                         JsonHandler jh = new JsonHandler();
+                                        // <--TODO: lista con actividades donde es organizador
                                         actividadesDondeParticipa = jh.getActividades(intent.getStringExtra("data"));
                                     }
                                 };
@@ -133,12 +144,18 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
                                         e.printStackTrace();
                                     }
                                 }
-                          boolean organizando=false;
+
+                            // <--TODO: seteamos que no es organizador
+                            boolean organizando=false;
                             for (int i = 0; i < actividadesDondeParticipa.size(); i++) {
+                                // <--TODO: si encontramos igualdad entre actividad actual y alguna de la lista decimos qu si es organizador
                                 if (actividadesDondeParticipa.get(i).getActividadId() == actividad.getActividadId()) {
                                     organizando = true;
                                 }
                             }
+
+                            // <--TODO: como ya sabemos si es o no organizador vamos a ver perfil con el usuario donde apreté y ponemos VISIBLE el boton eliminar participante
+                            // <--TODO: en UsuarioPerfil, en el listener de eliminar aplicamos DELETE de usuario ( el seleccionado ) ;)
                             transaccion.replace(R.id.fragment_container, new PerfilUsuario(usuario, listaUsuarios[position],organizando,actividad), "verPerfil");// si es organizador
                             new Principal();
                             transaccion.addToBackStack(null);
