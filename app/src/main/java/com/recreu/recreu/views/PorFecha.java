@@ -152,7 +152,7 @@ public class PorFecha extends Fragment implements View.OnClickListener{
             mTimePicker2.show();
             break;
         case R.id.buscarPorFecha:
-            String str="actividades?var=1&nofinalizadas&dato=2";
+            String str="actividades/?tiempo_inicio="+fechaInicio.getText() +"-"+horaInicio.getText()+"&tiempo_fin="+fechaFin.getText()+"-"+horaFin.getText();
             FragmentTransaction transaccion = getFragmentManager().beginTransaction();
             transaccion.replace(R.id.fragment_container, new Explorar(usuario,str), "explorar");
             new Principal();

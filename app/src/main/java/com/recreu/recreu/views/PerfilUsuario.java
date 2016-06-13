@@ -70,8 +70,8 @@ public class PerfilUsuario extends Fragment implements View.OnClickListener {
         correoPerfil.setText(usuarioPerfil.getCorreo() + "@usach.cl");
         //carreraPerfil.setText(usuarioPerfil.getCarrera().getNombreCarrera());
         cumpleanosPerfil.setText(usuarioPerfil.getFechaNacimiento());
-        //interesesPerfil.setText(usuarioPerfil.getIntereses());
-        //telefonoPerfil.setText(usuarioPerfil.getNumeroTelefono());
+        interesesPerfil.setText(usuarioPerfil.getIntereses());
+        telefonoPerfil.setText(usuarioPerfil.getNumeroTelefono());
 
         if (organizaOno) {
             System.out.println("Llegue como organzador al perfil");

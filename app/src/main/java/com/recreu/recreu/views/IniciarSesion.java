@@ -177,7 +177,10 @@ public class IniciarSesion extends AppCompatActivity {
                     JSONObject aux =new JSONObject(response);
                     usuario = new Usuario(aux.getString("apellidoMaterno"),aux.getString("apellidoPaterno"),aux.getString("primerNombre"),aux.getString("segundoNombre"),aux.getString("correo"),aux.getString("password"),aux.getString("fechaNacimiento"), aux.getBoolean("sexo"), aux.getBoolean("esAdministrador"));
                     usuario.agregarDatos(aux.getString("lastUpdate"), aux.getInt("usuarioId"),aux.getString("createdAt"),aux.getBoolean("disponibilidad"),aux.getBoolean("esActivo"));
-
+                    try {usuario.setIntereses(aux.getString("intereses"));} catch(Exception e){
+                    usuario.setIntereses("aún no ha especificado");}
+                    try{ usuario.setNumeroTelefono(aux.getString("telefono"));} catch(Exception e){
+                    usuario.setNumeroTelefono("no tiene");}
                     showProgress(false);
                     termino();
                 } catch (Exception e) {

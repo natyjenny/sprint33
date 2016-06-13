@@ -109,6 +109,30 @@ public class Usuario implements Serializable {
         return disponibilidad;
     }
 
+    public void setNumeroTelefono(String numeroTelefono) {
+        this.numeroTelefono = numeroTelefono;
+    }
+
+    public void setIntereses(String intereses) {
+        this.intereses = intereses;
+    }
+
+    public void setCarrera(Carrera carrera) {
+        this.carrera = carrera;
+    }
+
+    public void setLastUpdate(String lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public void setLastPositionY(float lastPositionY) {
+        this.lastPositionY = lastPositionY;
+    }
+
+    public void setLastPositionX(float lastPositionX) {
+        this.lastPositionX = lastPositionX;
+    }
+
     public boolean isEsActivo() {
         return esActivo;
     }

@@ -1,14 +1,25 @@
 package com.recreu.recreu;
 
+import android.Manifest;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.recreu.recreu.utilities.MyLocationListener;
 import com.recreu.recreu.views.CrearUsuario;
 import com.recreu.recreu.views.IniciarSesion;
 
@@ -26,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_activity);
         tv1 = (TextView) findViewById(R.id.tv1);
     }
+
+
+
+
+
 
     public void crearUsuario(View vista){
         tv1.setText("hola clickeé crear Usuario");

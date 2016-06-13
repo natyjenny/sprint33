@@ -1,5 +1,6 @@
 package com.recreu.recreu.views;
 
+import android.Manifest;
 import android.app.FragmentTransaction;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -8,9 +9,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
@@ -35,7 +40,10 @@ import com.recreu.recreu.controllers.HttpGet;
 import com.recreu.recreu.controllers.HttpPost;
 import com.recreu.recreu.utilities.AccesoDirecto;
 import com.recreu.recreu.utilities.JsonHandler;
+import com.recreu.recreu.utilities.MyLocationListener;
 import com.recreu.recreu.utilities.SystemUtilities;
+
+import android.location.LocationListener;
 
 import org.json.JSONObject;
 
@@ -57,6 +65,7 @@ public class Principal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_principal);
         usuario = (Usuario) getIntent().getExtras().getSerializable("usuario");
         transaccion = getFragmentManager().beginTransaction();
@@ -278,7 +287,7 @@ public class Principal extends AppCompatActivity {
         SystemUtilities su = new SystemUtilities(this.getApplicationContext());
         if (su.isNetworkAvailable()) {
             try {
-                new HttpGet(this.getApplicationContext(), true).execute((new AccesoDirecto()).getURL() + "actividades/?latitud=7&longitud=550&ladocuadrado=60&minutos=35&usuario_no_participa="+usuario.getUsuarioId());
+                new HttpGet(this.getApplicationContext(), true).execute((new AccesoDirecto()).getURL() + "actividades/?latitud=7&longitud=550&ladocuadrado=60&minutos=35");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -295,4 +304,6 @@ public class Principal extends AppCompatActivity {
         }
         super.onPause();
     }
+
+
 }
