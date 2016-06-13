@@ -28,12 +28,15 @@ public class Explorar extends ListFragment {
 
     private BroadcastReceiver br3 = null;
     private String URL_GET;
+    private int actividadID;
     private ArrayList <Actividad> actividadesLista = new ArrayList<Actividad>();
     private ArrayList <String> listaFiltro=null;
     private Actividad actividad;
     private Usuario usuario;
     boolean tipodeFiltro;
     boolean ConOSinFiltro=false;
+    boolean notificacion = false;
+
 
     public Explorar() {
         this.URL_GET=(new AccesoDirecto()).getURL()+"actividades/?var=1&nofinalizadas&dato=2";
@@ -48,6 +51,14 @@ public class Explorar extends ListFragment {
         this.usuario=usu;
         this.URL_GET=(new AccesoDirecto()).getURL()+url;
     }
+
+    // este constructor viene desde notificacion
+    public Explorar(Usuario usuario,boolean notif){
+        this.usuario=usuario;
+        this.notificacion=notif;
+        this.URL_GET=((new AccesoDirecto()).getURL() + "actividades/?latitud=7&longitud=550&ladocuadrado=60&minutos=35");
+    }
+
 
     public Explorar(Usuario usu, int idUsuario, boolean organizador) {
         this.usuario=usu;
@@ -77,6 +88,20 @@ public class Explorar extends ListFragment {
                 JsonHandler jh = new JsonHandler();
                 actividadesLista = jh.getActividades(intent.getStringExtra("data"));
                 boolean pasaONoFiltro;
+
+          /*      // caso en que viene desde , salto directamente a ver detallenotificación
+                if(notificacion){
+                    actividad=actividadesLista.get(actividadID);
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.fragment_container, new detalleActividad(actividad,usuario),"detalleActi");
+                    new Principal();
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+
+                }
+
+          */
+
 
              if(ConOSinFiltro) {        // caso en que si hay filtros asociados
                  ArrayList<Actividad> auxi = new ArrayList<Actividad>();

@@ -8,30 +8,43 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="635dp"
         android:layout_gravity="center_horizontal|top"
         android:weightSum="1">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Buscar por fecha"
             android:id="@+id/textView21"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="0.10" />
+            android:layout_weight="0.10"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:background="@color/RECREU" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="44dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Desde:"
-            android:id="@+id/textView18" />
+            android:id="@+id/textView18"
+            android:paddingLeft="25dp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:background="@color/RECREU"
+            android:paddingTop="5dp"
+            android:layout_marginTop="30dp"
+            android:translationZ="20dp" />
 
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="37dp"
+            android:paddingTop="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -86,16 +99,26 @@
                 android:layout_column="2" />
         </GridLayout>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="44dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Hasta:"
-            android:id="@+id/textView22" />
+            android:id="@+id/textView22"
+            android:paddingLeft="25dp"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:background="@color/RECREU"
+            android:textColor="#ffffff"
+            android:paddingTop="5dp"
+            android:translationZ="20dp" />
 
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="37dp"
+            android:paddingTop="20dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -151,12 +174,21 @@
         </GridLayout>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="90dp"
             android:text="Buscar"
             android:id="@+id/buscarPorFecha"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="0.10" />
+            android:layout_weight="0.57"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:layout_marginTop="50dp"
+            android:background="@color/RECREU"
+            android:textSize="40dp"
+            android:translationZ="30dp"
+            android:typeface="normal" />
 
 
     </LinearLayout>

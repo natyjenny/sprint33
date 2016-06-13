@@ -2,6 +2,7 @@ package com.recreu.recreu.views;
 
 import android.Manifest;
 import android.app.FragmentTransaction;
+import java.util.UUID;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -55,6 +56,7 @@ public class Principal extends AppCompatActivity {
     private BroadcastReceiver br = null;
     private FragmentTransaction transaccion;
     private Usuario usuario;
+    private Actividad act;
     private TextView nombre;
     private Button boton1;
     private int notificacionID = 1;
@@ -229,11 +231,20 @@ public class Principal extends AppCompatActivity {
     }
 
     protected void mostrarNotificacion(CharSequence tick, Actividad act) {
+
+
+
         Intent i = new Intent(this, NotificationView.class);
         i.putExtra("notificationID", notificacionID);
         i.putExtra("numero",12);
         i.putExtra("actividadN",act.getTitulo());
         i.putExtra("usuarioN",usuario);
+                              System.out.println("que habia en act.getActividadId() : "+act.getActividadId());
+
+        i.putExtra("actividadID",act.getActividadId().toString());
+                               System.out.println("que hay en  actividadID : "+act.getActividadId());
+       // i.putExtra("actividadCompleta",acti);
+
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i, 0);
         NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
@@ -243,9 +254,15 @@ public class Principal extends AppCompatActivity {
                 .setContentTitle(act.getTitulo())
                 .setContentText(act.getCuerpo())
                 .setSmallIcon(R.drawable.smile)
+
                 .addAction(R.drawable.smile, tick, pendingIntent)
                 .setVibrate(new long[]{100, 250, 100, 500})
                 .build();
+
+
+        noti.flags |= Notification.FLAG_AUTO_CANCEL;
+
+
         nm.notify(notificacionID, noti);
         notificacionID=notificacionID+1;
     }

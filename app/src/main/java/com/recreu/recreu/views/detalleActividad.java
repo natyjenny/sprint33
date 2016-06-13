@@ -47,7 +47,7 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
     private Usuario usuario;
     private ArrayList <Actividad> actividadesDondeParticipa = new ArrayList<Actividad>();
     private Usuario[] listaUsuarios;
-    private String URL_PUT_ACTIVIDAD,URL_GET;
+    private String URL_PUT_ACTIVIDAD,URL_GET,actividadIDdesdeNoti;
     private ListView listaParticipantes;
 
 

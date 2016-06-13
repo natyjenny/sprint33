@@ -79,8 +79,11 @@ public class JsonHandler {
                 JSONObject jsonUsuario = ja.getJSONObject(i);
                 String dato= jsonUsuario.getString("usuarioId");
                 int ide_usuario=Integer.parseInt(dato);
-                jsonUsuario.getString("primerNombre");
-                usuario = new Usuario(ide_usuario, jsonUsuario.getString("primerNombre"),jsonUsuario.getString("apellidoPaterno"),jsonUsuario.getString("apellidoMaterno"));
+
+
+                JSONObject jsonCarrera = new JSONObject(jsonUsuario.getString("carrera"));
+             System.out.println("NUMERO DE TELEFONO :"+jsonUsuario.getString("numeroTelefono"));
+                usuario = new Usuario(ide_usuario, jsonUsuario.getString("primerNombre"),jsonUsuario.getString("apellidoPaterno"),jsonUsuario.getString("apellidoMaterno"),jsonUsuario.getString("correo"),jsonUsuario.getString("fechaNacimiento"),jsonUsuario.getString("numeroTelefono"),jsonUsuario.getString("intereses"),jsonCarrera.getString("nombreCarrera"));
                 arrayIdes[i] = usuario;
             }
             return arrayIdes;
@@ -101,7 +104,10 @@ public class JsonHandler {
             Usuario usuario;
             for (int i = 0; i < ja.length(); i++) {
                 JSONObject jsonUsuario = ja.getJSONObject(i);
-                usuario = new Usuario(jsonUsuario.getInt("usuarioId"),jsonUsuario.getString("primerNombre"),jsonUsuario.getString("apellidoPaterno"),jsonUsuario.getString("apellidoPaterno"));
+                JSONObject jsonCarrera = new JSONObject(jsonUsuario.getString("carrera"));
+                System.out.println("NUMERO DE TELEFONO :"+jsonUsuario.getString("numeroTelefono"));
+
+                usuario = new Usuario(jsonUsuario.getInt("usuarioID"),jsonUsuario.getString("primerNombre"),jsonUsuario.getString("apellidoPaterno"),jsonUsuario.getString("apellidoMaterno"),jsonUsuario.getString("correo"),jsonUsuario.getString("fechaNacimiento"),jsonUsuario.getString("numeroTelefono"),jsonUsuario.getString("intereses"),jsonCarrera.getString("nombreCarrera"));
                 arrayUsuario[i] = usuario;
             }
             return arrayUsuario;

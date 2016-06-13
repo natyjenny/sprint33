@@ -68,7 +68,7 @@ public class PerfilUsuario extends Fragment implements View.OnClickListener {
         //Set
         nombrePerfil.setText(usuarioPerfil.getPrimerNombre() + " " + usuarioPerfil.getApellidoPaterno() + "\n" + usuarioPerfil.getApellidoMaterno());
         correoPerfil.setText(usuarioPerfil.getCorreo() + "@usach.cl");
-        //carreraPerfil.setText(usuarioPerfil.getCarrera().getNombreCarrera());
+        carreraPerfil.setText(usuarioPerfil.getNombreCarrera());
         cumpleanosPerfil.setText(usuarioPerfil.getFechaNacimiento());
         interesesPerfil.setText(usuarioPerfil.getIntereses());
         telefonoPerfil.setText(usuarioPerfil.getNumeroTelefono());
