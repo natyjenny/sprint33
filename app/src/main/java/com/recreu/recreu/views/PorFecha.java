@@ -145,14 +145,15 @@ public class PorFecha extends Fragment implements View.OnClickListener{
                     if (selectedMinute < 9)
                         minutos = "0" + selectedMinute;
 
-                    fechaFin.setText("" + hora + ":" + minutos + "");
+                    horaFin.setText("" + hora + ":" + minutos + "");
                 }
             }, hour2, minute2, true);
             mTimePicker2.setTitle("Selecciona hora Inicio");
             mTimePicker2.show();
             break;
         case R.id.buscarPorFecha:
-            String str="actividades/?tiempo_inicio="+fechaInicio.getText() +"-"+horaInicio.getText()+"&tiempo_fin="+fechaFin.getText()+"-"+horaFin.getText();
+            String str="actividades/?tiempo_inicio="+fechaInicio.getText() +"-"+horaInicio.getText()+":00&tiempo_fin="+fechaFin.getText()+"-"+horaFin.getText()+":00";
+            System.out.println(str);
             FragmentTransaction transaccion = getFragmentManager().beginTransaction();
             transaccion.replace(R.id.fragment_container, new Explorar(usuario,str), "explorar");
             new Principal();

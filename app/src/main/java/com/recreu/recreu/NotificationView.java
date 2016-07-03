@@ -1,7 +1,9 @@
 package com.recreu.recreu;
 
+import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.app.NotificationManager;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,24 +28,30 @@ public class NotificationView extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_view);
-        String titulo = getIntent().getExtras().getString("actividadN");
-                                      System.out.println(" llego titulo final : "+titulo);
-        actividadID = getIntent().getExtras().getString("actividadID");
-                                       System.out.println("LA ID DE ACTIVIDAD QUE LLEGO AL APRETAR : "+actividadID);
 
-        usuario= (Usuario) getIntent().getExtras().getSerializable("usuarioN");
-       // actividad= (Actividad) getIntent().getExtras().getSerializable("actividadCompleta");
+        //actividadID = getIntent().getExtras().getString("actividadID");
+          //                             System.out.println("LA ID DE ACTIVIDAD QUE LLEGO AL APRETAR : "+actividadID);
+
+       usuario= (Usuario) getIntent().getExtras().getSerializable("usuarioN");
+        System.out.println("usuario: "+usuario.getPrimerNombre());
+        //actividad= (Actividad) getIntent().getExtras().getSerializable("actividadCompleta");
                                              //  System.out.println("ID de Actividad completa:: "+actividad.getActividadId());
 
 
-        if (usuario!=null) System.out.println("Estoy en notificaciones con el usuario: "+ usuario.getPrimerNombre());
-                                       else System.out.println("Estoy en notificaciones sin el usuario :C");
+        //if (usuario!=null) System.out.println("Estoy en notificaciones con el usuario: "+ usuario.getPrimerNombre());
+          //                             else System.out.println("Estoy en notificaciones sin el usuario :C");
 
                         //System.out.println("numero?: "+getIntent().getExtras().getInt("numero"));
         NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
         TextView nombre= (TextView)this.findViewById(R.id.nombreActividad);
-        nombre.setText(titulo);
+        try{
+            String titulo = getIntent().getExtras().getString("actividadN");
+            System.out.println(" llego titulo final : "+titulo);
+            nombre.setText(titulo);
+        }catch (Exception e){
+            nombre.setText("Titulo de prueba");
+        }
 
 
         botonVerDetalle = (Button)this.findViewById(R.id.verDetalles);
@@ -55,11 +63,10 @@ public class NotificationView extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, new Explorar(usuario,true),"explorandoCercanas");
-        new Principal();
-        transaction.addToBackStack(null);
-        transaction.commit();
+
+        Intent i = new Intent(this,Principal.class);
+        i.putExtra("usuario",usuario);
+        startActivity(i);
 
     }
 }

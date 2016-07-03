@@ -94,6 +94,7 @@ public class Explorar extends ListFragment {
             @Override
             public void onReceive(Context context, Intent intent) {
                 JsonHandler jh = new JsonHandler();
+                if(intent.getStringExtra("data")!=null){
                 actividadesLista = jh.getActividades(intent.getStringExtra("data"));
                 boolean pasaONoFiltro;
 
@@ -167,7 +168,7 @@ public class Explorar extends ListFragment {
                  }
                 ExplorarAdaptador explorarAdaptador = new ExplorarAdaptador(getActivity(), titulosString, fechasString, tiposArray);
                 setListAdapter(explorarAdaptador);
-            }
+            }}
         };
 
         getActivity().registerReceiver(br3, intentFilter);
