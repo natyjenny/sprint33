@@ -32,10 +32,10 @@ public class Explorar extends ListFragment {
     private ArrayList <Actividad> actividadesLista = new ArrayList<Actividad>();
     private ArrayList <String> listaFiltro=null;
     private Actividad actividad;
+    private int confirmadas;
     private Usuario usuario;
-    boolean tipodeFiltro;
-    boolean ConOSinFiltro=false;
-    boolean notificacion = false;
+    boolean tipodeFiltro,ConOSinFiltro=false,notificacion = false;
+
 
 
     public Explorar() {
@@ -52,6 +52,14 @@ public class Explorar extends ListFragment {
         this.URL_GET=(new AccesoDirecto()).getURL()+url;
     }
 
+    // para ver actividades confirmadas ( que aun no pasan )       // ACA FALTA CONSULTAA
+    public Explorar(Usuario usuarioSesion, int confirmadas){
+        this.usuario=usuarioSesion;
+        this.confirmadas=confirmadas;
+        this.URL_GET=(new AccesoDirecto()).getURL()+"NUEVA CONSULTA";
+    }
+
+
     // este constructor viene desde notificacion
     public Explorar(Usuario usuario,boolean notif){
         this.usuario=usuario;
@@ -59,7 +67,7 @@ public class Explorar extends ListFragment {
         this.URL_GET=((new AccesoDirecto()).getURL() + "actividades/?latitud=7&longitud=550&ladocuadrado=60&minutos=35");
     }
 
-
+      // actividades en que he participado y que donde soy organizador
     public Explorar(Usuario usu, int idUsuario, boolean organizador) {
         this.usuario=usu;
         if (organizador)this.URL_GET=(new AccesoDirecto()).getURL()+"usuarios/"+idUsuario+"/actividades/?organizador";

@@ -222,9 +222,9 @@
             </LinearLayout>
 
             <Button
-                android:layout_width="312dp"
-                android:layout_height="60dp"
-                android:text="Actividades que ha organizado"
+                android:layout_width="fill_parent"
+                android:layout_height="80dp"
+                android:text="Actividades que he organizado"
                 android:id="@+id/actividadesOrganizador"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="0.04"
@@ -237,9 +237,24 @@
                 android:layout_marginBottom="3dp" />
 
             <Button
-                android:layout_width="312dp"
-                android:layout_height="60dp"
-                android:text="Actividades en que ha participado"
+                android:layout_width="fill_parent"
+                android:layout_height="80dp"
+                android:text="Actividades que he confirmado"
+                android:id="@+id/actividadesConfirmadas"
+                android:layout_gravity="right"
+                android:layout_weight="0.04"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginTop="5dp"
+                android:background="@color/RECREU"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="#ffffff"
+                android:layout_marginBottom="3dp" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="80dp"
+                android:text="Actividades en que he participado"
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/actividadesParticipante"
 
@@ -248,33 +263,36 @@
                 android:textColor="#ffffff"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                android:layout_marginBottom="3dp" />
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="5dp" />
 
             <Button
-                android:layout_width="312dp"
-                android:layout_height="60dp"
+                android:layout_width="fill_parent"
+                android:layout_height="80dp"
                 android:text="Calificar usuario"
-                android:id="@+id/button4"
+                android:id="@+id/btncalificacion"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="0.04"
                 android:background="@color/RECREU"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="#ffffff"
-                android:layout_marginBottom="3dp" />
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="5dp" />
 
             <Button
-                android:layout_width="312dp"
-                android:layout_height="60dp"
+                android:layout_width="fill_parent"
+                android:layout_height="80dp"
                 android:text="Reportar usuario"
-                android:id="@+id/button3"
+                android:id="@+id/btnreporte"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="0.04"
                 android:background="@color/RECREU"
                 android:textColor="#ffffff"
                 android:textStyle="bold"
                 android:textSize="20dp"
-                android:layout_marginBottom="3dp" />
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="5dp" />
 
 
         </LinearLayout>

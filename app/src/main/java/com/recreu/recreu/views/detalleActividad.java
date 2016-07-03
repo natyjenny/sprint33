@@ -87,7 +87,7 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
 
-        System.out.println("act: "+actividad.getActividadId()+". usuario: "+usuario.getUsuarioId());
+     //   System.out.println("act: "+actividad.getActividadId()+". usuario: "+usuario.getUsuarioId());
         String URL_USUARIOS_EN_ACTIVIDAD=URL_PUT_ACTIVIDAD+"actividades/"+actividad.getActividadId()+"/usuarios";
         IntentFilter intentFilter2 = new IntentFilter("httpData");
 

@@ -239,10 +239,10 @@ public class Principal extends AppCompatActivity {
         i.putExtra("numero",12);
         i.putExtra("actividadN",act.getTitulo());
         i.putExtra("usuarioN",usuario);
-                              System.out.println("que habia en act.getActividadId() : "+act.getActividadId());
+                          //    System.out.println("que habia en act.getActividadId() : "+act.getActividadId());
 
         i.putExtra("actividadID",act.getActividadId().toString());
-                               System.out.println("que hay en  actividadID : "+act.getActividadId());
+                          //     System.out.println("que hay en  actividadID : "+act.getActividadId());
        // i.putExtra("actividadCompleta",acti);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i, 0);

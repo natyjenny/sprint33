@@ -2,6 +2,7 @@ package com.recreu.recreu.views;
 
 import android.app.DatePickerDialog;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.app.TimePickerDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -148,7 +149,12 @@ public class NuevaActividad extends Fragment implements View.OnClickListener {
                     }
                 } catch (Exception e) {
                 }
-
+                FragmentTransaction transaccion = getFragmentManager().beginTransaction();
+                String mensaje="ACTIVIDAD RELIZADA CON EXITO";
+                transaccion.replace(R.id.fragment_container, new confirmacion(usuario,mensaje), "confirmar");
+                new Principal();
+                transaccion.addToBackStack(null);
+                transaccion.commit();
 
                 break;
 

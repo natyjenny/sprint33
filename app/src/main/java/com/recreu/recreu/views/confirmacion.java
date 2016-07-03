@@ -31,10 +31,13 @@ import cl.recreu.recreu.taller_android_bd.R;
  */
 public class confirmacion  extends Fragment implements View.OnClickListener {
     private Button botonOk;
-    private Usuario usuario;
+    private Usuario usuarioSesion;
+    private String mensaje;
+    private TextView mensajeVisible;
 
-    public confirmacion( Usuario usu) {
-        this.usuario=usu;
+    public confirmacion( Usuario usu, String mensaje) {
+        this.mensaje=mensaje;
+        this.usuarioSesion=usu;
     }
 
 
@@ -52,15 +55,16 @@ public class confirmacion  extends Fragment implements View.OnClickListener {
     public void onViewStateRestored(Bundle savedInstanceState) {
         botonOk = ((Button) getView().findViewById(R.id.botonOk));
         botonOk.setOnClickListener(this);
+        mensajeVisible= (TextView)getView().findViewById(R.id.mensaje);
+        mensajeVisible.setText(mensaje);
         super.onViewStateRestored(savedInstanceState);
     }
 
+
     @Override
     public void onClick(View view) {
-        //FragmentTransaction transaction = getFragmentManager().beginTransaction();
-       // transaction.replace(R.id.fragment_container, new Inicio(usuario), "principal");
-      //  transaction.addToBackStack(null);
-
-       // transaction.commit();
+        Intent i = new Intent(getActivity(),Principal.class);
+        i.putExtra("usuario",usuarioSesion);
+        startActivity(i);
     }
 }

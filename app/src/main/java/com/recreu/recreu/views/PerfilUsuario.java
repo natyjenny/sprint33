@@ -30,7 +30,7 @@ public class PerfilUsuario extends Fragment implements View.OnClickListener {
     private TextView cumpleanosPerfil;
     private TextView interesesPerfil;
     private TextView telefonoPerfil;
-    private Button activOrganizador, activParticipante, eliminarDeActividad;
+    private Button activOrganizador, activParticipante, eliminarDeActividad,botonReporte,botonCalificacion,botonConfirmadas;
     private Actividad actividad;
     private boolean organizaOno=false;
 
@@ -59,10 +59,34 @@ public class PerfilUsuario extends Fragment implements View.OnClickListener {
         cumpleanosPerfil = (TextView) vistaPerfil.findViewById(R.id.cumpleanosPerfil);
         interesesPerfil = (TextView) vistaPerfil.findViewById(R.id.interesesPerfil);
         telefonoPerfil = (TextView) vistaPerfil.findViewById(R.id.telefonoPerfil);
-        activOrganizador=(Button)vistaPerfil.findViewById(R.id.actividadesOrganizador);
-        activOrganizador.setOnClickListener(this);
         activParticipante=(Button)vistaPerfil.findViewById(R.id.actividadesParticipante);
-        activParticipante.setOnClickListener(this);
+        activOrganizador=(Button)vistaPerfil.findViewById(R.id.actividadesOrganizador);
+       // System.out.println(" ID Usuario Sesion : "+usuarioSesion.getId() +" Id usuario perfil "+usuarioPerfil.getId());
+        botonReporte=(Button)vistaPerfil.findViewById(R.id.btnreporte);
+        botonCalificacion=(Button)vistaPerfil.findViewById(R.id.btncalificacion);
+        botonConfirmadas=(Button)vistaPerfil.findViewById(R.id.actividadesConfirmadas);
+
+
+        // filtro botones -> PRIVACIDAD - observo perfil ajeno
+        if (usuarioSesion.getId() != usuarioPerfil.getId()) {
+            activOrganizador.setVisibility(View.GONE);
+            activParticipante.setVisibility(View.GONE);
+            botonConfirmadas.setVisibility(View.GONE);
+            botonReporte.setOnClickListener(this);
+            botonCalificacion.setOnClickListener(this);
+        }
+
+        // filtro botones -> PRIVACIDAD - observo mi propio perfil
+        if (usuarioSesion.getId() == usuarioPerfil.getId()) {
+            activOrganizador.setOnClickListener(this);
+            botonReporte.setVisibility(View.GONE);
+            botonConfirmadas.setOnClickListener(this);
+            activParticipante.setOnClickListener(this);
+            botonCalificacion.setVisibility(View.GONE);
+        }
+
+
+        // creación boton eliminar usuario de actividad
         eliminarDeActividad=(Button)vistaPerfil.findViewById(R.id.eliminarDeActividad);
 
         //Set
@@ -75,7 +99,7 @@ public class PerfilUsuario extends Fragment implements View.OnClickListener {
 
         if (organizaOno) {
             System.out.println("Llegue como organzador al perfil");
-            eliminarDeActividad.setVisibility(View.GONE);
+            eliminarDeActividad.setVisibility(View.VISIBLE);
             eliminarDeActividad.setOnClickListener(this);
         }
         return vistaPerfil;
@@ -102,7 +126,15 @@ public class PerfilUsuario extends Fragment implements View.OnClickListener {
 
             case R.id.actividadesParticipante:
                 transaccion = getFragmentManager().beginTransaction();
-                transaccion.replace(R.id.fragment_container, new Explorar(usuarioSesion, usuarioPerfil.getId(), false), "explorar");
+                transaccion.replace(R.id.fragment_container, new Explorar(usuarioSesion, usuarioPerfil.getId(), false), "heParticipado");
+                new Principal();
+                transaccion.addToBackStack(null);
+                transaccion.commit();
+                break;
+
+            case R.id.actividadesConfirmadas:
+                transaccion = getFragmentManager().beginTransaction();
+                transaccion.replace(R.id.fragment_container, new Explorar(usuarioSesion,1), "heCOnfirmado");
                 new Principal();
                 transaccion.addToBackStack(null);
                 transaccion.commit();
@@ -110,12 +142,27 @@ public class PerfilUsuario extends Fragment implements View.OnClickListener {
 
             case R.id.eliminarDeActividad:
                 transaccion = getFragmentManager().beginTransaction();
-                transaccion.replace(R.id.fragment_container, new confirmacion(usuarioSesion), "mensaje");
+                String mensaje=" USUARIO ELIMINADO CON EXITO";
+                transaccion.replace(R.id.fragment_container, new confirmacion(usuarioSesion,mensaje), "mensaje");
+                new Principal();
+                transaccion.addToBackStack(null);
+                transaccion.commit();
+                break;
+            case R.id.btncalificacion:
+                transaccion = getFragmentManager().beginTransaction();
+                transaccion.replace(R.id.fragment_container, new Calificacion(usuarioSesion,usuarioPerfil,actividad), "calificando");
                 new Principal();
                 transaccion.addToBackStack(null);
                 transaccion.commit();
                 break;
 
+            case R.id.btnreporte:
+                transaccion = getFragmentManager().beginTransaction();
+                transaccion.replace(R.id.fragment_container, new Reporte(usuarioSesion,usuarioPerfil), "reporteando");
+                new Principal();
+                transaccion.addToBackStack(null);
+                transaccion.commit();
+                break;
 
         }
 
