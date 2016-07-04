@@ -71,7 +71,7 @@ public class Principal extends AppCompatActivity {
         setContentView(R.layout.activity_principal);
         usuario = (Usuario) getIntent().getExtras().getSerializable("usuario");
         transaccion = getFragmentManager().beginTransaction();
-
+        System.out.println("ESTOY EN EL PRINCIPAL");
         transaccion.replace(R.id.fragment_container, new Inicio(usuario), "inicio");
         new Principal();
         transaccion.addToBackStack(null);

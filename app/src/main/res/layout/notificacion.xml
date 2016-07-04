@@ -1,0 +1,52 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.recreu.recreu.views.notificacion"
+    android:background="#ffedd7">
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Notificación"
+        android:id="@+id/textView17"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="\nUsted está cerca de las siguientes actividades:"
+        android:id="@+id/textView15"
+        android:layout_below="@+id/textView17"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/textView15">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seguir"
+            android:id="@+id/botoooon2"
+            android:textColor="@android:color/background_light"
+            android:background="@color/RECREU"
+            android:layout_below="@+id/textView15"
+            android:layout_toLeftOf="@+id/textView17"
+            android:layout_toStartOf="@+id/textView17" />
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
+</FrameLayout>

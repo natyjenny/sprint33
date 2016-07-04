@@ -60,10 +60,10 @@ public class Explorar extends ListFragment {
     }
 
     // este constructor viene desde notificacion
-    public Explorar(Usuario usuario,boolean notif){
+    public Explorar(Usuario usuario,boolean notif, String latitud, String longitud){
         this.usuario=usuario;
         this.notificacion=notif;
-        this.URL_GET=((new AccesoDirecto()).getURL() + "actividades/?latitud=7&longitud=550&ladocuadrado=60&minutos=35");
+        this.URL_GET=((new AccesoDirecto()).getURL() + "actividades/?latitud="+latitud+"&longitud="+longitud+"&ladocuadrado=60&minutos=35");
     }
 
       // actividades en que he participado y que donde soy organizador
@@ -186,7 +186,8 @@ public class Explorar extends ListFragment {
     public void onListItemClick(ListView l, View v, int posicion, long id) {
         actividad=actividadesLista.get(posicion);
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, new detalleActividad(actividad,usuario),"detalleActi");
+        if (notificacion)transaction.replace(R.id.fragment_container3, new detalleActividad(actividad,usuario),"detalleActi");
+        else transaction.replace(R.id.fragment_container, new detalleActividad(actividad,usuario),"detalleActi");
         new Principal();
         transaction.addToBackStack(null);
         transaction.commit();
