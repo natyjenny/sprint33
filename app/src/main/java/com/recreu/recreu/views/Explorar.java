@@ -56,9 +56,8 @@ public class Explorar extends ListFragment {
     public Explorar(Usuario usuarioSesion, int confirmadas){
         this.usuario=usuarioSesion;
         this.confirmadas=confirmadas;
-        this.URL_GET=(new AccesoDirecto()).getURL()+"NUEVA CONSULTA";
+        this.URL_GET=(new AccesoDirecto()).getURL()+"usuarios/"+usuario.getId()+"/actividades?nofinalizadas";
     }
-
 
     // este constructor viene desde notificacion
     public Explorar(Usuario usuario,boolean notif){

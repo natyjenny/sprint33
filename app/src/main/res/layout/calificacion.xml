@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:text="    1     2     3     4     5      6     7"
+        android:textSize="30dp"
+        android:translationZ="0dp"
+        android:layout_above="@+id/estrellas"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/estrellas"
+        android:numStars="7"
+        android:layout_above="@+id/enviandocali"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="78dp"
+        android:translationZ="0dp" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:text="ENVIAR CALIFICACIÓN"
+        android:id="@+id/enviandocali"
+        android:textColor="#ffffff"
+        android:background="@color/RECREU"
+        android:textSize="30dp"
+        android:layout_marginBottom="72dp"
+        android:translationZ="30dp"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText2"
+        android:layout_above="@+id/estrellas"
+        android:layout_alignRight="@+id/estrellas"
+        android:layout_alignEnd="@+id/estrellas"
+        android:layout_marginBottom="70dp"
+        android:text="CALIFICACIÓN:"
+        android:textSize="35dp"
+        android:gravity="center"
+        android:textStyle="bold" />
+
+</RelativeLayout>

@@ -108,6 +108,7 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
                     }
                     ArrayAdapter<String> adapter=new ArrayAdapter<String>(getActivity(),R.layout.simple_list_personas,StringUsuarios);
                     listaParticipantes.setAdapter(adapter);
+
                     // <--TODO: le agrego Listener de Click a los participantes
                     listaParticipantes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -232,6 +233,13 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
                 }
             } catch (Exception e) {
             }
+            FragmentTransaction transaccion = getFragmentManager().beginTransaction();
+            String mensaje="CANCELACIÓN DE PARTICIPACIÓN REALIZADA CON EXITO";
+            transaccion.replace(R.id.fragment_container, new confirmacion(usuario,mensaje), "confirmar");
+            new Principal();
+            transaccion.addToBackStack(null);
+            transaccion.commit();
+
 
         }else{
             String nuevaParticipacion = "{\"usuarioId\":\""+usuario.getUsuarioId()+
@@ -241,7 +249,7 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
                 if (su.isNetworkAvailable()) {
                     try {
                         AsyncTask resp = new HttpPost(getActivity().getApplicationContext()).execute(nuevaParticipacion,URL_PARTICIPACION);
-                        Toast.makeText(getActivity(), " Confirmando Participacióm ...   ", Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(getActivity(), " Confirmando Participacióm ...   ", Toast.LENGTH_SHORT).show();
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -249,6 +257,13 @@ public class detalleActividad extends Fragment implements View.OnClickListener {
                 }
             } catch (Exception e) {
             }
+            FragmentTransaction transaccion = getFragmentManager().beginTransaction();
+            String mensaje="CONFIRMACIÓN DE PARTICIPACIÓN REAIZADA CON EXITO";
+            transaccion.replace(R.id.fragment_container, new confirmacion(usuario,mensaje), "confirmar");
+            new Principal();
+            transaccion.addToBackStack(null);
+            transaccion.commit();
+
         }
     }
 }

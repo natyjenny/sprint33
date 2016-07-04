@@ -45,9 +45,9 @@ public class Inicio extends Fragment {
     public void onViewStateRestored(Bundle savedInstanceState) {
 
         tv = (TextView) getActivity().findViewById(R.id.nombreUsuario);
-        tv.setText(usuario.getPrimerNombre());
+        tv.setText(usuario.getPrimerNombre().toUpperCase());
         bienv = (TextView) getActivity().findViewById(R.id.bienvenida);
-        if (!usuario.isSexo()) bienv.setText("Bienvenida");
+        if (!usuario.isSexo()) bienv.setText("BIENVENIDA");
         eliminar = (Button) getActivity().findViewById(R.id.botonEliminarUsuario);
 
 

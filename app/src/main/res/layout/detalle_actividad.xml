@@ -20,14 +20,15 @@
      android:id="@+id/scrollView"
      android:layout_weight="1.08"
      android:scrollIndicators="top"
-     android:elevation="30dp">
+     android:elevation="30dp"
+     android:layout_gravity="top">
 
 
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="fill_parent"
 
-      android:background="@color/colorPrimary"
+      android:background="@color/colorAccent"
       android:weightSum="1"
       android:baselineAligned="false"
       android:clickable="false"
@@ -41,7 +42,7 @@
        android:layout_marginRight="15dp"
        android:layout_alignLeft="@+id/TextViewCuerpo"
        android:layout_alignStart="@+id/TextViewCuerpo"
-       android:background="@color/colorAccent"
+       android:background="@color/grisss"
        android:layout_marginLeft="15dp"
        android:inputType="text"
        android:textSize="33dp"
@@ -50,12 +51,13 @@
        android:contextClickable="false"
        android:typeface="sans"
        android:paddingLeft="15dp"
-       android:textColor="#ffffff"
+       android:textColor="@color/negro"
        android:translationZ="7dp"
        android:gravity="center|left"
-       android:layout_gravity="center_vertical"
+       android:layout_gravity="center_vertical|top"
        android:elevation="10dp"
-       android:elegantTextHeight="true" />
+       android:elegantTextHeight="true"
+       android:focusable="true" />
 
 
    <TextView
@@ -75,15 +77,15 @@
        android:id="@+id/TextViewCuerpo"
        android:layout_marginTop="0dp"
        android:layout_below="@+id/TextViewTitulo"
-       android:background="@color/colorAccent"
+       android:background="@color/grisss"
        android:layout_alignParentLeft="true"
        android:layout_alignParentStart="true"
        android:layout_marginLeft="15dp"
        android:text="cuerpo"
        android:paddingLeft="20dp"
-       android:textColor="#ffffff"
+       android:textColor="@color/negro"
        android:typeface="sans"
-       android:textSize="20dp"
+       android:textSize="25dp"
        android:translationZ="7dp"
        android:layout_marginRight="15dp"
        android:gravity="center|fill|left"
@@ -110,17 +112,17 @@
        android:id="@+id/TextViewRequisitos"
        android:layout_marginTop="0dp"
        android:layout_below="@+id/TextViewCuerpo"
-       android:background="@color/colorAccent"
+       android:background="@color/grisss"
        android:layout_toRightOf="@+id/TextViewCuerpo"
        android:layout_toEndOf="@+id/TextViewCuerpo"
        android:layout_marginLeft="15dp"
        android:layout_marginRight="15dp"
        android:text="requerimientos"
        android:paddingLeft="20dp"
-       android:textColor="#ffffff"
+       android:textColor="@color/negro"
        android:layout_marginBottom="20dp"
        android:typeface="sans"
-       android:textSize="20dp"
+       android:textSize="25dp"
        android:translationZ="7dp"
        android:gravity="center|left"
        android:layout_gravity="center_vertical" />

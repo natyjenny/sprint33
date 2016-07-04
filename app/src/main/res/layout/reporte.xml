@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="FORMULARIO REPORTE"
+        android:id="@+id/textView25"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/RECREU"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:paddingTop="10dp"
+        android:textSize="20dp" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView3"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true">
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView25">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="80dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Nombre reportado"
+            android:id="@+id/nombreReportado"
+            android:textSize="30dp"
+            android:layout_marginTop="52dp"
+            android:textAlignment="center"
+            android:layout_below="@+id/textView25"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/negro"
+            android:textColor="#ffffff"
+            android:windowSoftInputMode="adjustPan"
+            android:textStyle="bold"
+            android:paddingTop="20dp"
+            tools:ignore="NotSibling" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="MOTIVO REPORTE:"
+            android:id="@+id/textView26"
+            android:paddingLeft="20dp"
+            android:textStyle="bold|italic"
+            android:textSize="20dp"
+            android:layout_below="@+id/nombreReportado"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="28dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/descripcion"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView26"
+            android:background="@color/llala"
+            android:text="Escriba aquí motivo reporte"
+            android:gravity="left|top"
+            android:paddingTop="20dp"
+            android:paddingLeft="20dp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="A REPORTAR:"
+            android:id="@+id/textView27"
+            android:paddingLeft="20dp"
+            android:textStyle="bold|italic"
+            android:textSize="20dp"
+            android:layout_below="@+id/textView25"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="22dp" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="120dp"
+            android:text="ENVIAR REPORTE"
+            android:id="@+id/botonreporteOk"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#ffffff"
+            android:background="@color/RECREU"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:translationZ="20dp"
+            android:layout_below="@+id/descripcion"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

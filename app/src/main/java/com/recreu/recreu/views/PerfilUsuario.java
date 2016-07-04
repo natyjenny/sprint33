@@ -159,7 +159,7 @@ public class PerfilUsuario extends Fragment implements View.OnClickListener {
 
             case R.id.btnreporte:
                 transaccion = getFragmentManager().beginTransaction();
-                transaccion.replace(R.id.fragment_container, new Reporte(usuarioSesion,usuarioPerfil), "reporteando");
+                transaccion.replace(R.id.fragment_container, new Reporte(usuarioSesion,usuarioPerfil,actividad), "reporteando");
                 new Principal();
                 transaccion.addToBackStack(null);
                 transaccion.commit();
